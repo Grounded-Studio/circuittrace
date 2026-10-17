@@ -1,0 +1,47 @@
+# Circuit Trace
+
+> Minimalist Android logic puzzle game by Grounded Studio. 500+ handcrafted puzzles across 5 campaign modes, built-in Puzzle Editor with share codes, 6 languages, free on Google Play.
+
+Circuit Trace is a flow-style puzzle game where players connect colored pairs across a grid, restoring circuit paths. The game is designed around calm focus and bite-sized sessions — no energy systems, no interruptions, no dark patterns. Free with ads between campaign levels; optional one-time €3.99 Remove Ads purchase.
+
+## Core Features
+
+- **500+ handcrafted puzzles** across 5 campaign modes (100 levels each): Circuit Trace, Classic, Diodes, Portals, Arcade
+- **Endless mode** — infinite procedurally-generated puzzles, 5×5 to 9×9
+- **Expert preview** — random sector 8-9 puzzle for a taste of late-campaign difficulty
+- **Daily Challenge** — one new puzzle per day, globally seeded (same for everyone)
+- **Weekly Puzzles** — six fresh puzzles per week, Monday-Saturday difficulty ramp
+- **Time Trial** — 60-second sprint mode
+- **Puzzle Editor + Share Codes** — design 5×5 to 8×8 puzzles with dots and diodes, save up to 5 in library, share via short codes (format CT-XXXXX-XXXXX-…)
+- **Google Play Games Services** — 23 achievements, 3 leaderboards (Daily, Time Trial, Endless), cloud save
+- **6 languages**: English, Nederlands, Deutsch, Français, Español, Português
+- **Interactive hint system** — shows the full next line of the last-touched colour
+- **Tutorial demo** — walks new players through the mechanics before their first solve
+- **In-App Review** — rating prompt integrated via Google Play In-App Review API
+
+## Technical
+
+- Platform: Android 8.0+
+- Package ID: com.game.circuittrace
+- Play Store: https://play.google.com/store/apps/details?id=com.game.circuittrace
+- Studio: Grounded Studio (https://grounded-studio.app)
+- Game engine: Godot 4.7
+- Offline-capable, cloud save optional (via Play Games sign-in)
+- No tracking cookies, no dark patterns
+
+## Pages on this site
+
+- [Home](https://circuittrace.app/) — product overview, screenshots, download CTA
+- [Features](https://circuittrace.app/features.html) — all gameplay features in detail
+- [Game Modes](https://circuittrace.app/modes.html) — deep dive into each of the 7 modes
+- [Puzzle Editor](https://circuittrace.app/editor.html) — build-your-own-puzzle feature focus
+- [Support](https://circuittrace.app/support.html) — FAQ and contact
+- [Press Kit](https://circuittrace.app/press.html) — logos, screenshots, bio for journalists
+- [Privacy Policy](https://circuittrace.app/privacy.html)
+- [Terms of Service](https://circuittrace.app/terms.html)
+
+## Related
+
+- Grounded Studio website: https://grounded-studio.app
+- Instagram: https://instagram.com/circuittracegame
+- TikTok: https://tiktok.com/@grounded_studio_apps

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join on Circuit Trace</title>
+    <meta name="description" content="You've been invited to play Circuit Trace — a minimalist flow puzzle game.">
+    <link rel="canonical" href="https://circuittrace.app/invite.html">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Android deep link intent -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="/" class="nav-logo"><img src="/assets/icon-ct.png" alt="CT"><span>Circuit Trace</span></a>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+    </div>
+</nav>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="deco-dots">
+        <div class="deco-dot cyan" style="top: 15%; left: 10%;"></div>
+        <div class="deco-dot magenta" style="top: 70%; left: 15%; animation-delay: 1s;"></div>
+        <div class="deco-dot yellow" style="top: 25%; right: 12%; animation-delay: 2s;"></div>
+        <div class="deco-dot green" style="top: 65%; right: 18%; animation-delay: 1.5s;"></div>
+    </div>
+    <div class="c c-narrow text-center fade-in">
+        <span class="badge badge-magenta mb-4" id="inviterBadge">🧩 You've been invited!</span>
+        <h1 class="mb-4"><span id="inviterName">Someone</span> wants to be your friend on <span class="highlight">Circuit Trace</span></h1>
+        <p class="lead mb-8">Install Circuit Trace to accept the invite, play together, and challenge each other with puzzles.</p>
+
+        <div style="background: var(--bg-card); padding: 32px; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 1px solid var(--border); max-width: 500px; margin: 0 auto;">
+            <div style="margin-bottom: 20px;">
+                <div style="font-size: 0.85rem; color: var(--ink-mute); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Friend code</div>
+                <div class="mono" id="friendCode" style="font-size: 1.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--accent); padding: 16px; background: var(--bg-soft); border-radius: var(--radius);">LOADING...</div>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore" style="width: 100%; justify-content: center;">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/><path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/><path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/><path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/></svg>
+                <div class="pstext"><small>Get it on</small><span>Google Play</span></div>
+            </a>
+            <p class="small mt-6" style="color: var(--ink-mute);">Free · Android 8.0+ · 65 MB</p>
+        </div>
+
+        <div class="mt-8">
+            <p class="small">Already have Circuit Trace?</p>
+            <p class="small mt-2">Open the app → Creator → Add Friend → paste your friend code above.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="section" style="background: var(--bg-soft);">
+    <div class="c c-narrow text-center">
+        <h2 class="mb-4">What is Circuit Trace?</h2>
+        <p class="lead mb-8">A minimalist flow puzzle game. 500+ handcrafted puzzles, 7 modes, built-in Puzzle Editor. Free on Google Play.</p>
+        <a href="/" class="btn btn-secondary">Learn more about the game →</a>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-bottom" style="padding-top: 0; border-top: 0;">
+            <div>© 2026 Grounded Studio</div>
+            <div class="foot-socials">
+                <a href="https://tiktok.com/@grounded_studio_apps" target="_blank">🎵</a>
+                <a href="https://instagram.com/circuittracegame" target="_blank">📸</a>
+                <a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Parse invite code from URL
+(function () {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code') || '';
+    const name = params.get('name') || '';
+
+    if (code) {
+        document.getElementById('friendCode').textContent = code;
+    } else {
+        document.getElementById('friendCode').textContent = 'NO-CODE-FOUND';
+        document.getElementById('inviterBadge').textContent = '⚠️ Invalid invite link';
+    }
+
+    if (name) {
+        document.getElementById('inviterName').textContent = decodeURIComponent(name);
+    }
+
+    // Try to open the app via deep link (if installed)
+    // Note: Android App Links handle this automatically if assetlinks.json is set up
+    // For now, we just show the code to copy manually
+})();
+</script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

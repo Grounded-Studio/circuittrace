@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Trace — Flow Puzzles for Your Brain | Free on Google Play</title>
+    <meta name="description" content="Circuit Trace is a minimalist flow puzzle game for Android. 500+ handcrafted puzzles across 5 modes, built-in Puzzle Editor with share codes, 6 languages. Free on Google Play.">
+    <meta name="keywords" content="Circuit Trace, flow puzzle game, android puzzle game, minimalist puzzle, puzzle editor, share codes, logic puzzle, brain training, Grounded Studio">
+    <meta name="author" content="Grounded Studio">
+    <link rel="canonical" href="https://circuittrace.app/">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/icon-ct.png">
+    <meta name="theme-color" content="#FAFAF8">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuittrace.app/">
+    <meta property="og:title" content="Circuit Trace — Flow Puzzles for Your Brain">
+    <meta property="og:description" content="500+ handcrafted puzzles, built-in Puzzle Editor with share codes. Free on Google Play.">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Circuit Trace — Flow Puzzles for Your Brain">
+    <meta name="twitter:description" content="500+ handcrafted puzzles, built-in Puzzle Editor with share codes. Free on Google Play.">
+    <meta name="twitter:image" content="https://circuittrace.app/assets/og-image.png">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Circuit Trace",
+        "applicationCategory": "GameApplication",
+        "genre": "Puzzle",
+        "operatingSystem": "Android 8.0+",
+        "description": "Minimalist flow puzzle game. 500+ handcrafted puzzles across 5 modes, built-in Puzzle Editor with share codes, 6 languages.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.game.circuittrace",
+        "author": { "@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app" }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────────── -->
+<nav>
+    <div class="c nav-inner">
+        <a href="/" class="nav-logo">
+            <img src="/assets/icon-ct.png" alt="Circuit Trace">
+            <span>Circuit Trace</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/features.html">Features</a></li>
+            <li><a href="/modes.html">Modes</a></li>
+            <li><a href="/editor.html">Editor</a></li>
+            <li><a href="/support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="nav-cta">
+            Download →
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="/">🏠 Home</a>
+    <a href="/features.html">✨ Features</a>
+    <a href="/modes.html">🎮 Modes</a>
+    <a href="/editor.html">🎨 Puzzle Editor</a>
+    <a href="/support.html">💬 Support</a>
+    <a href="/press.html">📰 Press</a>
+    <a href="/blog/">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section class="hero">
+    <div class="deco-dots">
+        <div class="deco-dot cyan" style="top: 15%; left: 8%;"></div>
+        <div class="deco-dot magenta" style="top: 65%; left: 12%; animation-delay: 1s;"></div>
+        <div class="deco-dot yellow" style="top: 25%; right: 10%; animation-delay: 2s;"></div>
+        <div class="deco-dot green" style="top: 75%; right: 15%; animation-delay: 1.5s;"></div>
+        <div class="deco-dot purple" style="top: 45%; left: 50%; animation-delay: 0.5s;"></div>
+    </div>
+    <div class="c">
+        <div class="hero-grid">
+            <div class="fade-in">
+                <span class="badge badge-dot">Live on Google Play</span>
+                <h1 class="mt-4">Flow puzzles<br>for your <span class="highlight">brain</span>.</h1>
+                <p class="hero-sub">
+                    Connect every pair. Restore the network. 500+ handcrafted puzzles,
+                    7 game modes, and a built-in Puzzle Editor to design and share your own.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/>
+                            <path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/>
+                            <path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/>
+                            <path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/>
+                        </svg>
+                        <div class="pstext">
+                            <small>Get it on</small>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                    <a href="/features.html" class="btn btn-secondary">
+                        How it plays →
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <span>Free to play</span>
+                    <span>No account required</span>
+                    <span>Offline mode</span>
+                    <span>6 languages</span>
+                </div>
+            </div>
+            <div class="hero-visual fade-in fade-in-delay-2">
+                <img src="/assets/hero-mockup.png" alt="Circuit Trace gameplay on Android phones" onerror="this.src='/assets/icon-ct.png'; this.style.width='300px';">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── STATS ─────────────────────────────────────────── -->
+<section class="section-sm">
+    <div class="c">
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-num">500+</div>
+                <div class="stat-label">Handcrafted puzzles</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">7</div>
+                <div class="stat-label">Game modes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">23</div>
+                <div class="stat-label">Achievements</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">6</div>
+                <div class="stat-label">Languages</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CORE FEATURES ─────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-primary">What makes it different</span>
+            <h2>Puzzles that respect your time.</h2>
+            <p>No energy systems. No pay-to-win. No forced ads during gameplay. Just you, the grid, and your brain.</p>
+        </div>
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon cyan">🧩</div>
+                <h3>500+ handcrafted levels</h3>
+                <p>Every puzzle is hand-designed, not generated. Each one has exactly one elegant solution waiting to be discovered.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon magenta">🎨</div>
+                <h3>Puzzle Editor</h3>
+                <p>Design your own puzzles on 5×5 to 8×8 grids with dots and one-way diodes. Save up to 5 in your library.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon yellow">📤</div>
+                <h3>Share Codes</h3>
+                <p>Share puzzles with friends via short codes like <code class="mono">CT-NHH06-8CMY4</code>. Challenge them to beat your time.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon green">📅</div>
+                <h3>Daily & Weekly</h3>
+                <p>One new puzzle every day globally seeded, plus six fresh weekly puzzles that unlock Monday through Saturday.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon purple">♾️</div>
+                <h3>Endless mode</h3>
+                <p>Infinite procedurally-generated puzzles from 5×5 to 9×9. Pick a size and chain unlimited solves.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon orange">⚡</div>
+                <h3>Time Trial</h3>
+                <p>60-second sprint. Solve as many puzzles as you can. Chase your BEST TODAY and ALL-TIME record.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon blue">🏆</div>
+                <h3>Google Play Games</h3>
+                <p>23 achievements to earn. Global leaderboards for Daily, Time Trial, and Endless streak. Cloud save across devices.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon cyan">💡</div>
+                <h3>Smart hints</h3>
+                <p>Stuck? Hints show the full next line of your last-touched color — not just a single step. Help without spoiling.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon green">🌐</div>
+                <h3>Offline + 6 languages</h3>
+                <p>Fully playable without internet. Available in English, Nederlands, Deutsch, Français, Español, Português.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── GAME MODES ────────────────────────────────────── -->
+<section class="section" style="background: var(--bg-soft);">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-cyan">7 ways to play</span>
+            <h2>Seven game modes.<br>One elegant idea.</h2>
+            <p>Each mode builds on the same core — connect every pair — but twists the rules in surprising ways.</p>
+        </div>
+
+        <div class="modes-grid">
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--blue-soft); color: var(--blue);">CT</div>
+                <div>
+                    <h3>Circuit Trace</h3>
+                    <p>The main campaign. 100 levels across 10 sectors, each introducing a new mechanic — stars, checkpoints, one-way diodes, portals, fill-every-cell.</p>
+                    <div class="mode-meta">100 levels · progressive mechanics</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--cyan-soft); color: var(--cyan);">●</div>
+                <div>
+                    <h3>Classic</h3>
+                    <p>Pure Flow-style puzzles. No mechanics, just colored pairs waiting to be connected. The calming version.</p>
+                    <div class="mode-meta">100 levels · zero complexity</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--yellow-soft); color: #A16207;">▶</div>
+                <div>
+                    <h3>Diodes</h3>
+                    <p>One-way arrow puzzles. Each diode forces the path in a specific direction. Think logically before you draw.</p>
+                    <div class="mode-meta">100 levels · directional constraints</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--magenta-soft); color: var(--magenta);">◉</div>
+                <div>
+                    <h3>Portals</h3>
+                    <p>Linked portals teleport your path across the grid. Think of two boards at once connected through colorful warps.</p>
+                    <div class="mode-meta">100 levels · teleport puzzles</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--green-soft); color: #4D7C0F;">★</div>
+                <div>
+                    <h3>Arcade</h3>
+                    <p>The mastery mode. All mechanics stacked — stars, diodes, checkpoints — in one escalating 100-puzzle gauntlet.</p>
+                    <div class="mode-meta">100 levels · mastery mode</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--purple-soft); color: var(--purple);">∞</div>
+                <div>
+                    <h3>Endless</h3>
+                    <p>Infinite procedurally-generated puzzles. Pick a board size from 5×5 to 9×9 and chain unlimited solves.</p>
+                    <div class="mode-meta">unlimited · pick your size</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="/modes.html" class="btn btn-secondary">
+                Explore all modes →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── SCREENSHOTS ───────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-magenta">See it in action</span>
+            <h2>Minimalist. Clean. Satisfying.</h2>
+            <p>Dark theme by default. Subtle animations. One-finger controls. Designed for calm focus.</p>
+        </div>
+        <div class="screens-row">
+            <div class="screen-card">
+                <img src="/assets/screenshots/screen-ct-1.png" alt="Circuit Trace main menu" onerror="this.style.display='none'">
+                <div class="screen-label">Game modes</div>
+            </div>
+            <div class="screen-card">
+                <img src="/assets/screenshots/screen-ct-2.png" alt="Circuit Trace puzzle gameplay" onerror="this.style.display='none'">
+                <div class="screen-label">Flowing solves</div>
+            </div>
+            <div class="screen-card">
+                <img src="/assets/screenshots/screen-ct-3.png" alt="Circuit Trace diodes mode" onerror="this.style.display='none'">
+                <div class="screen-label">Mechanics unlock</div>
+            </div>
+            <div class="screen-card">
+                <img src="/assets/screenshots/screen-ct-4.png" alt="Circuit Trace puzzle editor" onerror="this.style.display='none'">
+                <div class="screen-label">Puzzle Editor</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── PUZZLE EDITOR SPOTLIGHT ───────────────────────── -->
+<section class="section" style="background: var(--bg-soft);">
+    <div class="c">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;" class="hero-grid">
+            <div>
+                <span class="badge badge-magenta">New Feature</span>
+                <h2 class="mt-4 mb-4">Build your own puzzles.<br>Share with friends.</h2>
+                <p class="lead mb-6">
+                    The built-in Puzzle Editor lets you design 5×5 to 8×8 puzzles with dots and
+                    one-way diodes. The validator checks solvability in real-time. Hit SHARE
+                    and get a short code to send to anyone.
+                </p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px;">
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>5 slot library</strong> — save your creations, revisit and remix</span>
+                    </li>
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Short codes</strong> — format <code class="mono">CT-NHH06-8CMY4-AG2DS</code>, easy to share</span>
+                    </li>
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Instant validation</strong> — editor tells you if your puzzle has a solution before sharing</span>
+                    </li>
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Play back received codes</strong> — paste any code to play what someone else designed</span>
+                    </li>
+                </ul>
+                <a href="/editor.html" class="btn btn-primary">
+                    Explore the Editor →
+                </a>
+            </div>
+            <div style="text-align: center;">
+                <img src="/assets/screenshots/screen-ct-4.png" alt="Puzzle Editor" style="max-width: 320px; width: 100%; border-radius: 24px; box-shadow: var(--shadow-lg);" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="cta-section">
+            <h2>Ready to trace the circuit?</h2>
+            <p>Free on Google Play. 500+ handcrafted puzzles waiting. Build your own. Challenge your friends.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/>
+                    <path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/>
+                    <path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/>
+                    <path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/>
+                </svg>
+                <div class="pstext">
+                    <small>Get it on</small>
+                    <span>Google Play</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand">
+                <img src="/assets/icon-ct.png" alt="Circuit Trace">
+                <h4>Circuit Trace</h4>
+                <p>Minimalist flow puzzle game by Grounded Studio. Built with care in the Netherlands.</p>
+            </div>
+            <div class="foot-col">
+                <h5>Product</h5>
+                <ul>
+                    <li><a href="/features.html">Features</a></li>
+                    <li><a href="/modes.html">Game Modes</a></li>
+                    <li><a href="/editor.html">Puzzle Editor</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h5>Resources</h5>
+                <ul>
+                    <li><a href="/support.html">Support & FAQ</a></li>
+                    <li><a href="/press.html">Press Kit</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="mailto:contact@grounded-studio.app">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <div>© 2026 Grounded Studio · Made with care in the Netherlands 🇳🇱</div>
+            <div class="foot-socials">
+                <a href="https://tiktok.com/@grounded_studio_apps" target="_blank" aria-label="TikTok" title="TikTok">🎵</a>
+                <a href="https://instagram.com/circuittracegame" target="_blank" aria-label="Instagram" title="Instagram">📸</a>
+                <a href="https://facebook.com/profile.php?id=61594812523243" target="_blank" aria-label="Facebook" title="Facebook">📘</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
