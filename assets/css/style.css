@@ -390,26 +390,26 @@ nav {
 /* ─── EDITOR PAGE: dual-phone (hub + editor) ──────────────── */
 .editor-dual-wrap {
     display: flex; justify-content: center; align-items: center;
-    min-height: 500px;
+    padding: 20px 0;
 }
 .editor-dual {
     position: relative;
-    width: 100%; max-width: 440px;
-    aspect-ratio: 1 / 1;
+    width: 100%; max-width: 380px;
+    aspect-ratio: 4 / 5;
 }
 .editor-phone {
     position: absolute;
-    width: 62%;
+    width: 54%;
     aspect-ratio: 540 / 1170;
     transition: transform 0.4s ease;
 }
 .editor-phone-back {
-    top: 0; left: 0;
+    top: 2%; left: 0;
     transform: rotate(-6deg);
     z-index: 1;
 }
 .editor-phone-front {
-    bottom: 0; right: 0;
+    bottom: 2%; right: 0;
     transform: rotate(5deg);
     z-index: 2;
     box-shadow:
@@ -422,12 +422,11 @@ nav {
 .editor-dual:hover .editor-phone-front { transform: rotate(7deg) translate(6px, 4px); }
 
 @media (max-width: 900px) {
-    .editor-dual-wrap { min-height: 420px; }
-    .editor-dual { max-width: 360px; }
+    .editor-dual { max-width: 340px; }
 }
 @media (max-width: 520px) {
-    .editor-dual { max-width: 300px; }
-    .editor-phone { width: 65%; }
+    .editor-dual { max-width: 280px; }
+    .editor-phone { width: 58%; }
 }
 
 /* ─── DECORATIVE DOTS (floating neon circles) ───────────────── */
