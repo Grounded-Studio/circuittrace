@@ -44,4 +44,4 @@ Circuit Trace is a flow-style puzzle game where players connect colored pairs ac
 
 - Grounded Studio website: https://grounded-studio.app
 - Instagram: https://instagram.com/circuittracegame
-- TikTok: https://tiktok.com/@grounded_studio_apps
+- TikTok: https://tiktok.com/@circuit_trace
