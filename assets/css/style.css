@@ -387,6 +387,12 @@ nav {
     .phone-center { transform: translateY(-6px) scale(1.05); }
 }
 
+/* ─── BLOG card hover lift ───────────────────────────────── */
+a.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.15);
+}
+
 /* ─── SINGLE PHONE: used on modes.html + features.html ────── */
 .single-phone {
     width: 100%;

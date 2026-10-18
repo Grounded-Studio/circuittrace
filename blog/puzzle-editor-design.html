@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How we designed the Puzzle Editor — Circuit Trace</title>
+    <meta name="description" content="A three-week sprint from idea to shipped feature. The design choices, trade-offs, and solver work behind Circuit Trace's built-in Puzzle Editor.">
+    <link rel="canonical" href="https://circuittrace.app/blog/puzzle-editor-design.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="How we designed the Puzzle Editor">
+    <meta property="og:description" content="A three-week sprint from idea to shipped feature.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "How we designed the Puzzle Editor", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-15", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img src="../assets/icons/icon512.png" alt="CT"><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../support.html">💬 Support</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-cyan">Dev Journal</span>
+        <h1>How we designed the Puzzle Editor.</h1>
+        <p>📅 15 October 2026 · ⏱ 7 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>The Puzzle Editor started as a bug report. A friend playtesting an early build sent me a screenshot of level 47 and asked, "could I make one of these for my brother?"</p>
+
+            <p>Three weeks later it shipped. Here's how.</p>
+
+            <h2>The core bet</h2>
+
+            <p>Most mobile puzzle games treat user-generated content as a feature for the top 1% of players. Big import/export menus, cloud accounts, moderation queues, a dedicated "Community" tab. All of it designed by committee and nobody uses it.</p>
+
+            <p>We wanted the opposite: a thing a casual player could try in 60 seconds without opening a tutorial. The success metric wasn't "how many puzzles get uploaded" — it was "how many share codes get pasted into WhatsApp."</p>
+
+            <p>That reframing killed a lot of ideas before we built them. No upvotes, no profiles, no comments. No server. The whole editor is a direct line from one person's brain to another person's phone.</p>
+
+            <h2>Week 1: the grid</h2>
+
+            <p>First version was embarrassingly thin: pick a grid size (5×5 to 8×8), tap a cell to drop a coloured dot, tap another to pair it. That's it.</p>
+
+            <p>What surprised me is how long it took to make <em>that</em> feel right. Specifically:</p>
+
+            <ul>
+                <li><strong>Tap targets.</strong> Phone grids need huge touch zones. The editor cell is bigger than a real play cell, with a 20% invisible margin that still registers taps. Nobody notices until you remove it and tapping suddenly feels bad.</li>
+                <li><strong>Palette memory.</strong> The editor remembers your last colour and places on first tap. Second tap pairs. Third tap starts a new pair in the same colour. Tiny thing, saves roughly half your interactions.</li>
+                <li><strong>The CLEAR button is scary.</strong> First version wiped the whole grid instantly. First playtester did it by accident, lost their puzzle, uninstalled nothing but was clearly annoyed. Now CLEAR shows a tiny confirmation ("Clear this puzzle?") with a 2-second undo window.</li>
+            </ul>
+
+            <h2>Week 2: solvability</h2>
+
+            <p>This is where the editor gets interesting — and where cheap imitations fall apart. Anyone can let you place dots. The hard part is telling you whether the puzzle is <em>actually solvable</em> before you share it with a friend.</p>
+
+            <p>Circuit Trace has a real solver under the hood — it's the same one that validates the 500 hand-crafted campaign puzzles. We just exposed it to the editor. Hit the <code>VALIDATE</code> button and within 100ms you get one of three answers:</p>
+
+            <ul>
+                <li>✅ <strong>"Looks solvable — playtest to confirm"</strong> — the solver found at least one valid path arrangement.</li>
+                <li>⚠️ <strong>"No solution — pair X and Y block each other"</strong> — explicit conflict identified. The two blocking pairs blink red for a second.</li>
+                <li>❓ <strong>"Takes too long to verify — try fewer pairs"</strong> — the solver timed out at 2 seconds. We don't ship a maybe-unsolvable puzzle to a friend.</li>
+            </ul>
+
+            <p>The "playtest to confirm" wording matters. A solver can prove a puzzle is <em>technically</em> solvable without proving it's <em>fun</em>. So we added a TEST button right next to VALIDATE: play your own creation inside the editor before you share it. If you can't solve it in 3 minutes, maybe your friend can't either.</p>
+
+            <h2>Week 3: the share flow</h2>
+
+            <p>The last week was almost entirely about the SHARE button. Specifically: what happens after you tap it.</p>
+
+            <p>Version 1 generated a code and copied it to the clipboard with a tiny toast: "Code copied!" That was functional and nobody shared anything with it. Why? Because "copied to clipboard" means an extra app-switch, an extra paste, an extra context explanation to your friend.</p>
+
+            <p>Version 2 (the shipped one) opens the OS share sheet directly with a pre-written message:</p>
+
+            <blockquote style="border-left:3px solid var(--magenta);padding-left:16px;color:var(--ink-soft);margin:16px 0;font-style:italic;">
+                "I made a Circuit Trace puzzle for you — try it: CT-NHH06-8CMY4-AG2DS. Get the game: https://circuittrace.app"
+            </blockquote>
+
+            <p>Pick WhatsApp, pick a contact, send. Three taps instead of six. The share rate roughly tripled in A/B playtesting.</p>
+
+            <h2>What got cut</h2>
+
+            <p>Three features that almost shipped:</p>
+
+            <ul>
+                <li><strong>Portals in the editor.</strong> Technically ready. Cut because 90% of first-time editor users were already overwhelmed with just dots + diodes. We'll add it in a future update once the base editor has social proof.</li>
+                <li><strong>A gallery of community puzzles.</strong> Would have required a server, moderation, abuse reports, and GDPR consent. All real work for a feature that competes with the "share with your actual friend" use case we were optimising for.</li>
+                <li><strong>Difficulty rating.</strong> Players would have gamed it instantly ("mine is 10/10 hardest!"). Instead the receiving player just sees grid size + pair count — raw facts, no bragging.</li>
+            </ul>
+
+            <h2>What shipped</h2>
+
+            <p>5×5 to 8×8 grids. Dots + diodes. A real solver for live validation. A 5-slot library so you can save your best creations. Share codes in the <code>CT-XXXXX-XXXXX-XXXXX</code> format that fits in a WhatsApp message. The TEST button so you can play your own puzzle before sending it.</p>
+
+            <p>No account. No cloud. No gallery. Just you, a grid, and someone you want to send it to.</p>
+
+            <p>Three weeks of work, and it's quietly become the feature our beta testers mention most.</p>
+
+            <hr>
+
+            <p>Try the Puzzle Editor yourself — <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">install Circuit Trace</a> and tap <strong>CREATOR</strong> from the main menu.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img src="../assets/icons/icon512.png" alt="CT"><h4>Circuit Trace</h4><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><h5>Product</h5><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><h5>Resources</h5><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><h5>Legal</h5><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="mailto:contact@grounded-studio.app">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

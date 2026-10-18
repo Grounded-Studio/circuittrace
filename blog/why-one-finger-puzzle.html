@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why we built Circuit Trace as a one-finger puzzle — Circuit Trace</title>
+    <meta name="description" content="One finger, one rule, no timers, no noise, no ads during gameplay. The design philosophy behind Circuit Trace.">
+    <link rel="canonical" href="https://circuittrace.app/blog/why-one-finger-puzzle.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Why we built Circuit Trace as a one-finger puzzle">
+    <meta property="og:description" content="One finger, one rule, no timers, no noise, no ads during gameplay. The design philosophy behind Circuit Trace.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "Why we built Circuit Trace as a one-finger puzzle", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-04", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img src="../assets/icons/icon512.png" alt="CT"><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../support.html">💬 Support</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-magenta">Design Philosophy</span>
+        <h1>Why we built Circuit Trace as a one-finger puzzle.</h1>
+        <p>📅 4 October 2026 · ⏱ 5 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>The best puzzles I ever played were on a train. One finger on the glass. Looking out between moves. No earbuds, no soundtrack, no little animated character cheering when I solved a level. Just a problem and me.</p>
+
+            <p>That's the game <strong>Circuit Trace</strong> tries to be.</p>
+
+            <h2>One finger. One rule.</h2>
+
+            <p>Place your finger on a dot. Draw a single path to the matching dot in the same colour. Fill every cell on the grid. Lift your finger. Done.</p>
+
+            <p>That's the entire input vocabulary. No pinch, no swipe, no double-tap, no menu dive mid-puzzle. If you've ever used a touchscreen, you already know how to play. The rules fit on the back of a receipt.</p>
+
+            <p>We made it one-finger because puzzles are supposed to work in <em>margins</em> — the five minutes before a meeting, the queue at the pharmacy, the stop before yours. A game that needs two hands and headphones is a game you only play on the couch.</p>
+
+            <h2>No timers in the campaign</h2>
+
+            <p>Every mobile puzzle game eventually tries to make you anxious. A countdown clock. A thirty-second window. A pulsing red bar that fills while you think.</p>
+
+            <p>The 100-level campaign in Circuit Trace has none of that. Zero clocks. You can stare at a level for twenty minutes, make a cup of tea, come back, finish it. The game waits.</p>
+
+            <p>Timers exist in two optional modes — the 60-second <strong>Time Trial</strong> and some weekly mastery speed challenges — because some players enjoy that pressure. They're opt-in, not opt-out.</p>
+
+            <h2>No noise</h2>
+
+            <p>Open your average free puzzle app and inside twenty seconds you'll hear: a jingle, a victory sting, a thunk when a piece drops, upbeat elevator music, and someone exclaiming "GREAT!" You turn the sound off, then the vibration kicks in. You turn that off too and the game feels broken.</p>
+
+            <p>Circuit Trace ships silent. No background music, no victory stings, no haptic punches. The only feedback the game gives you is visual: lines appear under your finger, cells fill, stars award at the end. That's it.</p>
+
+            <p>If you want music, you've already got Spotify open. If you want silence, we don't take it away from you.</p>
+
+            <h2>No ads during gameplay</h2>
+
+            <p>Not "no ads" — that's a lie almost every "free" app tells. Circuit Trace shows <strong>no ads during a level</strong>. You never finish a puzzle, feel that small win, and then watch 30 seconds of someone shouting about an RPG. Interruption kills flow, and flow is the entire reason to play a puzzle in the first place.</p>
+
+            <p>A single, optional ad lives on the main menu for players who want to support the game without paying. Watch it or don't. The puzzles don't change either way.</p>
+
+            <h2>What "zen" actually means</h2>
+
+            <p>Every third puzzle game on the Play Store calls itself "zen." Most mean "the background is pastel." A game isn't zen because it looks calm. It's zen because of what it <em>removes</em>:</p>
+
+            <ul>
+                <li>No streak that punishes you for taking a day off</li>
+                <li>No daily rewards that guilt you into opening the app</li>
+                <li>No notifications pulling you back in</li>
+                <li>No login screen, no account, no cloud sync subscription</li>
+                <li>No "coins" to grind for or energy system to wait on</li>
+            </ul>
+
+            <p>Progress saves locally to your device. Android AutoBackup copies it to your Google Drive silently. New phone, same account — your stars and badges restore automatically. Zero setup.</p>
+
+            <h2>Who Circuit Trace is for</h2>
+
+            <p>Anyone who's deleted a puzzle game because the puzzles were fine but everything around them was exhausting. Players who want to think, not react. People who like Flow Free, Lyne, Threes! or Monument Valley for the actual logic — not the dopamine theatre around it.</p>
+
+            <h2>One finger, five minutes, no theatrics</h2>
+
+            <p>If you can trace a line with one finger, you can play Circuit Trace. If you want to think about a level for a minute first, we'll wait. If you want to put the phone down halfway through and come back tomorrow, your line will still be there.</p>
+
+            <p>That's the whole pitch. No streaks to protect, no coins to collect, no character to feed. Just you, a grid, and one path at a time.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Get Circuit Trace on Google Play →</a></p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img src="../assets/icons/icon512.png" alt="CT"><h4>Circuit Trace</h4><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><h5>Product</h5><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><h5>Resources</h5><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><h5>Legal</h5><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="mailto:contact@grounded-studio.app">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

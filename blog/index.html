@@ -44,30 +44,36 @@
 <section class="section">
     <div class="c c-narrow">
 
-        <!-- Placeholder for empty blog -->
-        <div class="card text-center" style="padding: 60px 40px;">
-            <div style="font-size: 4rem; margin-bottom: 20px;">📝</div>
-            <h2 class="mb-4">Posts coming soon</h2>
-            <p class="lead mb-6">We're writing our first dev journal entries. Check back soon for:</p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left; max-width: 600px; margin: 0 auto;">
-                <div class="card" style="padding: 20px;">
-                    <strong>How we designed the Puzzle Editor</strong>
-                    <p class="small mt-2">The 3-week sprint from idea to shipped feature.</p>
-                </div>
-                <div class="card" style="padding: 20px;">
-                    <strong>The math behind short codes</strong>
-                    <p class="small mt-2">Crockford Base32, bit packing, and OCR-safe design.</p>
-                </div>
-                <div class="card" style="padding: 20px;">
-                    <strong>Why we chose Godot over Unity</strong>
-                    <p class="small mt-2">The engine decision for a solo indie dev in 2026.</p>
-                </div>
-                <div class="card" style="padding: 20px;">
-                    <strong>500 handcrafted puzzles</strong>
-                    <p class="small mt-2">The design process behind every level.</p>
-                </div>
-            </div>
-            <p class="mt-8">Want to be first to read these? Follow us:</p>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+
+            <a href="short-codes-math.html" class="card" style="padding: 32px; text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                <span class="badge badge-yellow">Engineering</span>
+                <h2 class="mt-4 mb-3" style="font-size: 1.5rem;">The math behind short codes</h2>
+                <p class="small" style="color: var(--ink-mute); margin-bottom: 12px;">📅 17 October 2026 · ⏱ 8 min read</p>
+                <p>Crockford Base32, bit packing, and OCR-safe design — how we fit a full puzzle definition into 20 typeable characters.</p>
+                <p class="mt-4" style="color: var(--accent); font-weight: 600;">Read article →</p>
+            </a>
+
+            <a href="puzzle-editor-design.html" class="card" style="padding: 32px; text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                <span class="badge badge-cyan">Dev Journal</span>
+                <h2 class="mt-4 mb-3" style="font-size: 1.5rem;">How we designed the Puzzle Editor</h2>
+                <p class="small" style="color: var(--ink-mute); margin-bottom: 12px;">📅 15 October 2026 · ⏱ 7 min read</p>
+                <p>A three-week sprint from a bug report to a shipped feature. The design choices, cut ideas, and the solver work that makes "Looks solvable" possible.</p>
+                <p class="mt-4" style="color: var(--accent); font-weight: 600;">Read article →</p>
+            </a>
+
+            <a href="why-one-finger-puzzle.html" class="card" style="padding: 32px; text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                <span class="badge badge-magenta">Design Philosophy</span>
+                <h2 class="mt-4 mb-3" style="font-size: 1.5rem;">Why we built Circuit Trace as a one-finger puzzle</h2>
+                <p class="small" style="color: var(--ink-mute); margin-bottom: 12px;">📅 4 October 2026 · ⏱ 5 min read</p>
+                <p>One finger, one rule, no timers, no noise, no ads during gameplay. The design philosophy behind a calm puzzle game for players who want to think, not react.</p>
+                <p class="mt-4" style="color: var(--accent); font-weight: 600;">Read article →</p>
+            </a>
+
+        </div>
+
+        <div class="text-center" style="margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border);">
+            <p class="lead">Want new posts in your feed?</p>
             <div class="mt-4" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
                 <a href="https://tiktok.com/@circuit_trace" target="_blank" class="btn btn-secondary btn-sm">🎵 TikTok</a>
                 <a href="https://instagram.com/circuittracegame" target="_blank" class="btn btn-secondary btn-sm">📸 Instagram</a>

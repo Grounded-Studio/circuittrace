@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The math behind Circuit Trace short codes — Circuit Trace</title>
+    <meta name="description" content="Crockford Base32, bit packing, and OCR-safe design — how we fit a full puzzle definition into 20 typeable characters.">
+    <link rel="canonical" href="https://circuittrace.app/blog/short-codes-math.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="The math behind Circuit Trace short codes">
+    <meta property="og:description" content="Crockford Base32, bit packing, and OCR-safe design — how we fit a full puzzle definition into 20 typeable characters.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "The math behind Circuit Trace short codes", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-17", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img src="../assets/icons/icon512.png" alt="CT"><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../support.html">💬 Support</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-yellow">Engineering</span>
+        <h1>The math behind short codes.</h1>
+        <p>📅 17 October 2026 · ⏱ 8 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>When you tap SHARE in the Circuit Trace editor, you get back something like this:</p>
+
+            <p><code>CT-NHH06-8CMY4-AG2DS-7FQ3B</code></p>
+
+            <p>Twenty characters. Enough to encode a full 8×8 puzzle with 7 colour pairs, 4 diodes, and a seed for the solver cache. Here's how we got there — and why we didn't just stuff a URL into the share sheet.</p>
+
+            <h2>The problem with URLs</h2>
+
+            <p>The obvious first instinct is to share a link: <code>circuittrace.app/puzzle?data=...</code>. That works, but it has three annoying failure modes:</p>
+
+            <ul>
+                <li><strong>WhatsApp strips URL parameters.</strong> Not always, but often enough. If a preview-scraper rewrites your link, your puzzle data goes with it.</li>
+                <li><strong>No app, no puzzle.</strong> If your friend doesn't have Circuit Trace installed, a URL opens a browser instead of the game. They need to install, come back, re-click.</li>
+                <li><strong>URLs look ugly.</strong> A 60-character blob with equals signs and percent-encoding isn't something you WhatsApp to your mum.</li>
+            </ul>
+
+            <p>We wanted a code you could <em>say out loud over the phone</em> if you had to. A code someone could <em>type by hand</em> from a screenshot. A code that would survive copy-paste through five different apps.</p>
+
+            <h2>Step 1: what's in a puzzle</h2>
+
+            <p>A Circuit Trace puzzle is a surprisingly small amount of data:</p>
+
+            <ul>
+                <li>Grid size (5-8) → 2 bits</li>
+                <li>Up to 7 colour pairs, each with two cell positions → 7 × 2 × 6 = 84 bits (6 bits is enough to address 64 cells on an 8×8)</li>
+                <li>Up to 6 diodes, each with position + direction → 6 × 8 = 48 bits</li>
+                <li>Version number so we can evolve the format → 3 bits</li>
+                <li>A tiny checksum so we can detect typos before we try to parse → 8 bits</li>
+            </ul>
+
+            <p>Total: about 145 bits worst-case. In practice most puzzles use less, because most puzzles have 4-5 pairs and 0-2 diodes.</p>
+
+            <h2>Step 2: Crockford Base32</h2>
+
+            <p>145 bits ÷ 5 bits per character = 29 characters in standard Base32. Too long for a WhatsApp message. We needed to pack smarter and encode more efficiently — but the <em>alphabet</em> matters too.</p>
+
+            <p>Standard Base64 uses <code>A-Z a-z 0-9 + /</code>. Terrible for sharing by voice ("capital B? or lowercase?"), terrible for OCR ("is that a lowercase L or a 1?"), and the <code>+</code> and <code>/</code> characters break in URLs anyway.</p>
+
+            <p>We use <strong>Crockford Base32</strong> instead. Douglas Crockford's variant is 32 characters chosen specifically to be unambiguous when humans copy them:</p>
+
+            <ul>
+                <li>Uses all uppercase only — no capitalisation confusion</li>
+                <li>Drops <code>I</code>, <code>L</code>, <code>O</code>, and <code>U</code> entirely — removes every character that looks like a digit</li>
+                <li>Decoder accepts <code>i</code> and <code>l</code> as <code>1</code>, and <code>o</code> as <code>0</code> — forgiving if someone mistypes</li>
+                <li>Also accepts lowercase in the decoder — forgiving if someone shout-types or auto-corrects</li>
+            </ul>
+
+            <p>Net effect: the alphabet is still 32 characters wide (5 bits per char), but a human can read a code over the phone and the person on the other end types it correctly on the first try.</p>
+
+            <h2>Step 3: variable-length packing</h2>
+
+            <p>Fixed-width fields waste bits. A 5×5 grid only needs 5 bits per cell address, not 6. A puzzle with 3 pairs doesn't need to reserve space for 7.</p>
+
+            <p>So we pack length-prefixed: 2 bits for grid size, 3 bits for pair count, then that many pair records, each sized for the grid. Same for diodes. The decoder walks the bitstream in order and knows exactly how much to read.</p>
+
+            <p>Average puzzle: 85-110 bits. Rounded up to a multiple of 5 bits, that's 17-22 Base32 characters. We then insert dashes every 5 characters for readability — turning <code>NHH068CMY4AG2DS7FQ3B</code> into <code>NHH06-8CMY4-AG2DS-7FQ3B</code>. Dashes are stripped during decode, they're purely for human eyes.</p>
+
+            <h2>Step 4: the CT- prefix</h2>
+
+            <p>Every code starts with <code>CT-</code>. Not just branding — it's the format marker. If someone copies a Base32 string from somewhere else, the editor can tell immediately it's not a Circuit Trace code and show a helpful error ("that doesn't look like a Circuit Trace puzzle") instead of garbling a decode attempt.</p>
+
+            <p>The prefix also lets us scan for codes in the clipboard: when you open the editor's "PLAY SHARED CODE" screen, we peek at the clipboard, and if it starts with <code>CT-</code>, we offer to paste it automatically. One less tap.</p>
+
+            <h2>Step 5: the checksum</h2>
+
+            <p>The last byte of every encoded puzzle is a checksum of everything before it. Tiny — just 8 bits — but enough to catch 99.6% of single-character typos. If the checksum fails, the decoder bails before it tries to render anything, and the player sees "This code looks damaged — ask for a fresh one" instead of a broken puzzle.</p>
+
+            <p>We don't need cryptographic integrity (nobody's attacking a puzzle code). We just need "did a character get mangled during paste." A simple XOR-based checksum does that for essentially zero cost.</p>
+
+            <h2>What this means for the player</h2>
+
+            <p>Zero of this is visible from the outside. The player taps SHARE, pastes a code to a friend, and the friend taps it to play. The 20-character string is the entire user experience.</p>
+
+            <p>But every one of those design decisions — Crockford Base32, variable-length packing, the <code>CT-</code> prefix, the checksum, the 5-char dash grouping — exists because someone, somewhere, is going to copy that code wrong, or auto-correct it, or dictate it over FaceTime, or screenshot it and OCR it. The point of the format is to <em>not break</em> in any of those cases.</p>
+
+            <p>Boring engineering. Visible as the absence of problems.</p>
+
+            <hr>
+
+            <p>If you want to see share codes in action — <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">install Circuit Trace</a>, open the Puzzle Editor, and build something.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img src="../assets/icons/icon512.png" alt="CT"><h4>Circuit Trace</h4><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><h5>Product</h5><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><h5>Resources</h5><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><h5>Legal</h5><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="mailto:contact@grounded-studio.app">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
