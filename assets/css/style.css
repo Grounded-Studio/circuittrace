@@ -387,6 +387,49 @@ nav {
     .phone-center { transform: translateY(-6px) scale(1.05); }
 }
 
+/* ─── EDITOR PAGE: dual-phone (hub + editor) ──────────────── */
+.editor-dual-wrap {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 500px;
+}
+.editor-dual {
+    position: relative;
+    width: 100%; max-width: 440px;
+    aspect-ratio: 1 / 1;
+}
+.editor-phone {
+    position: absolute;
+    width: 62%;
+    aspect-ratio: 540 / 1170;
+    transition: transform 0.4s ease;
+}
+.editor-phone-back {
+    top: 0; left: 0;
+    transform: rotate(-6deg);
+    z-index: 1;
+}
+.editor-phone-front {
+    bottom: 0; right: 0;
+    transform: rotate(5deg);
+    z-index: 2;
+    box-shadow:
+        0 32px 56px -10px rgba(236, 72, 153, 0.25),
+        0 12px 28px -6px rgba(6, 182, 212, 0.15),
+        0 6px 18px -4px rgba(15, 23, 42, 0.25),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+.editor-dual:hover .editor-phone-back  { transform: rotate(-8deg) translate(-6px, -4px); }
+.editor-dual:hover .editor-phone-front { transform: rotate(7deg) translate(6px, 4px); }
+
+@media (max-width: 900px) {
+    .editor-dual-wrap { min-height: 420px; }
+    .editor-dual { max-width: 360px; }
+}
+@media (max-width: 520px) {
+    .editor-dual { max-width: 300px; }
+    .editor-phone { width: 65%; }
+}
+
 /* ─── DECORATIVE DOTS (floating neon circles) ───────────────── */
 .deco-dots { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
 .deco-dot {
