@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why we chose Godot over Unity — Circuit Trace</title>
+    <meta name="description" content="The engine decision for a solo indie dev in 2026 — install size, Android export, licensing peace of mind, and the quiet joy of a 150 MB editor.">
+    <link rel="canonical" href="https://circuittrace.app/blog/godot-over-unity.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Why we chose Godot over Unity">
+    <meta property="og:description" content="The engine decision for a solo indie dev in 2026.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "Why we chose Godot over Unity", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-18", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img src="../assets/icons/icon512.png" alt="CT"><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../support.html">💬 Support</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-purple">Dev Journal</span>
+        <h1>Why we chose Godot over Unity.</h1>
+        <p>📅 18 October 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Every time I tell another dev that Circuit Trace is built in Godot, they ask the same question. "But <em>why</em>?" As if the answer must be a horror story about Unity. It isn't. The honest answer is more boring, and I think more useful.</p>
+
+            <h2>The 2023 licensing shock mattered less than you think</h2>
+
+            <p>The obvious place to start — the Unity Runtime Fee drama in late 2023 — is actually the least interesting part of the decision. Yes, it rattled every indie I know. Yes, Unity walked a lot of it back. But by then enough of us had already looked at the exit door and found something worth walking through.</p>
+
+            <p>What the drama really did was give me permission to <em>evaluate</em> alternatives seriously. Before 2023 I would have assumed "serious mobile game = Unity" without checking. After 2023 I spent two weeks building the same prototype in both engines and let the result decide.</p>
+
+            <h2>Prototype #1: a flow puzzle in Unity</h2>
+
+            <p>Three days to install, open a project, and get a tap-to-drag grid working. Perfectly fine. The input system is powerful. The tooling is deep. There are 90 tutorials for everything, so you're never truly stuck.</p>
+
+            <p>What bothered me, in order of annoyance:</p>
+
+            <ul>
+                <li><strong>Editor install was 7 GB.</strong> After Android build tools, another 4 GB. Then the Hub itself. My laptop fan heard every save.</li>
+                <li><strong>The scene file is binary.</strong> You can't diff a scene change in git. For a solo dev that's inconvenient. For a team it's a tax.</li>
+                <li><strong>C# is lovely but needs a lot around it.</strong> Visual Studio, package manager, serialisation attributes, scriptable objects, assembly definitions. For a puzzle game this is a lot of wiring.</li>
+                <li><strong>The empty project built to 32 MB.</strong> For a game where the entire gameplay logic eventually weighed less than 2 MB of GDScript, that felt wrong.</li>
+            </ul>
+
+            <h2>Prototype #2: the same thing in Godot</h2>
+
+            <p>Downloaded the editor. 95 MB. Single executable. Opened it. Made the same tap-to-drag grid in a long afternoon.</p>
+
+            <p>Three things clicked:</p>
+
+            <ul>
+                <li><strong>Everything is a scene.</strong> A grid is a scene. A button is a scene. The whole main menu is a scene that references other scenes. The mental model of "nested scenes composing a game" matched how I actually think about UI, which I spent most of my time on.</li>
+                <li><strong>GDScript is Python-ish.</strong> Not better than C#, just lighter. No build step. Edit, hit F5, see the change. For iteration on tiny puzzle mechanics this is faster than it has any right to be.</li>
+                <li><strong>The scene files are text.</strong> `.tscn` files are plain text, diffable, mergeable. I can see in a PR exactly what someone changed about a scene. For future-me reviewing past-me's work, this matters more than I expected.</li>
+            </ul>
+
+            <h2>The things Unity still does better</h2>
+
+            <p>I don't want to be the person pretending Godot is already Unity. It isn't, and these gaps are real:</p>
+
+            <ul>
+                <li><strong>3D tooling.</strong> If I was building a racing game or a shooter, I'd probably still pick Unity. Godot's 3D is improving fast but the ecosystem for 3D assets, pipelines, and third-party plugins is nowhere near.</li>
+                <li><strong>Documentation depth.</strong> Unity's docs cover edge cases I never knew existed. Godot's docs are good; Unity's are great.</li>
+                <li><strong>Hiring.</strong> If I ever grow Grounded Studio past "me," there are 10 Unity devs for every Godot dev on the market. For a solo project this is zero issue; for a team of five it's a real one.</li>
+                <li><strong>Big-brand asset store.</strong> Need a quick dialogue system or a shader bundle? Unity Asset Store has 50 options. Godot's AssetLib is smaller and curation is uneven.</li>
+            </ul>
+
+            <h2>What tipped it for Circuit Trace specifically</h2>
+
+            <p>Three things made Godot the obvious pick for <em>this</em> project:</p>
+
+            <p><strong>1. The game is UI-heavy.</strong> Circuit Trace is a touchscreen puzzle with menus, cards, badges, a theme system, a puzzle editor. 2D grids and vector art. Godot's control-node UI system clicks for this. Unity's uGUI is powerful but feels like fighting a 3D engine to render a flat screen.</p>
+
+            <p><strong>2. I needed APK size to stay small.</strong> Players on budget Android phones in cheaper markets won't download a 60 MB puzzle game. Our released AAB sits around 62 MB with 5 modes, 500+ hand-crafted puzzles, and all the UI assets. The equivalent Unity build would almost certainly be bigger before optimisation, and the optimisation itself eats a weekend.</p>
+
+            <p><strong>3. The licensing is just MIT.</strong> No install fee, no runtime fee, no "we might change this later" asterisk. I don't have to keep an eye on Godot's business model because it doesn't have one that touches me. For a solo dev shipping a €0 game with optional €3.99 Remove Ads, that peace of mind compounds every month.</p>
+
+            <h2>Should <em>you</em> use Godot?</h2>
+
+            <p>Honest answer: probably test both for a weekend on your actual project idea. The right engine depends on what you're building, not what the internet shouts about.</p>
+
+            <ul>
+                <li><strong>Building a 2D puzzle, platformer, roguelike, or UI-heavy mobile game?</strong> Try Godot first. It fits.</li>
+                <li><strong>Building a 3D shooter, driving sim, or anything with heavy asset pipelines?</strong> Start with Unity (or Unreal). Godot can do it, but you'll be fighting rougher edges.</li>
+                <li><strong>Hiring devs for a studio?</strong> Pick the engine your region hires for. In most of Europe that's still Unity.</li>
+                <li><strong>Scared of Unity's business model long-term?</strong> Godot is MIT. That's not a feature, it's an absence of a worry.</li>
+            </ul>
+
+            <h2>Three years in</h2>
+
+            <p>Circuit Trace is my first shipped Godot game. The next three Grounded Studio projects are also Godot. Not out of ideology — I like Unity fine — just because for the kinds of games I want to make, as a solo dev who ships things that need to be small, fast, and quiet, Godot keeps winning.</p>
+
+            <p>If you're on the fence, download the 95 MB editor and prototype your actual idea for a weekend. The engine will tell you.</p>
+
+            <hr>
+
+            <p>Circuit Trace is built in Godot 4.7 and lives at <a href="https://circuittrace.app">circuittrace.app</a>. The engine itself is at <a href="https://godotengine.org" target="_blank" rel="noopener">godotengine.org</a>.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img src="../assets/icons/icon512.png" alt="CT"><h4>Circuit Trace</h4><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><h5>Product</h5><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><h5>Resources</h5><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><h5>Legal</h5><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="mailto:contact@grounded-studio.app">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

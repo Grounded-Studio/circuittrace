@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 handcrafted puzzles — Circuit Trace</title>
+    <meta name="description" content="The design process behind every Circuit Trace level — why we hand-crafted 500 puzzles across 5 modes instead of letting an algorithm generate them.">
+    <link rel="canonical" href="https://circuittrace.app/blog/500-handcrafted-puzzles.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="500 handcrafted puzzles">
+    <meta property="og:description" content="Why we hand-crafted 500 puzzles instead of letting an algorithm generate them.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "500 handcrafted puzzles — the design process", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-18", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img src="../assets/icons/icon512.png" alt="CT"><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../support.html">💬 Support</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-green">Puzzle Design</span>
+        <h1>500 handcrafted puzzles.</h1>
+        <p>📅 18 October 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Circuit Trace ships with 500 hand-crafted puzzles. Five modes, 100 levels each. Every single one of them was placed, tested, re-played, and either kept or binned by a human. That human was me.</p>
+
+            <p>Here's why we did it that way, and what the process actually looks like.</p>
+
+            <h2>Why not just generate them?</h2>
+
+            <p>We have a generator. We use it for the Endless mode — infinite procedural puzzles at any grid size from 5×5 to 9×9. Players who want "just one more" can play Endless forever.</p>
+
+            <p>But the campaign is different. The campaign has to <em>teach</em> you something, puzzle by puzzle. A generator doesn't know that level 23 is where you should finally feel the click of combining stars with checkpoints for the first time. A generator doesn't know that level 47 needs to be the one where you fail twice and then suddenly see the elegant diode trick.</p>
+
+            <p>A generator can make <em>solvable</em> puzzles. Only a human can make puzzles that teach a specific lesson at a specific moment.</p>
+
+            <h2>What a sector looks like</h2>
+
+            <p>The 100-level main campaign is split into 10 sectors of 10 levels each. Each sector has one job: introduce a new mechanic without overwhelming the player.</p>
+
+            <ul>
+                <li><strong>Sectors 1-2:</strong> Pure flow. Dots and paths. Nothing else.</li>
+                <li><strong>Sectors 3-4:</strong> Stars (optional bonus goals) and the fill-every-cell rule.</li>
+                <li><strong>Sectors 5-6:</strong> Checkpoints — paths must pass through specific cells.</li>
+                <li><strong>Sectors 7-8:</strong> One-way diodes. Suddenly direction matters.</li>
+                <li><strong>Sectors 9-10:</strong> Portals and everything stacked together.</li>
+            </ul>
+
+            <p>Within each sector, the 10 puzzles follow their own mini-arc: 2 easy to teach the mechanic, 4 medium to combine it with earlier mechanics, 3 hard to push, 1 "the big one" at level 10 that uses everything the sector has shown you.</p>
+
+            <h2>How a single puzzle gets born</h2>
+
+            <p>The process for one puzzle, start to finish, usually goes like this:</p>
+
+            <p><strong>1. Pick the lesson.</strong> "This is sector 5, level 4. Checkpoints are new. The lesson is 'two paths will fight over the same checkpoint if you're not careful.' "</p>
+
+            <p><strong>2. Sketch in the editor.</strong> Open the Puzzle Editor on my phone, drop a 6×6 grid, place dots and a checkpoint. Takes 2-3 minutes.</p>
+
+            <p><strong>3. Hit VALIDATE.</strong> The solver confirms there is at least one solution. If not, I move dots. If the solver says there are <em>too many</em> solutions (we check uniqueness too), I add constraints until exactly one elegant solution remains.</p>
+
+            <p><strong>4. Playtest.</strong> I solve it myself without looking at the solver's answer. If I solve it in under 15 seconds, it's too easy for a sector-5 puzzle. If I can't solve it in 3 minutes, it's too hard. The sweet spot is "I had to think for 30-60 seconds, and when I got it, I smiled."</p>
+
+            <p><strong>5. Sleep on it.</strong> I always come back the next day. Yesterday's clever puzzle is often today's confusing one.</p>
+
+            <p><strong>6. Keep or bin.</strong> I bin about 1 in 3. The ones that survive go into the game.</p>
+
+            <h2>What "elegant" means for a puzzle</h2>
+
+            <p>Good puzzles share a few properties. Not rules — properties:</p>
+
+            <ul>
+                <li><strong>The solution should feel inevitable in hindsight.</strong> You should be able to look at your solved board and think "of course, how did I not see that." A puzzle whose solution feels arbitrary is a puzzle you don't want to replay.</li>
+                <li><strong>There should be exactly one solution.</strong> Not approximately one. Not one up to rotation. One. A puzzle with multiple valid solutions feels like the designer didn't finish their homework.</li>
+                <li><strong>The first obvious move should be wrong.</strong> The puzzle should defeat your gut instinct at least once. If the first thing you try works, there was no puzzle.</li>
+                <li><strong>The grid shouldn't be bigger than it needs to be.</strong> A good 6×6 puzzle is better than a bloated 8×8 one with empty space. The grid is a constraint, not a canvas.</li>
+            </ul>
+
+            <h2>The modes have different feels on purpose</h2>
+
+            <p>Each of the five campaign-style modes was designed to feel different in your hand, not just mechanically but emotionally:</p>
+
+            <ul>
+                <li><strong>Circuit Trace</strong> is the hero mode. Varied, cinematic, takes you somewhere.</li>
+                <li><strong>Classic</strong> is bedtime puzzles. Pure dots and paths. No surprises. You should be able to play 20 in a row and feel calmer, not sharper.</li>
+                <li><strong>Diodes</strong> is logic-forward. The puzzles ask you to deduce, not experiment. You should think more and tap less.</li>
+                <li><strong>Portals</strong> is spatial. The puzzles make you visualise paths across non-adjacent cells. The brain muscle it exercises is different.</li>
+                <li><strong>Arcade</strong> is the gauntlet. Every mechanic available. 100 escalating puzzles for people who've already mastered the other four modes.</li>
+            </ul>
+
+            <p>If someone plays 10 Classic puzzles and then 10 Arcade puzzles, they should feel like they played two different games. That's the whole reason for having five modes instead of one bigger one.</p>
+
+            <h2>Why not more than 500?</h2>
+
+            <p>Honestly: because 500 is already a lot, and because quantity-for-its-own-sake is how puzzle games lose their soul. A hundred truly elegant puzzles beats a thousand mediocre ones every time.</p>
+
+            <p>The Daily Challenge drops one fresh puzzle every day. The Weekly Puzzles ramp Monday to Saturday every week. The Puzzle Editor lets players make and share their own. Endless generates procedurally for anyone who's finished the campaign and wants more. The <em>library</em> grows constantly without inflating the hand-crafted core.</p>
+
+            <p>500 is where "every puzzle got my full attention" became true. Any more and that would stop being true.</p>
+
+            <hr>
+
+            <p>Want to see what 500 hand-crafted puzzles feels like? <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Install Circuit Trace — free on Google Play.</a></p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img src="../assets/icons/icon512.png" alt="CT"><h4>Circuit Trace</h4><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><h5>Product</h5><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><h5>Resources</h5><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><h5>Legal</h5><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="mailto:contact@grounded-studio.app">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
