@@ -387,6 +387,24 @@ nav {
     .phone-center { transform: translateY(-6px) scale(1.05); }
 }
 
+/* ─── SINGLE PHONE: used on modes.html + features.html ────── */
+.single-phone {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 540 / 1170;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #0a0a1a;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 24px 48px -10px rgba(15, 23, 42, 0.25),
+        0 8px 20px -4px rgba(15, 23, 42, 0.12),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+.single-phone:hover { transform: translateY(-6px); }
+.single-phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 /* ─── EDITOR PAGE: dual-phone (hub + editor) ──────────────── */
 .editor-dual-wrap {
     display: flex; justify-content: center; align-items: center;
