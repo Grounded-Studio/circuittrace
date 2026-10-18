@@ -326,17 +326,65 @@ nav {
 .hero-visual {
     position: relative;
     display: flex; justify-content: center; align-items: center;
-    min-height: 500px;
+    min-height: 560px;
 }
-.hero-visual img {
-    width: 100%; height: auto; max-width: 520px;
-    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.12));
+
+/* Triptych: three phones fanned out, center phone forward */
+.hero-triptych {
+    position: relative;
+    width: 100%; max-width: 560px;
+    aspect-ratio: 1 / 1;
+    display: flex; justify-content: center; align-items: center;
 }
+.phone {
+    position: absolute;
+    width: 48%;
+    aspect-ratio: 540 / 1170;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #0a0a1a;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 20px 50px -10px rgba(15, 23, 42, 0.35),
+        0 6px 18px -4px rgba(15, 23, 42, 0.15),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.phone img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+}
+.phone-left {
+    transform: translateX(-62%) translateY(14px) rotate(-9deg);
+    z-index: 1;
+}
+.phone-right {
+    transform: translateX(62%) translateY(14px) rotate(9deg);
+    z-index: 1;
+}
+.phone-center {
+    transform: translateY(-10px) scale(1.08);
+    z-index: 2;
+    box-shadow:
+        0 32px 60px -12px rgba(236, 72, 153, 0.25),
+        0 16px 32px -8px rgba(6, 182, 212, 0.18),
+        0 8px 20px -4px rgba(15, 23, 42, 0.25),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+.hero-triptych:hover .phone-left  { transform: translateX(-68%) translateY(10px) rotate(-11deg); }
+.hero-triptych:hover .phone-right { transform: translateX(68%) translateY(10px) rotate(11deg); }
+.hero-triptych:hover .phone-center { transform: translateY(-16px) scale(1.10); }
 
 @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero-visual { min-height: auto; order: -1; }
-    .hero-visual img { max-width: 400px; }
+    .hero-triptych { max-width: 440px; }
+}
+@media (max-width: 520px) {
+    .hero-triptych { max-width: 360px; }
+    .phone-left  { transform: translateX(-58%) translateY(10px) rotate(-7deg); }
+    .phone-right { transform: translateX(58%) translateY(10px) rotate(7deg); }
+    .phone-center { transform: translateY(-6px) scale(1.05); }
 }
 
 /* ─── DECORATIVE DOTS (floating neon circles) ───────────────── */
