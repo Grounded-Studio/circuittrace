@@ -75,6 +75,20 @@
             <h3>Crash reports & analytics</h3>
             <p>Circuit Trace does NOT currently use third-party analytics or crash reporting tools. If a crash happens, we only find out if you email us.</p>
 
+            <h3>Firebase (Friend Challenges feature only)</h3>
+            <p>If you use the Friend Challenges feature (adding friends by code, sending puzzle challenges), the following data is sent to Google Firebase (Cloud Firestore + Cloud Messaging):</p>
+            <ul>
+                <li>An anonymous Firebase user ID (random string, created automatically on first use — not linked to your name, email or Google account)</li>
+                <li>A display name (defaults to your in-game player name, editable in Profile)</li>
+                <li>A 6-character friend code you can share with others</li>
+                <li>Firebase Cloud Messaging registration token (for push notifications when a friend challenges you)</li>
+                <li>Challenges you create (puzzle code + your solve time + moves) and attempts you post on friends' challenges</li>
+                <li>Your friends list (links between anonymous IDs)</li>
+            </ul>
+            <p>This data is stored on Google Firebase servers in the <strong>europe-west</strong> region (GDPR-compliant). Google acts as a data processor under their <a href="https://firebase.google.com/terms/data-processing-terms" target="_blank">Firebase Data Processing Terms</a>. No personally identifiable information (real name, email, phone, address) is ever sent to Firebase.</p>
+            <p><strong>Opt-out</strong>: Friend Challenges is an opt-in feature. If you never tap the FRIENDS button, no data is sent to Firebase. If you've used it and want to delete everything, go to Settings → Delete Friend Data (coming soon) or email <a href="mailto:contact@grounded-studio.app">contact@grounded-studio.app</a>.</p>
+            <p><strong>Auto-cleanup</strong>: accounts inactive for 365 days are automatically wiped from Firebase (user record + all your challenges and attempts).</p>
+
             <h2>Data we collect on this website</h2>
             <p>Essentially nothing. This website:</p>
             <ul>
