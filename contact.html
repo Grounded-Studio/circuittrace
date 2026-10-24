@@ -128,7 +128,7 @@
                 </div>
                 <label class="hp" aria-hidden="true">Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
                 <div class="form-foot">
-                    <p class="form-note">Sent securely via FormSubmit. Your details are only used to reply to you. See the <a href="privacy.html">Privacy Policy</a>.</p>
+                    <p class="form-note">Sent straight to our own inbox. Your details are only used to reply to you. See the <a href="privacy.html">Privacy Policy</a>.</p>
                     <button type="submit" class="btn btn-primary" id="cf-submit">Send message →</button>
                 </div>
                 <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
@@ -181,9 +181,9 @@
 <script src="assets/js/main.js" defer></script>
 <script>
 (function () {
-    // Same FormSubmit inbox + payload shape as grounded-studio.app and
-    // FreshGarant, so every site's messages land in one consistent format.
-    var ENDPOINT = "https://formsubmit.co/ajax/contact@grounded-studio.app";
+    // Shared Grounded Studio contact endpoint (our own Strato mail, used by
+    // every Grounded Studio site).
+    var ENDPOINT = "https://api.buildexact.app/contact.php";
     var TOPICS = {
         question: "General question", bug: "Bug report", feature: "Feature idea",
         purchase: "Purchase or ads", privacy: "Privacy or data request", press: "Press or business"
