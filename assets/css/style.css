@@ -5,6 +5,9 @@
 
 /* ─── RESET & BASE ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* width/height attributes reserve space (no layout shift); height:auto keeps
+   the aspect ratio wherever CSS only constrains the width. */
+img { max-width: 100%; height: auto; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
     font-family: 'Outfit', system-ui, -apple-system, sans-serif;
