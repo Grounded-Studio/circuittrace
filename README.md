@@ -26,7 +26,7 @@ circuittrace/
 │   ├── css/style.css       Shared design system
 │   ├── js/main.js          Shared scripts (hamburger, FAQ)
 │   ├── icon-ct.png         App icon
-│   ├── hero-mockup.png     Hero image (3-phone composition)
+│   ├── img/                Optimized WebP images (rendered from the game)
 │   ├── og-image.png        Social share preview
 │   ├── favicon.png         Browser favicon
 │   ├── screenshots/        Phone screenshots
