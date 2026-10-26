@@ -98,19 +98,21 @@
             <h3>Crash reports</h3>
             <p>Circuit Trace does not include a crash reporting SDK. Google Play may share anonymous crash and stability statistics with us (for example via Android vitals). If something goes wrong, the fastest way to reach us is the <a href="contact.html">contact page</a>.</p>
 
-            <h3>Firebase (Friend Challenges feature only)</h3>
-            <p>If you use the Friend Challenges feature (adding friends by code, sending puzzle challenges), the following data is sent to Google Firebase (Cloud Firestore + Cloud Messaging):</p>
+            <h3>Firebase (Friends, Challenges and Community)</h3>
+            <p>The social features (adding friends by code, puzzle challenges and the Community puzzle browser) run on Google Firebase (Cloud Firestore, Firebase Authentication and Cloud Messaging). When the app starts on Android it signs in anonymously and creates a small player profile, so friends can find you by code. The following data is stored:</p>
             <ul>
-                <li>An anonymous Firebase user ID (random string, created automatically on first use — not linked to your name, email or Google account)</li>
-                <li>A display name (defaults to your in-game player name, editable in Profile)</li>
-                <li>A 6-character friend code you can share with others</li>
-                <li>Firebase Cloud Messaging registration token (for push notifications when a friend challenges you)</li>
-                <li>Challenges you create (puzzle code + your solve time + moves) and attempts you post on friends' challenges</li>
+                <li>An anonymous Firebase user ID (random string, created automatically — not linked to your name, email or Google account)</li>
+                <li>A display name (your in-game player name, or "PLAYER" if you never set one)</li>
+                <li>A 5-character friend code you can share with others</li>
+                <li>A Firebase Cloud Messaging registration token (for notifications when a friend challenges you)</li>
+                <li>Challenges you create (puzzle code, solve time, moves) and attempts you post on challenges</li>
                 <li>Your friends list (links between anonymous IDs)</li>
+                <li><strong>Community puzzles you publish</strong>: the puzzle code, the name you give it, your display name and the publish date. These are <strong>public</strong> — every player can see them in the Community tab.</li>
+                <li>Likes and reports you give to community puzzles (linked to your anonymous ID, so each player counts once), and an anonymous play counter per puzzle</li>
             </ul>
-            <p>This data is stored on Google Firebase servers in the <strong>europe-west</strong> region (GDPR-compliant). Google acts as a data processor under their <a href="https://firebase.google.com/terms/data-processing-terms" target="_blank">Firebase Data Processing Terms</a>. No personally identifiable information (real name, email, phone, address) is ever sent to Firebase.</p>
-            <p><strong>Opt-out</strong>: Friend Challenges is an opt-in feature. If you never tap the FRIENDS button, no data is sent to Firebase. If you've used it and want to delete everything, go to Settings → Delete Friend Data (coming soon) or email <a href="mailto:contact@grounded-studio.app">contact@grounded-studio.app</a>.</p>
-            <p><strong>Manual deletion</strong>: email <a href="mailto:contact@grounded-studio.app">contact@grounded-studio.app</a> at any time with the subject "Delete my Friends data" — we remove your user record and all your challenges and attempts within 7 days.</p>
+            <p>This data is stored on Google Firebase servers in the <strong>europe-west</strong> region (GDPR-compliant). Google acts as a data processor under their <a href="https://firebase.google.com/terms/data-processing-terms" target="_blank">Firebase Data Processing Terms</a>. No personally identifiable information (real name, email, phone, address) is ever sent to Firebase — please don't put personal details in puzzle or player names.</p>
+            <p><strong>Community moderation</strong>: puzzle and player names are filtered for offensive words. Every community puzzle has a REPORT button; a puzzle that receives several reports is hidden automatically, and we review reports and remove content that breaks these rules. You can also block a maker so you no longer see their puzzles. You can remove your own published puzzles at any time from Community → MINE.</p>
+            <p><strong>Deletion</strong>: email <a href="mailto:contact@grounded-studio.app">contact@grounded-studio.app</a> (or use the <a href="https://grounded-studio.app/delete-data-circuittrace.html">data deletion page</a>) with the subject "Delete my Circuit Trace data" — we remove your profile, friends, challenges, attempts and published puzzles within 7 days. Uninstalling the app removes the anonymous ID from your device.</p>
 
             <h2>Data we collect on this website</h2>
             <p>Essentially nothing. This website:</p>
