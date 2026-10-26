@@ -878,3 +878,13 @@ footer {
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ─── BREADCRUMBS ──────────────────────────────────────────── */
+.breadcrumbs { border-bottom: 1px solid var(--border); background: var(--bg); }
+.breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    padding: 12px 0; font-size: 0.85rem; color: var(--ink-mute); }
+.breadcrumbs li { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.breadcrumbs li + li::before { content: '›'; color: var(--ink-faint); }
+.breadcrumbs a { color: var(--ink-mute); text-decoration: none; }
+.breadcrumbs a:hover { color: var(--accent-text); text-decoration: underline; }
+.breadcrumbs [aria-current] { color: var(--ink); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60vw; }
