@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# Cloudflare internal paths (email obfuscation etc.) are not real pages
+Disallow: /cdn-cgi/
 
 Sitemap: https://circuittrace.app/sitemap.xml
