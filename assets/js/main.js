@@ -23,10 +23,8 @@
         const q = item.querySelector('.faq-q');
         if (!q) return;
         q.addEventListener('click', () => {
-            const isOpen = item.getAttribute('aria-expanded') === 'true';
-            // Optionally close others:
-            // document.querySelectorAll('.faq-item').forEach(i => i.setAttribute('aria-expanded', 'false'));
-            item.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            const isOpen = item.classList.toggle('open');
+            q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     });
 })();

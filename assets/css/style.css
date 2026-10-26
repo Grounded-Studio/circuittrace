@@ -30,7 +30,7 @@ body {
     /* Ink / text */
     --ink: #0F172A;
     --ink-soft: #334155;
-    --ink-mute: #64748B;
+    --ink-mute: #5B6B80;
     --ink-faint: #94A3B8;
 
     /* Game palette (bold, vibrant) */
@@ -53,6 +53,7 @@ body {
     --accent: #3B82F6;
     --accent-hover: #2563EB;
     --accent-soft: #DBEAFE;
+    --accent-text: #1D4ED8;
 
     /* Borders & dividers */
     --border: #E2E8F0;
@@ -97,7 +98,9 @@ code, kbd, pre, .mono {
     font-size: 0.9em;
 }
 
-a { color: var(--accent); text-decoration: none; transition: color .2s; }
+a { color: var(--accent-text); text-decoration: none; transition: color .2s; }
+/* Links inside running text are underlined so they don't rely on color alone. */
+p a:not(.btn), .faq-a-inner a, td a { text-decoration: underline; text-underline-offset: 2px; }
 a:hover { color: var(--accent-hover); }
 
 /* ─── LAYOUT ───────────────────────────────────────────────── */
@@ -273,7 +276,7 @@ nav {
     background: var(--green); display: inline-block;
     animation: pulse 2s ease-in-out infinite;
 }
-.badge-primary { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.badge-primary { background: var(--accent-soft); color: var(--accent-text); border-color: transparent; }
 .badge-success { background: var(--green-soft); color: #4D7C0F; border-color: transparent; }
 .badge-magenta { background: var(--magenta-soft); color: #BE185D; border-color: transparent; }
 .badge-cyan { background: var(--cyan-soft); color: #0E7490; border-color: transparent; }
@@ -763,12 +766,12 @@ a.card:hover {
     display: flex; justify-content: space-between; align-items: center; gap: 16px;
 }
 .faq-icon { flex-shrink: 0; font-size: 1.4rem; color: var(--ink-mute); transition: transform .3s; }
-.faq-item[aria-expanded="true"] .faq-icon { transform: rotate(45deg); color: var(--accent); }
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent); }
 .faq-a {
     max-height: 0; overflow: hidden;
     transition: max-height .4s ease;
 }
-.faq-item[aria-expanded="true"] .faq-a { max-height: 500px; }
+.faq-item.open .faq-a { max-height: 500px; }
 .faq-a-inner { padding: 0 24px 24px; color: var(--ink-soft); font-size: 0.97rem; line-height: 1.7; }
 
 /* ─── FOOTER ───────────────────────────────────────────────── */
@@ -785,9 +788,9 @@ footer {
     margin-bottom: 48px;
 }
 .foot-brand img { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px; }
-.foot-brand h4 { font-size: 1.1rem; margin-bottom: 8px; }
+.foot-brand .foot-name { font-size: 1.1rem; margin-bottom: 8px; }
 .foot-brand p { font-size: 0.9rem; color: var(--ink-mute); max-width: 300px; }
-.foot-col h5 { font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-mute); }
+.foot-col .foot-h { font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-mute); }
 .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .foot-col a { color: var(--ink-soft); font-size: 0.95rem; transition: color .2s; }
 .foot-col a:hover { color: var(--ink); }
