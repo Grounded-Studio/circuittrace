@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Puzzles: Build, Publish, Play — Circuit Trace</title>
+    <meta name="description" content="Circuit Trace now has a Community tab. How to build a puzzle in the Creator, publish it for every player, and find the best player-made boards.">
+    <link rel="canonical" href="https://circuittrace.app/blog/community-puzzles.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Community puzzles: build it, publish it, watch people play it">
+    <meta property="og:description" content="We once said the Puzzle Editor would never get a gallery. Here's why we changed our minds, and how the Community tab works.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/community-puzzles.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "Community puzzles: build it, publish it, watch people play it", "image": "https://circuittrace.app/assets/img/community-feed.webp", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-28", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261026c">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Community puzzles", "item": "https://circuittrace.app/blog/community-puzzles.html"}]}</script>
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 28px auto 12px; max-width: 560px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        .post-steps { counter-reset: step; list-style: none; margin: 24px 0 !important; padding: 0; }
+        .post-steps li { counter-increment: step; position: relative; padding: 4px 0 14px 56px; margin: 0 !important; }
+        .post-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--cyan); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Community puzzles</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-cyan">New Feature</span>
+        <h1>Community puzzles: build it, publish it, watch people play it.</h1>
+        <p>📅 28 October 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>A few weeks ago we wrote about <a href="puzzle-editor-design.html">how we designed the Puzzle Editor</a>. In the "what got cut" section there was a confident line: no gallery of community puzzles. Too much server work, too much moderation, and it would compete with sharing puzzles with your actual friends.</p>
+
+            <p>Well. We changed our minds.</p>
+
+            <h2>Why we built it anyway</h2>
+
+            <p>Share codes worked. People made puzzles and sent them to friends and family. But a really good puzzle would reach three people and then stop. That felt like a waste.</p>
+
+            <p>A share code reaches the people you already know. Some puzzles deserve a bigger audience. So the Creator now has a second exit: next to sending a code to one friend, you can publish your puzzle to <strong>every Circuit Trace player</strong>.</p>
+
+            <div class="post-shots">
+                <figure><img decoding="async" loading="lazy" width="360" height="803" src="../assets/img/community-publish.webp" alt="Publishing a puzzle to the Circuit Trace community"><figcaption><strong>Publish</strong>Name it, tap once, it's live</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="360" height="803" src="../assets/img/community-feed.webp" alt="The Circuit Trace community feed"><figcaption><strong>Community</strong>New, Top and your own puzzles</figcaption></figure>
+            </div>
+
+            <h2>From empty grid to published in a few minutes</h2>
+
+            <ol class="post-steps">
+                <li><strong>Open the Creator.</strong> From the main menu go to <strong>GAME MODES → CREATOR</strong> and tap <strong>CREATE A PUZZLE</strong>. Pick a grid from 5×5 to 8×8.</li>
+                <li><strong>Place your pairs.</strong> Tap a colour, then two cells. Add diodes, portals, stars or checkpoints from the toolbar if you want to make it tricky.</li>
+                <li><strong>VALIDATE.</strong> The same solver that checks every campaign level tells you right away whether your puzzle can be solved.</li>
+                <li><strong>Play it yourself with TEST.</strong> This one is required: you have to solve your own puzzle once before you can publish it. If you can't, nobody else should have to try.</li>
+                <li><strong>Name it and publish.</strong> Tap <strong>SHARE</strong>, give your puzzle a name, and tap <strong>PUBLISH TO COMMUNITY</strong>. Done. It's live for everyone.</li>
+            </ol>
+
+            <div class="post-tip">
+                <p><strong>💡 Why the TEST step is required.</strong> The solver can prove a puzzle is solvable, but not that it's fair to a human. Making every maker beat their own board first is the simplest quality filter we could think of, and it keeps the feed free of "technically possible" nightmares.</p>
+            </div>
+
+            <h2>Browsing the Community</h2>
+
+            <p>Open <strong>CREATOR → COMMUNITY</strong> and you'll find three tabs:</p>
+
+            <ul>
+                <li><strong>✨ NEW</strong>: the latest puzzles, fresh from other players.</li>
+                <li><strong>❤️ TOP</strong>: the most-liked puzzles, the best place to start.</li>
+                <li><strong>👤 MINE</strong>: everything you've published, with its likes and plays.</li>
+            </ul>
+
+            <p>Size filters (5×5, 6×6, 7×7, 8×8) let you pick a quick warm-up or a real brain-burner. Every card shows the puzzle's name, its maker, the grid size and two numbers: <strong>♡ likes</strong> and <strong>▶ plays</strong>.</p>
+
+            <p>Tap a card to play it. When you solve it, the game asks if you enjoyed it. One tap gives the maker a like. Those likes are what push a puzzle up in TOP, so a good puzzle from a brand-new player can end up at the top of the list.</p>
+
+            <h2>Keeping it friendly</h2>
+
+            <p>A public feed needs a few guard rails, and we kept them simple:</p>
+
+            <ul>
+                <li><strong>Names are filtered.</strong> Puzzle names and player names are checked before publishing, and offensive names get removed.</li>
+                <li><strong>Report.</strong> See something that isn't okay? Report it. It disappears for you right away, and enough reports hide it for everyone.</li>
+                <li><strong>Block.</strong> Don't want to see a certain maker's puzzles? Block them and they're gone from your feed.</li>
+                <li><strong>You stay in control.</strong> Changed your mind about a puzzle? Remove it from the community at any time under MINE. You can have up to 20 puzzles published at once.</li>
+            </ul>
+
+            <p>There are no comments and no chat, on purpose. The only thing players can send each other is a like, and that's the way we want it.</p>
+
+            <h2>What it means for the game</h2>
+
+            <p>We hand-made 500 puzzles. That sounds like a lot until you meet a player who has perfected all of them. The Community means Circuit Trace never really runs out: every day there are new boards made by people who know the game as well as we do, and sometimes better.</p>
+
+            <p>And if you've ever looked at a level and thought <em>"I could make a nastier one than this"</em>, now's your chance to prove it.</p>
+
+            <hr>
+
+            <p>Learn more about the tools on the <a href="../editor.html">Puzzle Editor page</a>, or <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">install Circuit Trace</a> and publish your first puzzle today.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+</body>
+</html>

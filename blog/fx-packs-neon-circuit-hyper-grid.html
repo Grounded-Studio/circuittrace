@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Circuit &amp; Hyper Grid: The FX Packs — Circuit Trace</title>
+    <meta name="description" content="What the Neon Circuit and Hyper Grid FX packs change on the board, how they stack, how to switch them on and off, and why we kept them calm.">
+    <link rel="canonical" href="https://circuittrace.app/blog/fx-packs-neon-circuit-hyper-grid.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Neon Circuit &amp; Hyper Grid: a closer look at the FX packs">
+    <meta property="og:description" content="Pulsing nodes, data packets, glowing grids and lightning sparks. What the two FX packs do to the board.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/fx-packs-neon-circuit-hyper-grid.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "Article", "headline": "Neon Circuit & Hyper Grid: a closer look at the FX packs", "image": "https://circuittrace.app/assets/img/fx-both.webp", "author": { "@type": "Organization", "name": "Grounded Studio" }, "publisher": { "@type": "Organization", "name": "Grounded Studio", "logo": { "@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png" } }, "datePublished": "2026-10-28", "inLanguage": "en" }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261026c">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Neon Circuit & Hyper Grid: the FX packs", "item": "https://circuittrace.app/blog/fx-packs-neon-circuit-hyper-grid.html"}]}</script>
+    <style>
+        .post-fx { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 28px 0 12px; }
+        .post-fx.single { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+        .post-fx figure { margin: 0; }
+        .post-fx img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 18px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-fx figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-fx figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--purple); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+        .post-prices div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; text-align: center; }
+        .post-prices div.best { border-color: var(--success, #22C55E); }
+        .post-prices strong { display: block; color: var(--ink); }
+        .post-prices span { display: block; font-size: 1.6rem; font-weight: 800; color: var(--ink); margin-top: 6px; }
+        .post-prices small { color: var(--ink-mute); }
+        @media (max-width: 700px) { .post-prices { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Neon Circuit &amp; Hyper Grid</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-purple">Visual FX</span>
+        <h1>Neon Circuit &amp; Hyper Grid: a closer look at the FX packs.</h1>
+        <p>📅 28 October 2026 · ⏱ 5 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Themes change the world around the puzzle. FX packs change the puzzle board itself: the dots, the paths and the grid under your finger.</p>
+
+            <p>There are two of them, <strong>Neon Circuit</strong> and <strong>Hyper Grid</strong>. You can run either one on its own or stack them both. Here's what each one does, and a few things we learned making them.</p>
+
+            <div class="post-fx">
+                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-none.webp" alt="Circuit Trace board without FX"><figcaption><strong>Standard</strong>The classic look</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-both.webp" alt="Circuit Trace board with both FX packs on"><figcaption><strong>Both packs</strong>Everything on</figcaption></figure>
+            </div>
+
+            <h2>Neon Circuit: every dot becomes an energy coil</h2>
+
+            <p>Neon Circuit was the first pack, and it's built around one idea: <em>the circuit is alive</em>. When you connect two dots, you're not just drawing a line. You're closing a circuit, and power starts to flow.</p>
+
+            <div class="post-fx single">
+                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-v1.webp" alt="Board with Neon Circuit FX"><figcaption><strong>Neon Circuit FX</strong>Pulses + data packets</figcaption></figure>
+            </div>
+
+            <ul>
+                <li><strong>Pulsing nodes.</strong> Every dot sends out soft sonar rings, with a slow radar sweep turning inside it.</li>
+                <li><strong>Data packets.</strong> Once a path is complete, small packets of light travel along it from end to end.</li>
+                <li><strong>Glowing filaments.</strong> A bright core streak runs through the middle of every path.</li>
+                <li><strong>Firework finish.</strong> Solve the board and it ends with a burst of sparks.</li>
+            </ul>
+
+            <div class="post-tip">
+                <p><strong>🛠 From the dev journal.</strong> The first version of the data packets was too much. They zipped along every path at full speed and the board looked like a busy motherboard: great for one level, tiring after ten. We slowed them right down, capped them at two per path and gave them a gentle ease in and out. Now they drift. You notice them when you look, and forget them when you're thinking.</p>
+            </div>
+
+            <h2>Hyper Grid: the board becomes the circuit</h2>
+
+            <p>Where Neon Circuit is about the paths, Hyper Grid is about the board under them.</p>
+
+            <div class="post-fx single">
+                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-v2.webp" alt="Board with Hyper Grid FX"><figcaption><strong>Hyper Grid FX</strong>Glow + circuit grid</figcaption></figure>
+            </div>
+
+            <ul>
+                <li><strong>Glowing cross-dots.</strong> The plain grid points turn into small glowing plus signs, like the solder points on a circuit board.</li>
+                <li><strong>Brighter halos.</strong> Every dot gets a thicker, more vivid glow, so the board reads clearly even on a busy theme.</li>
+                <li><strong>Lightning sparks.</strong> While you drag a path, small sparks jump from the dot under your finger.</li>
+            </ul>
+
+            <p>Hyper Grid is the more "tactile" of the two. The sparks react to what you're doing right now, so drawing a path feels like you're charging it up.</p>
+
+            <h2>Better together</h2>
+
+            <p>The two packs were designed to layer. Neon Circuit handles the paths and Hyper Grid handles the grid and the dots, so with both on nothing fights for attention. That's the screenshot at the top of this post: pulsing coils, drifting data packets, glowing solder points and sparks while you draw.</p>
+
+            <p>They also work with every theme, in every mode. Try both packs on top of Cosmic Nebula or Neon if you want the full light show.</p>
+
+            <h2>Switch them on and off anytime</h2>
+
+            <p>Once you own a pack, its card in the <strong>🛍 SHOP</strong> shows an on/off switch instead of a price. Turn Neon Circuit off for a quiet session, turn it back on for the Daily. The change is instant, even with a level open in the background. You never have to "use up" anything.</p>
+
+            <h2>Prices</h2>
+
+            <div class="post-prices">
+                <div><strong>Neon Circuit FX</strong><span>€1.99</span><small>one-time</small></div>
+                <div class="best"><strong>FX Bundle</strong><span>€2.99</span><small>both packs · save €1</small></div>
+                <div><strong>Hyper Grid FX</strong><span>€1.99</span><small>one-time</small></div>
+            </div>
+
+            <p>No subscriptions and nothing that expires. Every purchase stays tied to your Google account, so a new phone is a tap on <strong>Restore purchases</strong> away.</p>
+
+            <h2>Pure cosmetics</h2>
+
+            <p>Like the themes, FX packs are only about the look. They never show you a solution, never add hints, and every puzzle is solvable in exactly the same way with or without them. If you never buy one, you're missing a light show, not a part of the game.</p>
+
+            <p>Curious about the backgrounds as well? Read <a href="unlock-every-theme.html">13 themes, and how to unlock every one</a>.</p>
+
+            <hr>
+
+            <p>Compare all four looks on the <a href="../themes.html#fx">Themes &amp; FX page</a>, or <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">install Circuit Trace</a> and open the Shop from the main menu.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+</body>
+</html>

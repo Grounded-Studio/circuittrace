@@ -44,9 +44,27 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/community-puzzles.html</loc>
+        <lastmod>2026-10-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/unlock-every-theme.html</loc>
+        <lastmod>2026-10-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/fx-packs-neon-circuit-hyper-grid.html</loc>
+        <lastmod>2026-10-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/500-handcrafted-puzzles.html</loc>
