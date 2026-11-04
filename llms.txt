@@ -1,13 +1,15 @@
 # Circuit Trace
 
-> Minimalist Android logic puzzle game by Grounded Studio. 500+ handcrafted puzzles across 5 campaign modes, built-in Puzzle Editor with share codes, 6 languages, free on Google Play.
+> Minimalist Android logic puzzle game by Grounded Studio. 600+ puzzles across 6 level packs, built-in Puzzle Editor with share codes, 6 languages, free on Google Play.
 
 Circuit Trace is a flow-style puzzle game where players connect colored pairs across a grid, restoring circuit paths. The game is designed around calm focus and bite-sized sessions — no energy systems, no interruptions, no dark patterns. Free with ads between campaign levels; optional one-time €3.99 Remove Ads purchase.
 
 ## Core Features
 
-- **500+ handcrafted puzzles** across 5 campaign modes (100 levels each): Circuit Trace, Classic, Diodes, Portals, Arcade
-- **Endless mode** — infinite procedurally-generated puzzles, 5×5 to 9×9
+- **600+ puzzles** across 6 level packs (100 levels each): Circuit Trace, Classic, Diodes, Portals, Arcade, Labyrinth
+- **Labyrinth** (new) — shaped boards (rings, crosses, hearts) with holes inside and walls between cells
+- **Difficulty** — every level is rated by a solver that reasons like a human player; boards solvable at a glance are rejected
+- **Endless mode** — infinite generated puzzles, 7 difficulty levels from 5×5 to 8×8
 - **Expert preview** — random sector 8-9 puzzle for a taste of late-campaign difficulty
 - **Daily Challenge** — one new puzzle per day, globally seeded (same for everyone)
 - **Weekly Puzzles** — six fresh puzzles per week, Monday-Saturday difficulty ramp
@@ -33,7 +35,7 @@ Circuit Trace is a flow-style puzzle game where players connect colored pairs ac
 
 - [Home](https://circuittrace.app/) — product overview, screenshots, download CTA
 - [Features](https://circuittrace.app/features.html) — all gameplay features in detail
-- [Game Modes](https://circuittrace.app/modes.html) — deep dive into each of the 7 modes
+- [Game Modes](https://circuittrace.app/modes.html) — deep dive into each of the 8 modes
 - [Puzzle Editor](https://circuittrace.app/editor.html) — build-your-own-puzzle feature focus
 - [Support](https://circuittrace.app/support.html) — FAQ and contact
 - [Press Kit](https://circuittrace.app/press.html) — logos, screenshots, bio for journalists

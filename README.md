@@ -12,7 +12,7 @@ Marketing website for **Circuit Trace**, a minimalist flow puzzle game for Andro
 circuittrace/
 ├── index.html              Home / landing
 ├── features.html           All game features in detail
-├── modes.html              7 game modes deep-dive
+├── modes.html              8 game modes deep-dive
 ├── editor.html             Puzzle Editor + Share Codes focus page
 ├── support.html            FAQ and contact
 ├── press.html              Press kit (fact sheet, bio, downloads)
