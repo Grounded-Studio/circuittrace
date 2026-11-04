@@ -158,7 +158,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
-    <link rel="stylesheet" href="assets/css/style.css?v=20261026c">
+    <link rel="stylesheet" href="assets/css/style.css?v=20261104">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "Circuit Trace — Handcrafted Puzzles, Diodes, Portals, Stars & Checkpoints", "description": "Circuit Trace is a calm neon flow puzzle game: connect matching dots, never let paths cross and fill every cell. See diodes, portals, stars and checkpoints in action.", "thumbnailUrl": "https://circuittrace.app/assets/img/video-thumb-640.webp", "uploadDate": "2026-10-30T12:47:58-07:00", "duration": "PT52S", "embedUrl": "https://www.youtube-nocookie.com/embed/99n2Rg7I__A", "contentUrl": "https://www.youtube.com/watch?v=99n2Rg7I__A", "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"}}</script>
 </head>
 <body>
 
@@ -277,6 +278,25 @@
                 <div class="stat-label">Languages</div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- ─── VIDEO ─────────────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-primary">See it in action</span>
+            <h2>Fifty seconds of neon puzzling.</h2>
+            <p>Diodes, portals, stars and checkpoints. Connect matching dots, never cross a path, and fill every cell.</p>
+        </div>
+    <div class="yt-video">
+      <a href="https://www.youtube.com/watch?v=99n2Rg7I__A" data-yt="99n2Rg7I__A" aria-label="Play video: Circuit Trace in 50 seconds">
+        <img src="assets/img/video-thumb-640.webp" width="640" height="360" alt="Circuit Trace video: connect, fill, restore" loading="lazy" decoding="async">
+        <span class="yt-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
+        <span class="yt-badge">0:52 · Watch on YouTube</span>
+      </a>
+    </div>
+    <p class="yt-note">The video loads from YouTube (privacy-enhanced mode) once you press play.</p>
     </div>
 </section>
 
@@ -609,5 +629,18 @@
 </footer>
 
 <script src="assets/js/main.js?v=20261026b" defer></script>
+<script>
+document.querySelectorAll('.yt-video a[data-yt]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.yt + '?autoplay=1&rel=0';
+    f.title = a.getAttribute('aria-label');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullScreen = true;
+    a.replaceWith(f);
+  });
+});
+</script>
 </body>
 </html>
