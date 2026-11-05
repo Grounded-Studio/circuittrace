@@ -14,7 +14,7 @@ Circuit Trace is a flow-style puzzle game where players connect colored pairs ac
 - **Daily Challenge** — one new puzzle per day, globally seeded (same for everyone)
 - **Weekly Puzzles** — six fresh puzzles per week, Monday-Saturday difficulty ramp
 - **Time Trial** — 60-second sprint mode
-- **Puzzle Editor + Share Codes** — design 5×5 to 8×8 puzzles with dots and diodes, save up to 5 in library, share via short codes (format CT-XXXXX-XXXXX-…)
+- **Puzzle Editor + Share Codes** — design 5×5 to 8×8 puzzles with up to 8 colours, diodes, portals, stars and checkpoints, save up to 5 in library, share via short codes (format CT-XXXXX-XXXXX-…) or publish to the in-game Community (New/Top/Mine, likes, reporting)
 - **Google Play Games Services** — 23 achievements, 3 leaderboards (Daily, Time Trial, Endless), cloud save
 - **6 languages**: English, Nederlands, Deutsch, Français, Español, Português
 - **Interactive hint system** — shows the full next line of the last-touched colour

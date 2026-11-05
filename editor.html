@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puzzle Editor: Make &amp; Share Flow Puzzles | Circuit Trace</title>
-    <meta name="description" content="Design your own flow puzzles in the Circuit Trace Puzzle Editor. Place dots and diodes, check that it&#x27;s solvable, and share it with a short code.">
+    <meta name="description" content="Design your own flow puzzles in the Circuit Trace Puzzle Editor. Place dots, diodes, portals, stars and checkpoints, check that it&#x27;s solvable, then share a code or publish it to the Community.">
     <link rel="canonical" href="https://circuittrace.app/editor.html">
     <link rel="icon" type="image/png" href="assets/icons/icon64.png">
     <meta name="theme-color" content="#FAFAF8">
@@ -54,25 +54,27 @@
             <div>
                 <h2 class="mb-4">Design puzzles.<br>Share with anyone.</h2>
                 <p class="lead mb-6">
-                    The Puzzle Editor is built right into Circuit Trace. Pick your grid size,
-                    drop dots, add one-way diodes, hit SHARE — get a short code you can paste
-                    into WhatsApp, Discord, or send to any Circuit Trace player in the world.
+                    The Puzzle Editor is built right into Circuit Trace, with every tool unlocked
+                    from the start. Pick your grid size, drop up to 8 colour pairs, add diodes,
+                    portals, stars and checkpoints, give it a name — then share a short code or
+                    publish it to the Community for every Circuit Trace player to try.
                 </p>
                 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
                     <span class="badge badge-cyan">5×5 to 8×8 grids</span>
-                    <span class="badge badge-magenta">Dots + Diodes</span>
+                    <span class="badge badge-magenta">Diodes · Portals · Stars · Checkpoints</span>
                     <span class="badge badge-yellow">Live validation</span>
                     <span class="badge badge-purple">5-slot library</span>
+                    <span class="badge badge-success">Community</span>
                 </div>
                 <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn btn-primary">Try the Editor →</a>
             </div>
             <div class="editor-dual-wrap">
                 <div class="editor-dual">
                     <div class="phone editor-phone editor-phone-back">
-                        <img decoding="async" loading="lazy" width="540" height="1170" src="assets/img/creator-hub.webp" srcset="assets/img/creator-hub-270.webp 270w, assets/img/creator-hub.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Creator hub — your puzzle library">
+                        <img decoding="async" loading="lazy" width="540" height="1170" src="assets/img/creator-hub.webp" srcset="assets/img/creator-hub-270.webp 270w, assets/img/creator-hub.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Creator hub — create, play shared codes, browse the Community, your puzzle library">
                     </div>
                     <div class="phone editor-phone editor-phone-front">
-                        <img decoding="async" loading="lazy" width="540" height="1170" src="assets/img/editor.webp" srcset="assets/img/editor-270.webp 270w, assets/img/editor.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Editor — designing a 7×7 puzzle with diodes">
+                        <img decoding="async" loading="lazy" width="540" height="1170" src="assets/img/editor.webp" srcset="assets/img/editor-270.webp 270w, assets/img/editor.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Editor — an 8×8 puzzle with diodes, portals, stars and checkpoints">
                     </div>
                 </div>
             </div>
@@ -96,18 +98,18 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon magenta" style="font-size:1.4rem;font-weight:800;">2</div>
-                <h3>Place dots and diodes</h3>
-                <p>Tap a color, then two cells to make a pair. Add up to 5 colored pairs. Optionally drop one-way diodes with per-color locks.</p>
+                <h3>Place dots and pieces</h3>
+                <p>Tap a colour, then two cells to make a pair — up to 8 pairs on an 8×8 board. Then add one-way diodes, portals, stars and checkpoints. Every tool is unlocked from the start.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon yellow" style="font-size:1.4rem;font-weight:800;">3</div>
                 <h3>Validate</h3>
-                <p>Hit CHECK. The editor instantly tests if your puzzle has a solution. If pairs block each other, it tells you which ones.</p>
+                <p>Hit VALIDATE. The editor instantly tests if your puzzle has a solution. If pairs block each other, it tells you which ones.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon green" style="font-size:1.4rem;font-weight:800;">4</div>
                 <h3>Share the code</h3>
-                <p>Hit SHARE. You get a short code like <code class="mono">CT-NHH06-8CMY4-AG2DS</code>. Send via WhatsApp, Discord, SMS — anywhere.</p>
+                <p>Hit SHARE and name your puzzle. You get a short code like <code class="mono">CT-NHH06-8CMY4-AG2DS</code> to send via WhatsApp, Discord, SMS — or publish it to the Community in one tap.</p>
             </div>
         </div>
     </div>
@@ -156,8 +158,41 @@
     </div>
 </section>
 
-<!-- CODE FORMAT EXPLAINED -->
+<!-- COMMUNITY -->
 <section class="section" style="background: var(--bg-soft);">
+    <div class="c">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="hero-grid">
+            <div>
+                <span class="badge badge-magenta">Community</span>
+                <h2 class="mt-4 mb-4">Publish it.<br>Watch people play it.</h2>
+                <p class="lead mb-6">
+                    One tap on PUBLISH TO COMMUNITY and your puzzle is live for every player.
+                    Browse what others built, filter by board size, and like the ones that got you.
+                </p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;color:var(--ink-soft);margin-bottom:28px;">
+                    <li>✓ <strong>NEW, TOP and MINE</strong> — fresh puzzles, the most liked, and your own</li>
+                    <li>✓ <strong>Likes and play counts</strong> on every puzzle you publish</li>
+                    <li>✓ <strong>Filter by size</strong> — 5×5 up to 8×8</li>
+                    <li>✓ <strong>Safe by design</strong> — report or block in one tap; offensive names get removed</li>
+                </ul>
+                <a href="blog/community-puzzles.html" class="btn btn-secondary">How the Community works →</a>
+            </div>
+            <div class="editor-dual-wrap">
+                <div class="editor-dual">
+                    <div class="phone editor-phone editor-phone-back">
+                        <img decoding="async" loading="lazy" width="540" height="1170" src="assets/img/editor-share.webp" srcset="assets/img/editor-share-270.webp 270w, assets/img/editor-share.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Naming a puzzle and publishing it to the Community">
+                    </div>
+                    <div class="phone editor-phone editor-phone-front">
+                        <img decoding="async" loading="lazy" width="360" height="803" src="assets/img/community-feed.webp" alt="The Community screen with NEW, TOP and MINE tabs">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CODE FORMAT EXPLAINED -->
+<section class="section">
     <div class="c c-narrow">
         <div class="section-head">
             <span class="badge badge-yellow">Technical</span>
@@ -171,11 +206,11 @@
             <p>Each code uses <strong>Crockford Base32</strong> encoding — the same format used by UUIDs and other short identifier systems. We picked it because:</p>
             <ul>
                 <li><strong>OCR-safe</strong>: no ambiguous characters like 0/O or 1/I/L</li>
-                <li><strong>Easy to type</strong>: 30 characters total, grouped in blocks of 5 with dashes</li>
+                <li><strong>Easy to type</strong>: grouped in blocks of 5 with dashes; a simple puzzle fits in 30 characters, bigger ones with portals, stars and checkpoints grow a few blocks longer</li>
                 <li><strong>Checksum built in</strong>: typos get detected automatically</li>
-                <li><strong>Compact</strong>: encodes grid size, up to 5 pair positions, up to 5 diode positions + directions, and reserved space for future features</li>
+                <li><strong>Compact</strong>: encodes grid size, up to 8 pairs, diodes with their direction and colour, portals, stars and checkpoints</li>
             </ul>
-            <p>The code is <strong>completely offline</strong> — no server needed. The whole puzzle state lives in those 30 characters.</p>
+            <p>The code is <strong>completely offline</strong> — no server needed. The whole puzzle lives in the code itself.</p>
         </div>
     </div>
 </section>

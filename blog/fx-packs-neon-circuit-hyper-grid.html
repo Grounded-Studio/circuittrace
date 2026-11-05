@@ -25,7 +25,7 @@
         .post-fx { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 28px 0 12px; }
         .post-fx.single { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
         .post-fx figure { margin: 0; }
-        .post-fx img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 18px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-fx img, .post-fx video { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 18px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
         .post-fx figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
         .post-fx figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
         .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--purple); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
@@ -80,8 +80,8 @@
             <p>There are two of them, <strong>Neon Circuit</strong> and <strong>Hyper Grid</strong>. You can run either one on its own or stack them both. Here's what each one does, and a few things we learned making them.</p>
 
             <div class="post-fx">
-                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-none.webp" alt="Circuit Trace board without FX"><figcaption><strong>Standard</strong>The classic look</figcaption></figure>
-                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-both.webp" alt="Circuit Trace board with both FX packs on"><figcaption><strong>Both packs</strong>Everything on</figcaption></figure>
+                <figure><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="../assets/img/fx-none.webp" aria-label="Circuit Trace board without FX"><source src="../assets/img/fx-none.mp4" type="video/mp4"></video><figcaption><strong>Standard</strong>The classic look</figcaption></figure>
+                <figure><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="../assets/img/fx-both.webp" aria-label="Circuit Trace board with both FX packs on"><source src="../assets/img/fx-both.mp4" type="video/mp4"></video><figcaption><strong>Both packs</strong>Everything on</figcaption></figure>
             </div>
 
             <h2>Neon Circuit: every dot becomes an energy coil</h2>
@@ -89,7 +89,7 @@
             <p>Neon Circuit was the first pack, and it's built around one idea: <em>the circuit is alive</em>. When you connect two dots, you're not just drawing a line. You're closing a circuit, and power starts to flow.</p>
 
             <div class="post-fx single">
-                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-v1.webp" alt="Board with Neon Circuit FX"><figcaption><strong>Neon Circuit FX</strong>Pulses + data packets</figcaption></figure>
+                <figure><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="../assets/img/fx-v1.webp" aria-label="Board with Neon Circuit FX"><source src="../assets/img/fx-v1.mp4" type="video/mp4"></video><figcaption><strong>Neon Circuit FX</strong>Pulses + data packets</figcaption></figure>
             </div>
 
             <ul>
@@ -108,7 +108,7 @@
             <p>Where Neon Circuit is about the paths, Hyper Grid is about the board under them.</p>
 
             <div class="post-fx single">
-                <figure><img decoding="async" loading="lazy" width="520" height="520" src="../assets/img/fx-v2.webp" alt="Board with Hyper Grid FX"><figcaption><strong>Hyper Grid FX</strong>Glow + circuit grid</figcaption></figure>
+                <figure><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="../assets/img/fx-v2.webp" aria-label="Board with Hyper Grid FX"><source src="../assets/img/fx-v2.mp4" type="video/mp4"></video><figcaption><strong>Hyper Grid FX</strong>Glow + circuit grid</figcaption></figure>
             </div>
 
             <ul>

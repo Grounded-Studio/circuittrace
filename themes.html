@@ -52,7 +52,7 @@
 
         .fx-compare { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .fx-tile { margin: 0; }
-        .fx-tile img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: var(--radius-lg);
+        .fx-tile img, .fx-tile video { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: var(--radius-lg);
                        border: 2px solid rgba(255,255,255,.9); box-shadow: 0 16px 36px -8px rgba(15,23,42,.22); background: #0a0a1a; }
         .fx-tile figcaption { margin-top: 14px; text-align: center; }
         .fx-tile figcaption strong { display: block; }
@@ -208,10 +208,10 @@
         </div>
 
         <div class="fx-compare">
-            <figure class="fx-tile"><img decoding="async" width="520" height="520" src="assets/img/fx-none.webp" alt="Board without visual FX" loading="lazy"><figcaption><strong>Standard</strong><span>The classic look</span></figcaption></figure>
-            <figure class="fx-tile"><img decoding="async" width="520" height="520" src="assets/img/fx-v1.webp" alt="Board with Neon Circuit FX" loading="lazy"><figcaption><strong>Neon Circuit</strong><span>Pulses + data packets</span></figcaption></figure>
-            <figure class="fx-tile"><img decoding="async" width="520" height="520" src="assets/img/fx-v2.webp" alt="Board with Hyper Grid FX" loading="lazy"><figcaption><strong>Hyper Grid</strong><span>Glow + circuit grid</span></figcaption></figure>
-            <figure class="fx-tile"><img decoding="async" width="520" height="520" src="assets/img/fx-both.webp" alt="Board with both FX packs" loading="lazy"><figcaption><strong>Both packs</strong><span>Everything on</span></figcaption></figure>
+            <figure class="fx-tile"><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="assets/img/fx-none.webp" aria-label="Board without visual FX"><source src="assets/img/fx-none.mp4" type="video/mp4"></video><figcaption><strong>Standard</strong><span>The classic look</span></figcaption></figure>
+            <figure class="fx-tile"><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="assets/img/fx-v1.webp" aria-label="Board with Neon Circuit FX"><source src="assets/img/fx-v1.mp4" type="video/mp4"></video><figcaption><strong>Neon Circuit</strong><span>Pulses + data packets</span></figcaption></figure>
+            <figure class="fx-tile"><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="assets/img/fx-v2.webp" aria-label="Board with Hyper Grid FX"><source src="assets/img/fx-v2.mp4" type="video/mp4"></video><figcaption><strong>Hyper Grid</strong><span>Glow + circuit grid</span></figcaption></figure>
+            <figure class="fx-tile"><video autoplay muted loop playsinline preload="metadata" width="520" height="520" poster="assets/img/fx-both.webp" aria-label="Board with both FX packs"><source src="assets/img/fx-both.mp4" type="video/mp4"></video><figcaption><strong>Both packs</strong><span>Everything on</span></figcaption></figure>
         </div>
 
         <div class="fx-packs">
