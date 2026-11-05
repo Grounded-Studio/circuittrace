@@ -904,3 +904,17 @@ footer {
 @keyframes yt-pulse { 0% { box-shadow:0 10px 30px rgba(0,0,0,.35), 0 0 0 0 rgba(255,255,255,.45); } 70%,100% { box-shadow:0 10px 30px rgba(0,0,0,.35), 0 0 0 18px rgba(255,255,255,0); } }
 @media (max-width:600px) { .yt-video { border-radius:16px; } .yt-play { width:64px; height:64px; margin:-32px 0 0 -32px; } .yt-play svg { width:24px; height:24px; } .yt-badge { left:12px; bottom:10px; font-size:.78rem; } }
 @media (prefers-reduced-motion:reduce) { .yt-play { animation:none; } .yt-video img, .yt-play { transition:none; } }
+
+/* ─── Mobile: side-by-side text/visual blocks stack ──────────
+   Several pages set grid-template-columns inline on .hero-grid
+   (e.g. modes.html deep dives), which beats the 900px rule above.
+   Force one column so text never gets squeezed next to a phone. */
+@media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .hero-grid .single-phone { max-width: 240px; margin: 0 auto; }
+    /* Alternating blocks: on one column the text always comes first */
+    .hero-grid > div:first-child[style*="text-align:center"],
+    .hero-grid > div:first-child[style*="justify-content: center"] { order: 2; }
+    /* Big decorative glyphs (●, ▶ ▼ ◀ ▲, ∞ …) shrink so they don't eat the screen */
+    .hero-grid > div[style*="text-align:center"] > div[style*="font-size"] { font-size: 4rem !important; }
+}
