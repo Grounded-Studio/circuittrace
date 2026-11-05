@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Our Puzzles Got Harder (and Better) — Circuit Trace</title>
+    <meta name="description" content="Our late levels could be solved at a glance. So we built a solver that thinks like a player and rebuilt every pack. Here's how.">
+    <link rel="canonical" href="https://circuittrace.app/blog/smarter-puzzles.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Why our puzzles got harder, and why that's a good thing">
+    <meta property="og:description" content=""One glance and I already know what to do." How one blunt testing note led us to rebuild every Circuit Trace puzzle pack.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/smarter-puzzles.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "Why our puzzles got harder, and why that's a good thing", "image": "https://circuittrace.app/assets/img/game-quantum.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-05", "inLanguage": "en"}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261105">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Why our puzzles got harder", "item": "https://circuittrace.app/blog/smarter-puzzles.html"}]}</script>
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Why our puzzles got harder</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-purple">Dev Journal</span>
+        <h1>Why our puzzles got harder, and why that's a good thing.</h1>
+        <p>📅 5 November 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>While testing the last sectors of the campaign this autumn, the verdict was blunt. Three screenshots, one note: <em>"At this point it should be really hard. But the colours are all right next to each other. One glance and I already know what to do."</em></p>
+
+            <p>That note was right. And it wasn't one or two levels. It was most of them.</p>
+
+            <h2>What was wrong</h2>
+
+            <p>We looked at the levels the way a player does, and the pattern was easy to see. Each colour's two dots sat close together, and the path between them was short and obvious. On a big board with eight colours, that turns into eight little puzzles side by side instead of one big one. Bigger, but not harder.</p>
+
+            <p>Worse, many boards could be filled in lots of different ways. When a puzzle has many answers, almost anything you try works. That feels nice for a minute, and then it feels like nothing.</p>
+
+            <h2>Teaching a computer to think like a player</h2>
+
+            <p>To fix it, we first needed a way to measure it. "Hard" is a feeling, so we built a solver that solves puzzles the way people do, in three steps:</p>
+
+            <ul>
+                <li><strong>See.</strong> Moves you can make without thinking. A dot with only one free neighbour has to go there. A corner cell has to be the end of a line or a bend.</li>
+                <li><strong>Think.</strong> "What if this line went left?" Try it in your head, and if it leads to a dead end, you know it goes the other way. Every time the solver needs a step like this, the level gets a little harder.</li>
+                <li><strong>Guess.</strong> When even thinking ahead doesn't settle it, you have to try something and back out if it fails. This counts the heaviest.</li>
+            </ul>
+
+            <p>The solver adds that up into one score. A level it can finish just by seeing scores close to zero. That's the "one glance" puzzle from that note. A level that needs a dozen "what if" moments scores much higher.</p>
+
+            <h2>Rebuilding the packs</h2>
+
+            <p>With a way to measure, we went through everything:</p>
+
+            <ul>
+                <li><strong>Classic, Diodes, Portals and Arcade</strong> were rebuilt from scratch, 100 levels each. Every sector got a target score, and the levels were picked to hit it, so each sector is a real step up from the last.</li>
+                <li><strong>The main campaign</strong> kept its tutorials exactly as they were. The other 86 levels got new boards with the same size, the same number of colours and the same mechanics, but rated by the solver.</li>
+                <li><strong>Labyrinth</strong>, the new pack with shaped boards and walls, was built this way from the start. <a href="labyrinth.html">More about Labyrinth here.</a></li>
+                <li><strong>Daily, Weekly, Endless and Time Trial</strong> now rate their puzzles too, right on your phone, before you see them. Endless and Time Trial keep it quick, so you never wait.</li>
+            </ul>
+
+            <div class="post-tip">
+                <p><strong>💡 What this means when you're stuck.</strong> Most levels now have one clear answer, and the solver could reach it by reasoning. So if a level feels like it needs a lucky guess, it doesn't. Somewhere on the board there's a cell with only one option. Look at corners, dead ends and narrow passages first.</p>
+            </div>
+
+            <h2>A correction</h2>
+
+            <p>In an earlier post we wrote about <a href="500-handcrafted-puzzles.html">handcrafting 500 puzzles</a>. That's how the game started, and it's why that note stung a little. Our hands made levels that looked good, but a lot of them didn't make you think.</p>
+
+            <p>The puzzles are now picked by the solver, and we tune the targets by hand: how hard each sector should be, where it can ramp up, and where a breather fits. We think that's a better split: the computer does the measuring, and we decide what's fun.</p>
+
+            <h2>Was it worth it?</h2>
+
+            <p>When the new levels went back into testing, the note changed to: <em>"The difficulty is so much better."</em> That's the review we were hoping for.</p>
+
+            <p>If you finished Circuit Trace before, it's worth another look. The level numbers are the same, but the boards behind them are new.</p>
+
+            <hr>
+
+            <p>Read more about how the game plays on the <a href="../features.html">Features page</a>, or <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">update Circuit Trace</a> and try a late-campaign level again.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+</body>
+</html>

@@ -44,9 +44,21 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/</loc>
-        <lastmod>2026-10-28</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/labyrinth.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/smarter-puzzles.html</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/community-puzzles.html</loc>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labyrinth: 100 Levels Where the Board Is the Puzzle — Circuit Trace</title>
+    <meta name="description" content="Labyrinth is a new free pack of 100 Circuit Trace levels on shaped boards with holes and glowing walls. How it works, how it ramps up, and tips to solve it.">
+    <link rel="canonical" href="https://circuittrace.app/blog/labyrinth.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Labyrinth: 100 levels where the board itself is the puzzle">
+    <meta property="og:description" content="Shaped boards, holes to route around and walls your lines can't cross. Everything about the new Labyrinth pack.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/labyrinth.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "Labyrinth: 100 levels where the board itself is the puzzle", "image": "https://circuittrace.app/assets/img/labyrinth.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-05", "inLanguage": "en"}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261105">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Labyrinth", "item": "https://circuittrace.app/blog/labyrinth.html"}]}</script>
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Labyrinth</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-orange">New Pack</span>
+        <h1>Labyrinth: 100 levels where the board itself is the puzzle.</h1>
+        <p>📅 5 November 2026 · ⏱ 5 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>For a year, every Circuit Trace board was a square. A 5×5, a 7×7, a 9×9: you could see the whole thing at a glance, and the edges were always where you expected them.</p>
+
+            <p><strong>Labyrinth</strong> breaks that. It's a new pack of 100 levels where the board itself is part of the puzzle. It's free, and you'll find it under <strong>GAME MODES → LABYRINTH</strong>.</p>
+
+            <div class="post-shots">
+                <figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/labyrinth-levels.webp" alt="The Labyrinth level list"><figcaption><strong>10 sectors</strong>MAZE I to MAZE X</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/labyrinth-2.webp" alt="A Labyrinth board shaped like a tower, with walls"><figcaption><strong>Shaped boards</strong>Holes you route around</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/labyrinth.webp" alt="A tall Labyrinth board with holes and glowing walls"><figcaption><strong>Up to 9×14</strong>The final sector</figcaption></figure>
+            </div>
+
+            <h2>Two new things on the board</h2>
+
+            <p>The rules are the ones you know: connect each pair of matching dots, never cross another line, and fill the board. Labyrinth adds two things.</p>
+
+            <ul>
+                <li><strong>Holes.</strong> Some cells simply don't exist. The board takes the shape of a ring, a tower, a castle or a fortress, often with a gap right in the middle. Your lines have to go around it.</li>
+                <li><strong>Walls.</strong> A thin glowing line between two cells. They sit side by side, but no path can step from one to the other. A wall turns two neighbours into strangers.</li>
+            </ul>
+
+            <p>That sounds small. In practice it changes everything, because flow puzzles are all about which cells can reach which. Take away one connection and a colour that had three ways to go suddenly has one.</p>
+
+            <h2>From 5×5 to 9×14</h2>
+
+            <p>The pack starts gently and ends big. Each sector adds a bit of size and a bit of difficulty:</p>
+
+            <div class="post-levels">
+                <div><strong>MAZE I–II</strong><span>5×5 and 6×6 boards, your first walls and corridors</span></div>
+                <div><strong>MAZE III–VI</strong><span>Shaped boards, rings, long halls and dead ends</span></div>
+                <div><strong>MAZE VII–X</strong><span>Towers, deep mazes and 9×14 fortresses</span></div>
+            </div>
+
+            <p>The first four sectors are won as soon as every pair is connected; filling the board on top of that earns you PERFECT. From sector 5 every cell has to be filled. Levels unlock one by one, so you always know what's next.</p>
+
+            <h2>Every level has exactly one answer</h2>
+
+            <p>This was the rule we cared most about. Each Labyrinth level has <strong>exactly one solution</strong>. That matters more than it sounds: it means you never have to guess. If you're stuck, there's always a cell somewhere that can only go one way. Find it, and the next step opens up.</p>
+
+            <p>The walls are what make that possible. Wherever a board could be solved in two ways, a wall closes off the shortcut. So when you see a wall, it's not decoration. It's there because without it, the puzzle would have a second answer.</p>
+
+            <div class="post-tip">
+                <p><strong>💡 Read the walls first.</strong> Before you draw anything, look at where the walls are and ask why they're there. A wall usually blocks the route that looks most obvious, which tells you which way a line really has to go.</p>
+            </div>
+
+            <h2>Five tips for your first mazes</h2>
+
+            <ul>
+                <li><strong>Start at the edges of the holes.</strong> A cell next to a hole has fewer neighbours, so it has fewer choices. Fewer choices means easier deductions.</li>
+                <li><strong>Look for dead ends.</strong> A cell with only one open neighbour must be the end of a line, or the line has to pass straight through. That's often your first move.</li>
+                <li><strong>Narrow passages decide a lot.</strong> If a stretch of board is only one cell wide, only one colour can use it. Work out which one, and two other colours lose that option.</li>
+                <li><strong>Count the cells.</strong> On a fill-every-cell board, every corner of the maze needs a line. If a region is cut off by walls, one of the colours near it has to go in and come back out.</li>
+                <li><strong>Don't fear the big ones.</strong> A 9×14 board looks scary, but the holes split it into smaller rooms. Solve it room by room.</li>
+            </ul>
+
+            <h2>Why we made it</h2>
+
+            <p>After 500 levels on square boards, we wanted something that felt different in your hands, not just harder. Shaped boards do that. The moment the edge of the board stops being a straight line, you start looking at the puzzle in a new way.</p>
+
+            <p>Labyrinth is also the first pack built entirely with the new puzzle solver we wrote about in <a href="smarter-puzzles.html">Why our puzzles got harder</a>. Every level was rated on how much thinking it takes, so the difficulty really does climb from MAZE I to MAZE X.</p>
+
+            <hr>
+
+            <p>See all eight ways to play on the <a href="../modes.html">Game Modes page</a>, or <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">update Circuit Trace</a> and open GAME MODES → LABYRINTH.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+</body>
+</html>
