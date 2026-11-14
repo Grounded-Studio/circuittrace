@@ -44,7 +44,7 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/</loc>
-        <lastmod>2026-11-05</lastmod>
+        <lastmod>2026-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -185,5 +185,17 @@
         <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/cube-3d-puzzle.html</loc>
+        <lastmod>2026-11-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/how-to-solve-flow-puzzles.html</loc>
+        <lastmod>2026-11-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
     </url>
 </urlset>

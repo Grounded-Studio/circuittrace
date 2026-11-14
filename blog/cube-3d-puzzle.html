@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cube Puzzle: Flow Puzzles on All Six Sides | Circuit Trace</title>
+    <meta name="description" content="Play flow puzzles on a 3D cube: 100 free levels where lines wrap around all six sides. How the 3D Cube mode works, how to turn the cube, and tips to solve it.">
+    <link rel="canonical" href="https://circuittrace.app/blog/cube-3d-puzzle.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="3D Cube: flow puzzles on all six sides of a cube">
+    <meta property="og:description" content="Play flow puzzles on a 3D cube: 100 free levels where lines wrap around all six sides. How the 3D Cube mode works, how to turn the cube, and tips to solve it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/cube-3d-puzzle.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "3D Cube: flow puzzles on all six sides of a cube", "description": "Play flow puzzles on a 3D cube: 100 free levels where lines wrap around all six sides. How the 3D Cube mode works, how to turn the cube, and tips to solve it.", "image": "https://circuittrace.app/assets/img/cube.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-14", "dateModified": "2026-11-14", "mainEntityOfPage": "https://circuittrace.app/blog/cube-3d-puzzle.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "3D Cube", "item": "https://circuittrace.app/blog/cube-3d-puzzle.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is there a 3D cube puzzle game for Android?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Circuit Trace has a free 3D Cube mode with 100 flow puzzles on all six sides of a cube. It is part of the free Circuit Trace game on Google Play."}}, {"@type": "Question", "name": "How do you turn the cube?", "acceptedAnswer": {"@type": "Answer", "text": "Swipe an empty spot to turn it a quarter turn. You can also drag a line off the edge towards a hidden side, and the cube rolls round with your line."}}, {"@type": "Question", "name": "Do lines really go around the edges?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A line that reaches the edge of one side carries on to the side next to it, so one colour can wrap around several sides."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261108">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">3D Cube</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-orange">New Mode</span>
+        <h1>3D Cube: flow puzzles on all six sides of a cube.</h1>
+        <p>📅 14 November 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Most flow puzzles live on a flat square. You can see the whole board, the edges are where you expect them, and the corners give you an easy place to start. <strong>3D Cube</strong> takes that board and folds it around a cube.</p>
+
+            <p>It's a free pack of 100 levels in Circuit Trace, and it plays like no other mode in the game. You'll find it under <strong>GAME MODES → 3D CUBE</strong>.</p>
+
+            <div class="post-shots">
+                <figure><img decoding="async" loading="lazy" width="540" height="1136" src="../assets/img/modes-cube.webp" alt="3D Cube in the Circuit Trace game modes list"><figcaption><strong>7 level packs</strong>3D Cube under Game Modes</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/cube.webp" alt="3D Cube puzzle with lines running over the edges of the cube"><figcaption><strong>Six sides</strong>One puzzle</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1136" src="../assets/img/cube-2.webp" alt="A 4×4 3D Cube level partly solved"><figcaption><strong>Up to 4×4</strong>On every side</figcaption></figure>
+            </div>
+
+            <h2>How a 3D cube puzzle works</h2>
+
+            <p>The rules are the classic connect-the-dots rules. Join every pair of matching dots with a line, never let two lines cross, and fill every cell. What changes is the board: each side of the cube is a small grid, and the six sides are joined at their edges.</p>
+
+            <p>Draw a line to the edge of one face and it carries straight on to the next. A dot on the top of the cube can connect to its partner on the side, or all the way round on the back. The way out of one face is often on another.</p>
+
+            <h2>Turning the cube</h2>
+
+            <p>You only ever see three sides at once, so turning is part of solving:</p>
+
+            <ul>
+                <li><strong>Swipe an empty spot</strong> to give the cube a quarter turn.</li>
+                <li><strong>Drag a line off the edge</strong> towards a side you can't see. The cube rolls that side into view and your line goes with it, in one motion, without lifting your finger.</li>
+            </ul>
+
+            <p>The first level shows you both with a little hand that does the gesture for you. After that you're on your own.</p>
+
+            <h2>Why it feels harder than a flat board</h2>
+
+            <p>On a square board, the edges do a lot of the work. A dot in a corner has only two ways to go, and lines along the border are almost never wrong. Those are the first moves most players make.</p>
+
+            <p>A cube has <strong>no edges and no corners to lean on</strong>. Every cell has exactly four neighbours, wherever it is. That means there is no obvious place to start. You have to look for other clues: dots that sit close together, colours with only one sensible route, and the tight spots where three sides of the cube meet.</p>
+
+            <div class="post-tip">
+                <p><strong>💡 Turn before you draw.</strong> Give the cube a full look round before your first line. A dot on the back is easy to forget, and it often decides which way the colours on the front have to go.</p>
+            </div>
+
+            <h2>From 3×3 to 4×4</h2>
+
+            <div class="post-levels">
+                <div><strong>CUBE I–V</strong><span>3×3 on every side, 54 cells, from 11 colours down to 6</span></div>
+                <div><strong>CUBE VI–VII</strong><span>4×4 on every side, 96 cells, 12 colours</span></div>
+                <div><strong>CUBE VIII–X</strong><span>Fewer colours, longer lines that wrap around several sides</span></div>
+            </div>
+
+            <p>Fewer colours sounds easier, but it's the opposite. With fewer lines, each one has to travel further, and a single colour may wrap around three or four sides of the cube. Every level is built around one intended solution and was rated by the same puzzle solver we use for every pack, so the difficulty climbs steadily from CUBE I to CUBE X.</p>
+
+            <h2>Five tips for your first cubes</h2>
+
+            <ul>
+                <li><strong>Find the corners of the cube.</strong> Where three sides meet, three cells touch each other. Those spots are crowded, so decide early which lines go through them.</li>
+                <li><strong>Pairs on the same face first.</strong> A colour with both dots on one side usually has the shortest, most certain route. Draw it and the board gets smaller.</li>
+                <li><strong>Follow a line around.</strong> When a colour goes over an edge, turn the cube with it. Seeing the whole route at once is easier than remembering it.</li>
+                <li><strong>Every cell counts.</strong> A level is only solved when the whole cube is filled. If a pocket of empty cells forms on the back, a nearby line has to sweep through it.</li>
+                <li><strong>Use a hint if you're stuck.</strong> If the hint lands on a side you can't see, the cube turns to show it to you.</li>
+            </ul>
+
+            <h2>Free, and the newest of seven packs</h2>
+
+            <p>3D Cube joins the main campaign, Classic, Diodes, Portals, Arcade and <a href="labyrinth.html">Labyrinth</a>. That's 700+ puzzles in total, all free to play. The full rules and how each sector ramps up are on the <a href="../modes/3d-cube.html">3D Cube page</a>.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Get Circuit Trace on Google Play</a> and open GAME MODES → 3D CUBE.</p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>Is there a 3D cube puzzle game for Android?</h3>
+            <p>Yes. Circuit Trace has a free 3D Cube mode with 100 flow puzzles on all six sides of a cube. It is part of the free Circuit Trace game on Google Play.</p>
+
+            <h3>How do you turn the cube?</h3>
+            <p>Swipe an empty spot to turn it a quarter turn. You can also drag a line off the edge towards a hidden side, and the cube rolls round with your line.</p>
+
+            <h3>Do lines really go around the edges?</h3>
+            <p>Yes. A line that reaches the edge of one side carries on to the side next to it, so one colour can wrap around several sides.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
