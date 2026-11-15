@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
         <loc>https://circuittrace.app/</loc>
-        <lastmod>2026-11-04</lastmod>
+        <lastmod>2026-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/features.html</loc>
-        <lastmod>2026-11-04</lastmod>
+        <lastmod>2026-11-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/modes.html</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/themes.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/editor.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/achievements.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/support.html</loc>
-        <lastmod>2026-11-04</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -50,7 +50,7 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/labyrinth.html</loc>
-        <lastmod>2026-11-05</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -74,61 +74,61 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/fx-packs-neon-circuit-hyper-grid.html</loc>
-        <lastmod>2026-10-28</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/500-handcrafted-puzzles.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/godot-over-unity.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/puzzle-editor-design.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-18</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/short-codes-math.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-18</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/why-one-finger-puzzle.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-18</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/press.html</loc>
-        <lastmod>2026-11-04</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/contact.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-24</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/privacy.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/terms.html</loc>
-        <lastmod>2026-10-26</lastmod>
+        <lastmod>2026-10-18</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
