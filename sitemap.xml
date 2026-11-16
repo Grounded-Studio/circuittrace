@@ -44,7 +44,7 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/</loc>
-        <lastmod>2026-11-14</lastmod>
+        <lastmod>2026-11-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -188,13 +188,13 @@
     </url>
     <url>
         <loc>https://circuittrace.app/blog/cube-3d-puzzle.html</loc>
-        <lastmod>2026-11-14</lastmod>
+        <lastmod>2026-11-16</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://circuittrace.app/blog/how-to-solve-flow-puzzles.html</loc>
-        <lastmod>2026-11-14</lastmod>
+        <lastmod>2026-11-16</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -221,6 +221,36 @@
     </url>
     <url>
         <loc>https://circuittrace.app/puzzle/</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/advanced-flow-puzzle-strategy.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/how-diodes-work.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/how-portals-work.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/best-logic-puzzle-games-android.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/blog/make-your-own-flow-puzzle.html</loc>
         <lastmod>2026-11-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

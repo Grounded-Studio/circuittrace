@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Flow Puzzle Strategy: 8 Techniques for Hard Levels | Circuit Trace</title>
+    <meta name="description" content="Stuck on hard flow puzzles? 8 advanced techniques for big boards: pockets, corners, separation checks, bottlenecks, the fill rule and testing a move safely.">
+    <link rel="canonical" href="https://circuittrace.app/blog/advanced-flow-puzzle-strategy.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Advanced flow puzzle strategy: 8 techniques for the hardest boards">
+    <meta property="og:description" content="Stuck on hard flow puzzles? 8 advanced techniques for big boards: pockets, corners, separation checks, bottlenecks, the fill rule and testing a move safely.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/advanced-flow-puzzle-strategy.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Advanced flow puzzle strategy: 8 techniques for the hardest boards", "description": "Stuck on hard flow puzzles? 8 advanced techniques for big boards: pockets, corners, separation checks, bottlenecks, the fill rule and testing a move safely.", "image": "https://circuittrace.app/assets/img/board-solved.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/blog/advanced-flow-puzzle-strategy.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Advanced flow puzzle strategy", "item": "https://circuittrace.app/blog/advanced-flow-puzzle-strategy.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What makes a flow puzzle hard?", "acceptedAnswer": {"@type": "Answer", "text": "Board size, the number of colours and the rule that every cell must be filled. Hard puzzles have few forced moves at the start, so you have to reason about what cannot be true."}}, {"@type": "Question", "name": "Is it cheating to try moves?", "acceptedAnswer": {"@type": "Answer", "text": "No. Trying a move and following what it forces is a normal logical technique. The goal is to prove a move wrong, not to stumble on the answer."}}, {"@type": "Question", "name": "How do I know if a region is a dead end?", "acceptedAnswer": {"@type": "Answer", "text": "Count its openings and the dots inside it. A region without dots needs at least two openings for a line to pass through and fill it."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="../daily/">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../daily/">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Advanced flow puzzle strategy</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-cyan">Guide</span>
+        <h1>Advanced flow puzzle strategy: 8 techniques for the hardest boards.</h1>
+        <p>📅 16 November 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>You know the basics: start at the edges, make the forced moves, never leave a dead end. If not, start with our <a href="how-to-solve-flow-puzzles.html">beginner guide to flow puzzles</a>. This one is for the boards where those tips run out: 9×9 and 10×10 grids, eight or more colours, and levels where every cell has to be filled.</p>
+
+            <p>Every technique below is a way of asking the same question: <em>what can't be true?</em> On a hard board you rarely see the right move directly. You see the wrong ones, and the right move is what is left.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/board-solved.webp" alt="A large flow puzzle with almost every line drawn"><figcaption><strong>Big boards</strong>Where these tips matter</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/mode-expert.webp" alt="An Expert level in Circuit Trace"><figcaption><strong>Expert</strong>Hard levels, every cell filled</figcaption></figure></div>
+
+            <h2>1. Read the empty regions, not the lines</h2>
+
+            <p>Once a few lines are down, the board splits into empty regions. Look at each one as its own small puzzle. Which dots are inside it? Which lines can still get in, and through how many openings? A region with no dots and no way in is already a mistake. Spotting that early saves you from finishing a line and only then noticing that a corner can never be reached.</p>
+
+            <h2>2. The one-door pocket rule</h2>
+
+            <p>A pocket of empty cells with only one opening can't be filled by a line passing through, because a passing line needs a way in and a way out. So on a fill-every-cell level, a one-door pocket must contain a line end: a dot whose line starts or finishes inside it. If no dot is inside, the move that created the pocket was wrong. This rule alone solves a surprising number of "I'm stuck" moments.</p>
+
+            <h2>3. Corners decide themselves</h2>
+
+            <p>An empty corner cell has only two neighbours. Any line that fills it has to use both. The moment one of those two neighbours is taken by a line that can't turn into the corner, the corner is dead, unless a dot sits in it. Work through the corners after every few moves; they are the cheapest cells on the board to check.</p>
+
+            <h2>4. Never separate a pair</h2>
+
+            <p>Before you commit a long line, check every other colour: can its two dots still reach each other? A line that cuts the board in two, with one blue dot on each side, can't be part of the solution. On big boards this is the most common hidden mistake, because the separating line often looks perfectly reasonable on its own.</p>
+
+            <h2>5. Settle bottlenecks by asking who has no choice</h2>
+
+            <p>When two colours both want the same one-cell gap, don't pick the one that looks nicer. Ask which colour has <em>another</em> route. The colour without an alternative gets the gap, and the other one has to go around. If neither has an alternative, an earlier move is wrong.</p>
+
+            <h2>6. Use the fill rule as a weapon</h2>
+
+            <p>On levels where every cell must be filled, empty space is not free space. A long corridor along the edge has to be used by somebody. Count which lines could reach it. If only one colour can, that colour goes there, even if its dots are right next to each other. Short, lazy connections are often wrong on fill levels for exactly this reason.</p>
+
+            <h2>7. Long pairs first, short pairs last</h2>
+
+            <p>Pairs whose dots are far apart have the fewest sensible routes once the board fills up, so they constrain everything else. Short pairs can usually squeeze in at the end. When you're unsure where to start, sketch the route of the longest pair around the outside and see what it leaves behind.</p>
+
+            <h2>8. Test a move, then follow it a few steps</h2>
+
+            <p>Sometimes you have to try something. Do it with a plan: make one move, then follow only the moves it forces, three or four steps deep. If that chain ends in a dead end, a separated pair or a sealed pocket, the move was wrong and the other option is right. Undo and take it. This is logic, not guessing: you are proving a move false. Our solver does the same thing when it rates how hard a level is.</p>
+
+            <h2>Mechanics change the questions</h2>
+
+            <ul>
+                <li><strong>Diodes</strong> fix the direction a line leaves a cell, which turns many open questions into forced moves. See <a href="how-diodes-work.html">how diodes work</a>.</li>
+                <li><strong>Portals</strong> make two distant cells neighbours, so a pocket can have a hidden door. See <a href="how-portals-work.html">how portals work</a>.</li>
+                <li><strong>A cube</strong> has no edges or corners, so rules 2 and 3 matter less and region reading matters more. See <a href="cube-3d-puzzle.html">solving 3D cube puzzles</a>.</li>
+            </ul>
+
+            <h2>Where to practise</h2>
+
+            <p>The <a href="../daily/">daily flow puzzle</a> in your browser is a good warm-up: one board a day, the same one everybody gets. For real practice on big boards, Circuit Trace's <a href="../modes/classic.html">Classic</a> pack ends on 10×10 grids, <a href="../modes/expert.html">Expert</a> drops you into a random hard level, and <a href="../modes/arcade.html">Arcade</a> stacks every mechanic at once.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Play Circuit Trace free on Google Play: 700+ flow puzzles, from 5×5 warm-ups to 10×10 fill-every-cell boards.</a></p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>What makes a flow puzzle hard?</h3>
+            <p>Board size, the number of colours and the rule that every cell must be filled. Hard puzzles have few forced moves at the start, so you have to reason about what cannot be true.</p>
+
+            <h3>Is it cheating to try moves?</h3>
+            <p>No. Trying a move and following what it forces is a normal logical technique. The goal is to prove a move wrong, not to stumble on the answer.</p>
+
+            <h3>How do I know if a region is a dead end?</h3>
+            <p>Count its openings and the dots inside it. A region without dots needs at least two openings for a line to pass through and fill it.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

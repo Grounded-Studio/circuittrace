@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Diodes Work in Circuit Trace: One-Way Arrow Puzzles | Circuit Trace</title>
+    <meta name="description" content="What diodes do in Circuit Trace, how coloured and neutral diodes differ, and 6 tips for solving one-way arrow flow puzzles, plus how to place them in the editor.">
+    <link rel="canonical" href="https://circuittrace.app/blog/how-diodes-work.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="How diodes work: one-way arrows in flow puzzles">
+    <meta property="og:description" content="What diodes do in Circuit Trace, how coloured and neutral diodes differ, and 6 tips for solving one-way arrow flow puzzles, plus how to place them in the editor.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/how-diodes-work.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How diodes work: one-way arrows in flow puzzles", "description": "What diodes do in Circuit Trace, how coloured and neutral diodes differ, and 6 tips for solving one-way arrow flow puzzles, plus how to place them in the editor.", "image": "https://circuittrace.app/assets/img/mode-diodes.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/blog/how-diodes-work.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "How diodes work", "item": "https://circuittrace.app/blog/how-diodes-work.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a diode do in Circuit Trace?", "acceptedAnswer": {"@type": "Answer", "text": "It is a one-way cell. A line can enter it from any side, but it has to leave in the direction of the arrow."}}, {"@type": "Question", "name": "What is the difference between a coloured and a white diode?", "acceptedAnswer": {"@type": "Answer", "text": "A white (neutral) diode lets any colour through. A coloured diode only lets the line of its own colour through."}}, {"@type": "Question", "name": "Can a line end on a diode?", "acceptedAnswer": {"@type": "Answer", "text": "No. A diode never sits on a dot, so a line always passes through it."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="../daily/">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../daily/">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">How diodes work</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-yellow">Guide</span>
+        <h1>How diodes work: one-way arrows in flow puzzles.</h1>
+        <p>📅 16 November 2026 · ⏱ 5 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>A diode is the simplest extra rule in Circuit Trace, and one of the strongest. It's a cell with an arrow on it. It looks like a restriction, but once you know how to read it, an arrow is mostly a gift: it tells you where a line goes next.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/mode-diodes.webp" alt="A Circuit Trace level with one-way diode arrows"><figcaption><strong>Diodes</strong>Arrow cells on the board</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/game-quantum.webp" alt="A level with diodes, portals, stars and checkpoints together"><figcaption><strong>Mixed</strong>Diodes with other pieces</figcaption></figure></div>
+
+            <h2>The rule</h2>
+
+            <p>A line may <strong>enter</strong> a diode from any side, but it must <strong>leave</strong> in the direction the arrow points. That's all. The arrow says nothing about where the line comes from, only where it goes after the diode cell.</p>
+
+            <p>Two details are worth knowing:</p>
+            <ul>
+                <li><strong>Neutral diodes</strong> (white arrows) let any colour through.</li>
+                <li><strong>Coloured diodes</strong> only accept the line of their own colour. Every other colour is stopped before it can enter.</li>
+            </ul>
+            <p>A diode never sits on a dot, so a line always passes <em>through</em> a diode rather than starting or ending on it.</p>
+
+            <h2>Six tips for reading arrows</h2>
+
+            <h3>1. The cell the arrow points at is almost decided</h3>
+            <p>Whatever line uses the diode continues into the next cell in the arrow's direction. If you know which colour goes through the diode, you already know two cells of its route.</p>
+
+            <h3>2. Only the exit is fixed</h3>
+            <p>The most common mistake is treating an arrow like a corridor. A line can come in from behind the arrow or from either side. Keep all three entries in mind.</p>
+
+            <h3>3. An arrow pointing at a dot</h3>
+            <p>If an arrow points straight at a dot, the line through that diode will very often be that dot's colour, arriving at the end of its route. Try that first.</p>
+
+            <h3>4. Arrows near the edge</h3>
+            <p>An arrow that points along the edge of the board pushes its line along the rim, where there's little room to turn. Follow it a few cells and see where it is forced to go.</p>
+
+            <h3>5. Coloured diodes are signposts</h3>
+            <p>A coloured diode tells you that this colour passes through this cell, and in which direction it leaves. That's often enough to sketch most of the route between its two dots.</p>
+
+            <h3>6. On fill levels, every arrow is used</h3>
+            <p>When every cell has to be filled, no diode can be skipped. Some line has to go through each one, in its direction. Ask "who can reach this arrow from a legal side?" and you often get a single answer.</p>
+
+            <h2>A worked example</h2>
+
+            <p>Picture a 6×6 board with a white arrow in the middle of the top row, pointing down. Which line uses it? It can't be a line running along the top edge from left to right, because that line would have to turn down at the arrow and leave the edge. So the line through the arrow arrives from the left or the right (there is nothing above it) and then heads down into the board. Now look at the cell below the arrow: it belongs to the same line. Two cells decided before you've drawn anything, and the top row is split into a left half and a right half that other colours have to deal with separately. That is how arrows work: one small rule, several free moves.</p>
+
+            <h2>Where you'll meet diodes</h2>
+
+            <p>The <a href="../modes/diodes.html">Diodes</a> pack has 100 levels on boards from 6×6 to 10×10. It starts with one or two arrows per level and ends with around six, and from sector 5 every cell has to be filled. Diodes also show up in the <a href="../modes/campaign.html">campaign</a> and in <a href="../modes/arcade.html">Arcade</a>, mixed with stars and checkpoints.</p>
+
+            <h2>Placing diodes in the editor</h2>
+
+            <p>In the <a href="../editor.html">Puzzle Editor</a>, pick the ▶ DIODE tool and tap a cell. Tap the same diode again to rotate it: right, down, left, up, and one more tap removes it. To make a coloured diode, pick a colour first and then place the diode. The editor won't let you put a diode on a dot. Read the full walkthrough in <a href="make-your-own-flow-puzzle.html">how to make your own flow puzzle</a>.</p>
+
+            <p>Want to see the difference an arrow makes? A friend can play your puzzle code in the browser on the <a href="../puzzle/">play-a-code page</a>, diodes included.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Get Circuit Trace free on Google Play: 100 diode levels, plus 600 more puzzles in 6 other packs.</a></p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>What does a diode do in Circuit Trace?</h3>
+            <p>It is a one-way cell. A line can enter it from any side, but it has to leave in the direction of the arrow.</p>
+
+            <h3>What is the difference between a coloured and a white diode?</h3>
+            <p>A white (neutral) diode lets any colour through. A coloured diode only lets the line of its own colour through.</p>
+
+            <h3>Can a line end on a diode?</h3>
+            <p>No. A diode never sits on a dot, so a line always passes through it.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

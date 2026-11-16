@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Portals Work in Circuit Trace: Teleport Flow Puzzles | Circuit Trace</title>
+    <meta name="description" content="How portals work in Circuit Trace: linked rings that let a line jump across the board. The rule, how to use them on a phone, and 6 tips for portal flow puzzles.">
+    <link rel="canonical" href="https://circuittrace.app/blog/how-portals-work.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="How portals work: jumping lines across the board">
+    <meta property="og:description" content="How portals work in Circuit Trace: linked rings that let a line jump across the board. The rule, how to use them on a phone, and 6 tips for portal flow puzzles.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/how-portals-work.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How portals work: jumping lines across the board", "description": "How portals work in Circuit Trace: linked rings that let a line jump across the board. The rule, how to use them on a phone, and 6 tips for portal flow puzzles.", "image": "https://circuittrace.app/assets/img/mode-portals.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/blog/how-portals-work.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "How portals work", "item": "https://circuittrace.app/blog/how-portals-work.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I use a portal in Circuit Trace?", "acceptedAnswer": {"@type": "Answer", "text": "Draw your line onto a portal, lift your finger, then tap the linked portal and keep drawing from there."}}, {"@type": "Question", "name": "Do the cells between two portals belong to the line?", "acceptedAnswer": {"@type": "Answer", "text": "No. Only the two portal cells are connected. The cells in between stay free for other colours."}}, {"@type": "Question", "name": "Do I have to use every portal?", "acceptedAnswer": {"@type": "Answer", "text": "In the Portals pack, yes: every portal is part of a route. In puzzles from the editor that depends on the creator."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="../daily/">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../daily/">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">How portals work</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-magenta">Guide</span>
+        <h1>How portals work: jumping lines across the board.</h1>
+        <p>📅 16 November 2026 · ⏱ 5 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Portals break the one thing every flow puzzle takes for granted: that a line has to crawl from cell to cell. Two linked rings make two far-apart cells neighbours. Draw into one, carry on from the other, and everything in between stays free.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/mode-portals.webp" alt="A Circuit Trace level with linked portal rings"><figcaption><strong>Portals</strong>Linked rings on the board</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/game-warp.webp" alt="A line jumping through a portal pair"><figcaption><strong>The jump</strong>One line, two places</figcaption></figure></div>
+
+            <h2>The rule</h2>
+
+            <p>Portals come in linked pairs. When your line reaches one portal, it may continue from its twin, as if the two cells were next to each other. On a phone that works like this: draw your line onto the portal, lift your finger, then tap the linked portal and keep drawing from there.</p>
+
+            <p>A few details:</p>
+            <ul>
+                <li>The jump only connects the two portal cells. The cells between them are not part of the line, so other colours can use them.</li>
+                <li>A portal cell is still a normal cell too: a line can pass over it without jumping.</li>
+                <li>In the Portals pack, every portal is built into the route of some line. If a level has a portal, you'll need it.</li>
+            </ul>
+
+            <h2>Six tips for portal puzzles</h2>
+
+            <h3>1. Find the colour that can't get there on foot</h3>
+            <p>Look for a pair whose dots are clearly cut off from each other, by other dots, walls of lines or the edge. That colour almost certainly needs the portal.</p>
+
+            <h3>2. A portal is a shortcut that splits the board</h3>
+            <p>The stretch a line skips becomes room for other colours. Before jumping, look at what the skipped area needs. Sometimes a jump is right precisely because another colour needs the cells it leaves free.</p>
+
+            <h3>3. Check the landing</h3>
+            <p>Look at what's around the exit portal before you jump. A twin in a tight corner leaves only one or two ways to continue, which often decides the rest of the route.</p>
+
+            <h3>4. Pockets can have hidden doors</h3>
+            <p>A pocket of empty cells with one visible opening normally can't be filled by a passing line. With a portal inside, the pocket has a second door, through the twin. Count portals as openings when you read regions.</p>
+
+            <h3>5. Two portal pairs, two different jobs</h3>
+            <p>On boards with two or three portal pairs, each pair usually serves a different colour. Match pairs to colours early; it narrows things down fast.</p>
+
+            <h3>6. Don't forget the walk-over</h3>
+            <p>Because a portal cell is also a normal cell, the line that jumps isn't the only option for it. On fill levels the portal cell itself must still be covered by someone.</p>
+
+            <h2>A worked example</h2>
+
+            <p>Say a red dot sits in the top-left corner and its partner in the bottom-right, with a wall of other colours across the middle. Walking around is impossible. Now notice a portal ring two cells from the red dot and its twin near the bottom-right corner. The plan writes itself: red runs from its dot to the nearby ring, jumps, and finishes from the twin to its partner. Everything in the middle stays free for the other colours, which is usually exactly the space they need. When a level looks blocked, look for the colour whose dots are on opposite sides of the blockage, then find the portal pair that bridges it.</p>
+
+            <h2>Where you'll meet portals</h2>
+
+            <p>The <a href="../modes/portals.html">Portals</a> pack has 100 levels on 6×6 to 10×10 boards. It starts with one portal pair per level, adds a second in sector 4 and a third from sector 8, and from sector 5 every cell has to be filled. Portals also appear in the <a href="../modes/campaign.html">campaign</a>.</p>
+
+            <h2>Placing portals in the editor</h2>
+
+            <p>In the <a href="../editor.html">Puzzle Editor</a>, pick the ◉ PORTAL tool, tap an empty cell, then tap a second empty cell for the other end. The editor links them right away. Bigger grids allow more portal pairs. See <a href="make-your-own-flow-puzzle.html">how to make your own flow puzzle</a> for the full walkthrough, and send the code to a friend: they can <a href="../puzzle/">play it in the browser</a>, portals and all.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Play Circuit Trace free on Google Play: 100 portal levels and 600 more flow puzzles.</a></p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>How do I use a portal in Circuit Trace?</h3>
+            <p>Draw your line onto a portal, lift your finger, then tap the linked portal and keep drawing from there.</p>
+
+            <h3>Do the cells between two portals belong to the line?</h3>
+            <p>No. Only the two portal cells are connected. The cells in between stay free for other colours.</p>
+
+            <h3>Do I have to use every portal?</h3>
+            <p>In the Portals pack, yes: every portal is part of a route. In puzzles from the editor that depends on the creator.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

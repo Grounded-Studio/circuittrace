@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Make Your Own Flow Puzzle in the Editor | Circuit Trace</title>
+    <meta name="description" content="Step-by-step: make your own flow puzzle in the Circuit Trace editor. Place dots, diodes, portals, stars and checkpoints, validate it, share a code and publish it.">
+    <link rel="canonical" href="https://circuittrace.app/blog/make-your-own-flow-puzzle.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="How to make your own flow puzzle in the editor">
+    <meta property="og:description" content="Step-by-step: make your own flow puzzle in the Circuit Trace editor. Place dots, diodes, portals, stars and checkpoints, validate it, share a code and publish it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/make-your-own-flow-puzzle.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to make your own flow puzzle in the editor", "description": "Step-by-step: make your own flow puzzle in the Circuit Trace editor. Place dots, diodes, portals, stars and checkpoints, validate it, share a code and publish it.", "image": "https://circuittrace.app/assets/img/editor.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/blog/make-your-own-flow-puzzle.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Make your own flow puzzle", "item": "https://circuittrace.app/blog/make-your-own-flow-puzzle.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the Circuit Trace puzzle editor free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every editor tool is unlocked from the start, and sharing and publishing are free."}}, {"@type": "Question", "name": "What grid sizes can I use in the editor?", "acceptedAnswer": {"@type": "Answer", "text": "From 5×5 up to 8×8, with up to 8 colour pairs on the biggest board."}}, {"@type": "Question", "name": "How do friends play my puzzle?", "acceptedAnswer": {"@type": "Answer", "text": "Send them the code. In the app they open the Creator, tap PLAY SHARED CODE and paste it. Without the app they can play it on circuittrace.app/puzzle/."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="../daily/">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../daily/">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Make your own flow puzzle</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-primary">Guide</span>
+        <h1>How to make your own flow puzzle in the editor.</h1>
+        <p>📅 16 November 2026 · ⏱ 6 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Solving puzzles is fun. Making one that stumps a friend is better. Circuit Trace has a full <a href="../editor.html">Puzzle Editor</a> built in, with every tool unlocked from the start. Here's how to go from an empty grid to a puzzle code in your group chat.</p>
+
+            <div class="post-shots"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/creator-hub.webp" alt="The Creator hub in Circuit Trace"><figcaption><strong>Creator hub</strong>Make, play and browse</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/editor.webp" alt="The Puzzle Editor with a puzzle in progress"><figcaption><strong>Editor</strong>Dots and pieces</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/editor-share.webp" alt="The share screen with a puzzle code"><figcaption><strong>Share</strong>Your puzzle code</figcaption></figure></div>
+
+            <h2>Step 1: open the editor and pick a size</h2>
+            <p>From the main menu, open the <strong>Creator</strong> and tap <strong>CREATE A PUZZLE</strong>. Choose a grid: 5×5 for a quick puzzle, 6×6 for a standard one, 7×7 for a challenge, or 8×8 for something serious.</p>
+
+            <h2>Step 2: place the dots</h2>
+            <p>With the <strong>● DOTS</strong> tool, tap a colour, then tap two cells to make a pair. You can place up to 8 pairs on the biggest board. The status line tells you how many pairs you've placed and how many more are allowed.</p>
+
+            <h2>Step 3: add pieces (optional)</h2>
+            <ul>
+                <li><strong>▶ DIODE</strong>: tap a cell to place a one-way arrow. Tap it again to rotate it (right, down, left, up), and once more to remove it. Pick a colour first to lock the diode to that pair. More in <a href="how-diodes-work.html">how diodes work</a>.</li>
+                <li><strong>◉ PORTAL</strong>: tap an empty cell, then a second one. The two are linked. More in <a href="how-portals-work.html">how portals work</a>.</li>
+                <li><strong>★ STAR</strong>: tap a cell to place a bonus star, tap again to remove it.</li>
+                <li><strong>◆ CHECK</strong>: pick a colour, then tap a cell. That colour's line must pass through the checkpoint.</li>
+            </ul>
+            <p>Each grid size has a maximum for diodes, portals, stars and checkpoints, and the editor tells you when you hit it.</p>
+
+            <h2>Step 4: validate</h2>
+            <p>Tap <strong>VALIDATE</strong>. The editor runs a real solver on your board. If it says <em>Solvable</em>, you're good. If not, it tells you why: a colour that can't connect, pairs that block each other, a checkpoint that its colour can't reach, or a board that's simply too tangled. Move a dot and try again.</p>
+
+            <h2>Step 5: playtest</h2>
+            <p>Tap <strong>TEST</strong> and play your own puzzle. Solvable isn't the same as fun. If you solved it in three seconds, your friends will too.</p>
+
+            <h2>Step 6: share it</h2>
+            <p>Tap <strong>SHARE</strong>, give your puzzle a name, and you get a code like <code class="mono">CT-D04B5-2Y9G0-C2EGT-V0000-00000-0000B</code>. Copy it, send it to a friend, challenge a friend directly, or publish it to the <strong>Community</strong> so every player can try it and like it. Your puzzles are saved in <strong>MY PUZZLES</strong>, with room for five.</p>
+            <p>Friends who don't have the game yet can paste the code on our <a href="../puzzle/">play-a-code page</a> and solve it in their browser.</p>
+
+            <h2>Five tips for puzzles people love</h2>
+
+            <h3>1. Draw the solution first</h3>
+            <p>Plan the finished board in your head or on paper: long, winding lines that fill the grid. Then place each line's two ends as the dots. Puzzles built this way are always solvable and usually interesting.</p>
+
+            <h3>2. Avoid straight, short pairs</h3>
+            <p>Two dots on the same row with nothing in between connect themselves. They're filler. Pairs that have to bend around each other are where the puzzle lives.</p>
+
+            <h3>3. Make the long line the key</h3>
+            <p>Give one pair a long, surprising route. The best puzzles have one line that feels impossible until it clicks.</p>
+
+            <h3>4. Use pieces to block shortcuts</h3>
+            <p>If testers find an easy route you didn't intend, a single diode or checkpoint can close it off.</p>
+
+            <h3>5. Name it</h3>
+            <p>A name like "Neon Spiral" travels further than "Puzzle #3". It shows up in the share message and in the Community.</p>
+
+            <p>Curious how a whole puzzle fits in one code? Read <a href="short-codes-math.html">the math behind short codes</a>.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Get Circuit Trace free on Google Play and open the Creator: every editor tool is free.</a></p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>Is the Circuit Trace puzzle editor free?</h3>
+            <p>Yes. Every editor tool is unlocked from the start, and sharing and publishing are free.</p>
+
+            <h3>What grid sizes can I use in the editor?</h3>
+            <p>From 5×5 up to 8×8, with up to 8 colour pairs on the biggest board.</p>
+
+            <h3>How do friends play my puzzle?</h3>
+            <p>Send them the code. In the app they open the Creator, tap PLAY SHARED CODE and paste it. Without the app they can play it on circuittrace.app/puzzle/.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
