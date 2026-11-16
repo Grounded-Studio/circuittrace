@@ -928,3 +928,8 @@ footer {
 .mode-link { display: block; padding: 14px 18px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--ink); font-weight: 600; text-decoration: none; }
 .mode-link:hover { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 640px) { .ramp { font-size: .86rem; } .ramp th, .ramp td { padding: 9px 9px; } .ramp th { white-space: normal; } }
+
+/* hero H1 with keyword subline (2026-11-16) */
+.hero h1 .h1-sub { display: block; font-size: .5em; font-weight: 800; letter-spacing: -.015em; margin-top: .2em; color: var(--ink); }
+.hero-slogan { font-size: 1.35rem; font-weight: 700; color: var(--ink); margin: -6px 0 10px; }
+code.mono, .mono { overflow-wrap: anywhere; }
