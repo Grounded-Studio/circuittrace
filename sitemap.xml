@@ -267,4 +267,52 @@
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/3d-kubus-puzzel.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/beste-logische-puzzelspellen-android.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/flow-puzzel-strategie-gevorderd.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/flow-puzzels-oplossen.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/hoe-werken-diodes.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/hoe-werken-portals.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://circuittrace.app/nl/blog/zelf-flow-puzzel-maken.html</loc>
+        <lastmod>2026-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>
