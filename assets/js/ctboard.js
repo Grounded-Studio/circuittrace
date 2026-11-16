@@ -366,7 +366,10 @@
       ctx.beginPath(); ctx.moveTo(q[0], q[1] - r); ctx.lineTo(q[0] + r, q[1]); ctx.lineTo(q[0], q[1] + r); ctx.lineTo(q[0] - r, q[1]); ctx.closePath(); ctx.stroke();
     }
     function resize() {
-      var w = canvas.clientWidth || canvas.width, dpr = window.devicePixelRatio || 1;
+      // CSS decides the on-screen size; the bitmap only follows it, so the
+      // board can never grow past its column.
+      canvas.style.width = '100%'; canvas.style.height = 'auto'; canvas.style.aspectRatio = '1';
+      var w = canvas.getBoundingClientRect().width || 460, dpr = window.devicePixelRatio || 1;
       canvas.width = Math.round(w * dpr); canvas.height = Math.round(w * dpr);
       draw();
     }
