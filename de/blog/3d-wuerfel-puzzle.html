@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Würfel-Rätsel: Flow-Puzzles auf allen sechs Seiten | Circuit Trace</title>
+    <meta name="description" content="Spiele Flow-Puzzles auf einem 3D-Würfel: 100 kostenlose Level, in denen Linien um alle sechs Seiten laufen. So funktioniert der Modus, so drehst du den Würfel, und Tipps zum Lösen.">
+    <link rel="canonical" href="https://circuittrace.app/de/blog/3d-wuerfel-puzzle.html">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/blog/cube-3d-puzzle.html">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/blog/3d-kubus-puzzel.html">
+    <link rel="alternate" hreflang="de" href="https://circuittrace.app/de/blog/3d-wuerfel-puzzle.html">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/blog/cube-3d-puzzle.html">
+    <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="3D-Würfel: Flow-Puzzles auf allen sechs Seiten eines Würfels">
+    <meta property="og:description" content="Spiele Flow-Puzzles auf einem 3D-Würfel: 100 kostenlose Level, in denen Linien um alle sechs Seiten laufen. So funktioniert der Modus, so drehst du den Würfel, und Tipps zum Lösen.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/de/blog/3d-wuerfel-puzzle.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "3D-Würfel: Flow-Puzzles auf allen sechs Seiten eines Würfels", "description": "Spiele Flow-Puzzles auf einem 3D-Würfel: 100 kostenlose Level, in denen Linien um alle sechs Seiten laufen. So funktioniert der Modus, so drehst du den Würfel, und Tipps zum Lösen.", "image": "https://circuittrace.app/assets/img/cube.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-14", "dateModified": "2026-11-14", "mainEntityOfPage": "https://circuittrace.app/de/blog/3d-wuerfel-puzzle.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "3D-Würfel", "item": "https://circuittrace.app/de/blog/3d-wuerfel-puzzle.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Gibt es ein 3D-Würfel-Rätselspiel für Android?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Circuit Trace hat einen kostenlosen 3D-Würfel-Modus mit 100 Flow-Puzzles auf allen sechs Seiten eines Würfels. Er gehört zum kostenlosen Spiel Circuit Trace auf Google Play."}}, {"@type": "Question", "name": "Wie dreht man den Würfel?", "acceptedAnswer": {"@type": "Answer", "text": "Wische über eine leere Stelle, um ihn eine Vierteldrehung zu drehen. Du kannst auch eine Linie über die Kante zu einer verdeckten Seite ziehen, dann rollt der Würfel mit deiner Linie mit."}}, {"@type": "Question", "name": "Laufen Linien wirklich um die Kanten?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Eine Linie, die den Rand einer Seite erreicht, läuft auf der Nachbarseite weiter, eine Farbe kann sich also um mehrere Seiten wickeln."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Start</a></li>
+            <li><a href="../../features.html">Funktionen</a></li>
+            <li><a href="../../modes.html">Modi</a></li><li><a href="../daily/">Tagesrätsel</a></li>
+            <li><a href="../../themes.html">Themen</a></li>
+            <li><a href="../../editor.html">Editor</a></li>
+            <li><a href="../../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Herunterladen →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Start</a><a href="../../features.html">✨ Funktionen</a><a href="../../modes.html">🎮 Modi</a><a href="../daily/">🧩 Tagesrätsel</a><a href="../../themes.html">🌈 Themen &amp; FX</a><a href="../../editor.html">🎨 Rätsel-Editor</a><a href="../../achievements.html">🏆 Erfolge</a><a href="../../support.html">💬 Support</a><a href="../../contact.html">✉️ Kontakt</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Herunterladen</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Brotkrumen"><div class="c"><ol><li><a href="../">Start</a></li><li><a href="./">Blog</a></li><li aria-current="page">3D-Würfel</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-orange">Neuer Modus</span>
+        <h1>3D-Würfel: Flow-Puzzles auf allen sechs Seiten eines Würfels.</h1>
+        <p>📅 14. November 2026 · ⏱ 6 Min. Lesezeit · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Die meisten Flow-Puzzles spielen auf einem flachen Quadrat. Du siehst das ganze Feld, die Ränder sind dort, wo du sie erwartest, und die Ecken sind ein leichter Startpunkt. <strong>3D-Würfel</strong> nimmt dieses Feld und faltet es um einen Würfel.</p>
+
+            <p>Es ist ein kostenloses Paket mit 100 Leveln in Circuit Trace, und es spielt sich wie kein anderer Modus im Spiel. Du findest es unter <strong>GAME MODES → 3D CUBE</strong>.</p>
+
+            <div class="post-shots">
+                <figure><img decoding="async" loading="lazy" width="540" height="1136" src="../../assets/img/modes-cube.webp" alt="3D-Würfel in der Liste der Spielmodi von Circuit Trace"><figcaption><strong>7 Level-Pakete</strong>3D-Würfel unter Game Modes</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/cube.webp" alt="3D-Würfel-Rätsel mit Linien über die Kanten des Würfels"><figcaption><strong>Sechs Seiten</strong>Ein Rätsel</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1136" src="../../assets/img/cube-2.webp" alt="Ein 4×4-Level auf dem 3D-Würfel, teilweise gelöst"><figcaption><strong>Bis 4×4</strong>Auf jeder Seite</figcaption></figure>
+            </div>
+
+            <h2>So funktioniert ein 3D-Würfel-Rätsel</h2>
+
+            <p>Es gelten die klassischen Regeln: Verbinde jedes Paar gleicher Punkte mit einer Linie, lass nie zwei Linien sich kreuzen und fülle jedes Feld. Neu ist das Spielfeld: Jede Würfelseite ist ein kleines Raster, und die sechs Seiten hängen an ihren Kanten zusammen.</p>
+
+            <p>Zieh eine Linie an den Rand einer Seite, und sie läuft direkt auf der nächsten weiter. Ein Punkt oben auf dem Würfel kann mit seinem Partner an der Seite verbunden werden, oder ganz herum auf der Rückseite. Der Ausweg einer Seite liegt oft auf einer anderen.</p>
+
+            <h2>Den Würfel drehen</h2>
+
+            <p>Du siehst immer nur drei Seiten gleichzeitig, Drehen gehört also zum Lösen:</p>
+
+            <ul>
+                <li><strong>Wische über eine leere Stelle</strong>, um den Würfel eine Vierteldrehung zu drehen.</li>
+                <li><strong>Zieh eine Linie über die Kante</strong> zu einer Seite, die du nicht siehst. Der Würfel rollt diese Seite ins Bild und deine Linie geht mit, in einer Bewegung, ohne den Finger zu heben.</li>
+            </ul>
+
+            <p>Das erste Level zeigt dir beides mit einer kleinen Hand, die die Geste vormacht. Danach bist du auf dich gestellt.</p>
+
+            <h2>Warum es sich schwerer anfühlt als ein flaches Feld</h2>
+
+            <p>Auf einem quadratischen Feld erledigen die Ränder viel Arbeit. Ein Punkt in einer Ecke kann nur in zwei Richtungen, und Linien am Rand sind fast nie falsch. Das sind die ersten Züge der meisten Spieler.</p>
+
+            <p>Ein Würfel hat <strong>keine Ränder und keine Ecken zum Anlehnen</strong>. Jedes Feld hat genau vier Nachbarn, wo es auch liegt. Es gibt also keinen naheliegenden Startpunkt. Du suchst nach anderen Hinweisen: Punkte, die nah beieinander liegen, Farben mit nur einer sinnvollen Route und die engen Stellen, an denen drei Würfelseiten zusammentreffen.</p>
+
+            <div class="post-tip">
+                <p><strong>💡 Erst drehen, dann zeichnen.</strong> Schau dir den Würfel rundum an, bevor du die erste Linie ziehst. Einen Punkt auf der Rückseite vergisst man leicht, und er entscheidet oft, in welche Richtung die Farben vorne müssen.</p>
+            </div>
+
+            <h2>Von 3×3 bis 4×4</h2>
+
+            <div class="post-levels">
+                <div><strong>CUBE I–V</strong><span>3×3 auf jeder Seite, 54 Felder, von 11 Farben runter auf 6</span></div>
+                <div><strong>CUBE VI–VII</strong><span>4×4 auf jeder Seite, 96 Felder, 12 Farben</span></div>
+                <div><strong>CUBE VIII–X</strong><span>Weniger Farben, längere Linien, die sich um mehrere Seiten wickeln</span></div>
+            </div>
+
+            <p>Weniger Farben klingt leichter, ist aber umgekehrt. Mit weniger Linien muss jede weiter laufen, und eine einzige Farbe kann sich um drei oder vier Würfelseiten wickeln. Jedes Level ist um eine vorgesehene Lösung gebaut und vom selben Solver bewertet wie jedes Paket, die Schwierigkeit steigt also gleichmäßig von CUBE I bis CUBE X.</p>
+
+            <h2>Fünf Tipps für deine ersten Würfel</h2>
+
+            <ul>
+                <li><strong>Finde die Ecken des Würfels.</strong> Wo drei Seiten zusammentreffen, berühren sich drei Felder. Dort ist es eng, also entscheide früh, welche Linien hindurchgehen.</li>
+                <li><strong>Erst Paare auf derselben Seite.</strong> Eine Farbe mit beiden Punkten auf einer Seite hat meist die kürzeste, sicherste Route. Zeichne sie, und das Feld wird kleiner.</li>
+                <li><strong>Folge einer Linie herum.</strong> Geht eine Farbe über eine Kante, dreh den Würfel mit. Die ganze Route auf einmal zu sehen ist leichter, als sie sich zu merken.</li>
+                <li><strong>Jedes Feld zählt.</strong> Ein Level ist erst gelöst, wenn der ganze Würfel gefüllt ist. Entsteht auf der Rückseite eine Gruppe leerer Felder, muss eine Linie in der Nähe hindurch.</li>
+                <li><strong>Nutze einen Hinweis, wenn du feststeckst.</strong> Landet der Hinweis auf einer Seite, die du nicht siehst, dreht sich der Würfel, um sie dir zu zeigen.</li>
+            </ul>
+
+            <h2>Kostenlos, und das neueste von sieben Paketen</h2>
+
+            <p>3D-Würfel ergänzt die Hauptkampagne, Klassisch, Dioden, Portale, Arcade und <a href="../../blog/labyrinth.html">Labyrinth</a>. Zusammen über 700 Rätsel, alle kostenlos spielbar. Die vollständigen Regeln und wie jeder Sektor ansteigt, stehen auf der <a href="../../modes/3d-cube.html">3D-Würfel-Seite</a> (Englisch).</p>
+
+            <p>Mehr Strategie: Der <a href="flow-puzzle-strategie-fortgeschritten.html">Leitfaden für Fortgeschrittene</a> erklärt, wie man Bereiche liest und Züge testet, beides auf einem Würfel besonders nützlich. Zum schnellen Aufwärmen spielst du das <a href="../daily/">Tagesrätsel</a> im Browser.</p>
+
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Hol dir Circuit Trace auf Google Play</a> und öffne GAME MODES → 3D CUBE.</p>
+
+            <h2>Häufige Fragen</h2>
+
+            <h3>Gibt es ein 3D-Würfel-Rätselspiel für Android?</h3>
+            <p>Ja. Circuit Trace hat einen kostenlosen 3D-Würfel-Modus mit 100 Flow-Puzzles auf allen sechs Seiten eines Würfels. Er gehört zum kostenlosen Spiel Circuit Trace auf Google Play.</p>
+
+            <h3>Wie dreht man den Würfel?</h3>
+            <p>Wische über eine leere Stelle, um ihn eine Vierteldrehung zu drehen. Du kannst auch eine Linie über die Kante zu einer verdeckten Seite ziehen, dann rollt der Würfel mit deiner Linie mit.</p>
+
+            <h3>Laufen Linien wirklich um die Kanten?</h3>
+            <p>Ja. Eine Linie, die den Rand einer Seite erreicht, läuft auf der Nachbarseite weiter, eine Farbe kann sich also um mehrere Seiten wickeln.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt="Circuit-Trace-Logo"><p class="foot-name">Circuit Trace</p><p>Minimalistisches Flow-Puzzle von Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Produkt</p><ul><li><a href="../../features.html">Funktionen</a></li><li><a href="../../modes.html">Spielmodi</a></li><li><a href="../../themes.html">Themen &amp; FX</a></li><li><a href="../../editor.html">Rätsel-Editor</a></li><li><a href="../../achievements.html">Erfolge</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Herunterladen</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Infos</p><ul><li><a href="../../support.html">Support &amp; FAQ</a></li><li><a href="../../press.html">Pressekit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Rechtliches</p><ul><li><a href="../../privacy.html">Datenschutz</a></li><li><a href="../../terms.html">Nutzungsbedingungen</a></li><li><a href="../../contact.html">Kontakt</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio · <a href="../../blog/cube-3d-puzzle.html" class="lang-switch" hreflang="en" lang="en">English</a> · <a href="../../nl/blog/3d-kubus-puzzel.html" class="lang-switch" hreflang="nl" lang="nl">Nederlands</a></div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

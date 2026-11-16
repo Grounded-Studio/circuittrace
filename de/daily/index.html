@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tägliches Flow-Puzzle: kostenlos online Punkte verbinden | Circuit Trace</title>
+    <meta name="description" content="Spiele jeden Tag ein kostenloses Flow-Puzzle im Browser: Verbinde die farbigen Punkte, ohne dass sich Linien kreuzen. Jeden Tag ein neues Logikrätsel, dasselbe wie in der Circuit-Trace-App. Kein Konto nötig.">
+    <link rel="canonical" href="https://circuittrace.app/de/daily/">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/daily/">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/daily/">
+    <link rel="alternate" hreflang="de" href="https://circuittrace.app/de/daily/">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/daily/">
+    <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
+    <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuittrace.app/de/daily/">
+    <meta property="og:title" content="Circuit Trace Daily: jeden Tag ein kostenloses Flow-Puzzle">
+    <meta property="og:description" content="Spiele jeden Tag ein kostenloses Flow-Puzzle im Browser: Verbinde die farbigen Punkte, ohne dass sich Linien kreuzen. Jeden Tag ein neues Logikrätsel, dasselbe wie in der Circuit-Trace-App. Kein Konto nötig.">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261116b">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Circuit Trace Tagesrätsel", "url": "https://circuittrace.app/daily/", "applicationCategory": "GameApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "description": "Spiele jeden Tag ein kostenloses Flow-Puzzle im Browser: Verbinde die farbigen Punkte, ohne dass sich Linien kreuzen. Jeden Tag ein neues Logikrätsel, dasselbe wie in der Circuit-Trace-App. Kein Konto nötig.", "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wann gibt es ein neues Tagesrätsel?", "acceptedAnswer": {"@type": "Answer", "text": "Jeden Tag um Mitternacht, deine Ortszeit. Alle auf der Welt bekommen am selben Datum dasselbe Rätsel."}}, {"@type": "Question", "name": "Ist es dasselbe Rätsel wie in der App?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Das Web-Rätsel ist die heutige Tages-Challenge aus der Circuit-Trace-App, erzeugt vom selben Generator mit demselben Tages-Seed."}}, {"@type": "Question", "name": "Brauche ich ein Konto?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Es gibt keine Anmeldung und keine Tracking-Cookies. Deine Zeit und Serie werden nur in diesem Browser gespeichert."}}, {"@type": "Question", "name": "Wie teile ich mein Ergebnis?", "acceptedAnswer": {"@type": "Answer", "text": "Tippe nach dem Lösen auf Ergebnis teilen. Du bekommst eine kurze Zeile mit der Rätselnummer und deiner Zeit, ohne etwas zu verraten."}}, {"@type": "Question", "name": "Wo spiele ich mehr Rätsel?", "acceptedAnswer": {"@type": "Answer", "text": "Circuit Trace für Android hat über 700 Rätsel in 9 Spielmodi, mit Portalen, Dioden, Labyrinth und dem 3D-Würfel, plus einen Rätsel-Editor. Kostenlos auf Google Play."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Tagesrätsel", "item": "https://circuittrace.app/de/daily/"}]}</script>
+    <style>
+    [hidden] { display: none !important; }
+    .daily-wrap { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); gap: 48px; align-items: start; }
+    .daily-bar { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; font-weight: 700; }
+    .daily-bar .num { font-size: 1.15rem; }
+    .daily-bar .time { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; }
+    #dBoard { display: block; width: 100%; aspect-ratio: 1; border-radius: 18px; touch-action: none; cursor: pointer;
+              box-shadow: 0 18px 50px rgba(15, 23, 42, .25); background: #0B1022; }
+    .daily-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--ink-soft); }
+    .daily-result { margin-top: 20px; background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: center; }
+    .daily-result .big { font-size: 2.6rem; font-weight: 900; line-height: 1.1; font-family: 'JetBrains Mono', monospace; }
+    .daily-result p { margin: 8px 0; color: var(--ink-soft); }
+    .daily-result .streak { font-weight: 700; color: var(--ink); }
+    .daily-cta { margin-top: 20px; padding: 24px; border-radius: var(--radius-lg); background: #0F172A; color: #fff; }
+    .daily-cta h2 { color: #fff; font-size: 1.35rem; margin-bottom: 8px; }
+    .daily-cta p { color: rgba(255,255,255,.8); margin-bottom: 16px; }
+    .daily-rules ol { padding-left: 22px; display: grid; gap: 8px; }
+    @media (max-width: 860px) { .daily-wrap { grid-template-columns: 1fr; gap: 32px; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Start</a></li>
+            <li><a href="../../features.html">Funktionen</a></li>
+            <li><a href="../../modes.html">Modi</a></li><li><a href="./" class="active">Tagesrätsel</a></li>
+            <li><a href="../../themes.html">Themen</a></li>
+            <li><a href="../../editor.html">Editor</a></li>
+            <li><a href="../../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Herunterladen →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Start</a><a href="../../features.html">✨ Funktionen</a><a href="../../modes.html">🎮 Modi</a><a href="./">🧩 Tagesrätsel</a><a href="../../themes.html">🌈 Themen &amp; FX</a><a href="../../editor.html">🎨 Rätsel-Editor</a><a href="../../achievements.html">🏆 Erfolge</a><a href="../../support.html">💬 Support</a><a href="../../contact.html">✉️ Kontakt</a><a href="../../press.html">📰 Presse</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Herunterladen</a>
+</div>
+
+
+
+<nav class="breadcrumbs" aria-label="Brotkrumen"><div class="c"><ol><li><a href="../">Start</a></li><li aria-current="page">Tagesrätsel</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-primary">Kostenlos · jeden Tag neu</span>
+        <h1>Tägliches Flow-Puzzle</h1>
+        <p>Verbinde die Punkte, kreuze keine Linien. Jeden Tag ein kostenloses Logikrätsel, dasselbe wie die heutige Tages-Challenge in der Circuit-Trace-App.</p>
+    </div>
+</header>
+
+<section class="section" style="padding-top:8px;">
+    <div class="c daily-wrap">
+        <div>
+            <div class="daily-bar"><span class="num">Tagesrätsel <span id="dNum"></span></span><span class="time" id="dTime">0:00</span></div>
+            <canvas id="dBoard" width="460" height="460" role="img" aria-label="Das heutige Spielfeld, 6 mal 6. Ziehe von einem Punkt aus, um eine Linie zu zeichnen."></canvas>
+            <div class="daily-foot"><span id="dStatus">Heutiges Rätsel wird geladen…</span><button class="btn btn-ghost btn-sm" id="dReset" type="button">Feld leeren</button></div>
+            <p id="dMissing" hidden>Spiel das heutige Rätsel in der App: <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Circuit Trace auf Google Play</a>.</p>
+
+            <div class="daily-result" id="dResult" hidden>
+                <p>Gelöst in</p>
+                <div class="big" id="dResTime"></div>
+                <p id="dResExtra"></p>
+                <p class="streak" id="dStreak"></p>
+                <button class="btn btn-primary" id="dShare" type="button">Ergebnis teilen</button>
+                <p id="dShareMsg" aria-live="polite"></p>
+                <p>Nächstes Rätsel in <strong id="dNext"></strong></p>
+            </div>
+
+            <div class="daily-cta">
+                <h2>Mehr als ein Rätsel pro Tag?</h2>
+                <p>Über 700 Rätsel, 3D-Würfel, Portale &amp; Dioden → Hol dir Circuit Trace auf Google Play. Kostenlos und offline spielbar.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore" style="background:#fff;color:#0F172A;"><svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/><path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/><path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/><path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/></svg><div class="pstext"><small style="color:#0F172A;">Jetzt bei</small><span style="color:#0F172A;">Google Play</span></div></a>
+            </div>
+        </div>
+
+        <div class="prose daily-rules">
+            <h2>So wird gespielt</h2>
+            <ol>
+                <li>Ziehe von einem farbigen Punkt zum anderen Punkt derselben Farbe.</li>
+                <li>Linien dürfen sich nicht kreuzen oder überlappen: Eine Linie stoppt, wo eine andere liegt.</li>
+                <li>Verbinde jedes Paar, um das Rätsel zu lösen. Fülle jedes Feld für eine perfekte Lösung.</li>
+                <li>Ziehe eine Linie zurück, um etwas rückgängig zu machen, setze am Ende einer unfertigen Linie fort oder beginne neu an einem Punkt.</li>
+            </ol>
+            <p>Die Uhr startet mit deiner ersten Linie. Deine Zeit und deine Serie bleiben nur in diesem Browser: kein Konto, keine Cookies.</p>
+            <h2>Über das Tagesrätsel</h2>
+                <h3>Wann gibt es ein neues Tagesrätsel?</h3>
+                <p>Jeden Tag um Mitternacht, deine Ortszeit. Alle auf der Welt bekommen am selben Datum dasselbe Rätsel.</p>
+                <h3>Ist es dasselbe Rätsel wie in der App?</h3>
+                <p>Ja. Das Web-Rätsel ist die heutige Tages-Challenge aus der Circuit-Trace-App, erzeugt vom selben Generator mit demselben Tages-Seed.</p>
+                <h3>Brauche ich ein Konto?</h3>
+                <p>Nein. Es gibt keine Anmeldung und keine Tracking-Cookies. Deine Zeit und Serie werden nur in diesem Browser gespeichert.</p>
+                <h3>Wie teile ich mein Ergebnis?</h3>
+                <p>Tippe nach dem Lösen auf Ergebnis teilen. Du bekommst eine kurze Zeile mit der Rätselnummer und deiner Zeit, ohne etwas zu verraten.</p>
+                <h3>Wo spiele ich mehr Rätsel?</h3>
+                <p>Circuit Trace für Android hat über 700 Rätsel in 9 Spielmodi, mit Portalen, Dioden, Labyrinth und dem 3D-Würfel, plus einen Rätsel-Editor. Kostenlos auf Google Play.</p>
+            <p>Neu bei Flow-Puzzles? Lies <a href="../blog/flow-puzzles-loesen.html">wie man Flow-Puzzles löst</a>, oder sieh dir alle <a href="../../modes.html">9 Spielmodi</a> der App an.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt="Circuit-Trace-Logo"><p class="foot-name">Circuit Trace</p><p>Minimalistisches Flow-Puzzle von Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Produkt</p><ul><li><a href="../../features.html">Funktionen</a></li><li><a href="../../modes.html">Spielmodi</a></li><li><a href="../../themes.html">Themen &amp; FX</a></li><li><a href="../../editor.html">Rätsel-Editor</a></li><li><a href="../../achievements.html">Erfolge</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Herunterladen</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Infos</p><ul><li><a href="../../support.html">Support &amp; FAQ</a></li><li><a href="../../press.html">Pressekit</a></li><li><a href="../blog/">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Rechtliches</p><ul><li><a href="../../privacy.html">Datenschutz</a></li><li><a href="../../terms.html">Nutzungsbedingungen</a></li><li><a href="../../contact.html">Kontakt</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio · <a href="../../daily/" class="lang-switch" hreflang="en" lang="en">English</a> · <a href="../../nl/daily/" class="lang-switch" hreflang="nl" lang="nl">Nederlands</a></div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../../assets/js/ctboard.js?v=2" defer></script>
+<script src="../../daily/daily.js?v=4" defer></script>
+<script src="../../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

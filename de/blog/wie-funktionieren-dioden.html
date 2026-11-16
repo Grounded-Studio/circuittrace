@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wie Dioden funktionieren: Rätsel mit Einbahn-Pfeilen | Circuit Trace</title>
+    <meta name="description" content="Was Dioden in Circuit Trace tun, wie farbige und neutrale Dioden sich unterscheiden, 6 Tipps für Pfeil-Rätsel und wie du sie im Editor platzierst.">
+    <link rel="canonical" href="https://circuittrace.app/de/blog/wie-funktionieren-dioden.html">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/blog/how-diodes-work.html">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/blog/hoe-werken-diodes.html">
+    <link rel="alternate" hreflang="de" href="https://circuittrace.app/de/blog/wie-funktionieren-dioden.html">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/blog/how-diodes-work.html">
+    <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Wie Dioden funktionieren: Einbahn-Pfeile in Flow-Puzzles">
+    <meta property="og:description" content="Was Dioden in Circuit Trace tun, wie farbige und neutrale Dioden sich unterscheiden, 6 Tipps für Pfeil-Rätsel und wie du sie im Editor platzierst.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/de/blog/wie-funktionieren-dioden.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wie Dioden funktionieren: Einbahn-Pfeile in Flow-Puzzles", "description": "Was Dioden in Circuit Trace tun, wie farbige und neutrale Dioden sich unterscheiden, 6 Tipps für Pfeil-Rätsel und wie du sie im Editor platzierst.", "image": "https://circuittrace.app/assets/img/mode-diodes.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/de/blog/wie-funktionieren-dioden.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Wie Dioden funktionieren", "item": "https://circuittrace.app/de/blog/wie-funktionieren-dioden.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Was macht eine Diode in Circuit Trace?", "acceptedAnswer": {"@type": "Answer", "text": "Sie ist ein Einbahnfeld. Eine Linie kann von jeder Seite hinein, muss es aber in Pfeilrichtung verlassen."}}, {"@type": "Question", "name": "Was ist der Unterschied zwischen einer farbigen und einer weißen Diode?", "acceptedAnswer": {"@type": "Answer", "text": "Eine weiße (neutrale) Diode lässt jede Farbe durch. Eine farbige Diode lässt nur die Linie ihrer eigenen Farbe durch."}}, {"@type": "Question", "name": "Kann eine Linie auf einer Diode enden?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Eine Diode liegt nie auf einem Punkt, eine Linie läuft also immer hindurch."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Start</a></li>
+            <li><a href="../../features.html">Funktionen</a></li>
+            <li><a href="../../modes.html">Modi</a></li><li><a href="../daily/">Tagesrätsel</a></li>
+            <li><a href="../../themes.html">Themen</a></li>
+            <li><a href="../../editor.html">Editor</a></li>
+            <li><a href="../../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Herunterladen →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Start</a><a href="../../features.html">✨ Funktionen</a><a href="../../modes.html">🎮 Modi</a><a href="../daily/">🧩 Tagesrätsel</a><a href="../../themes.html">🌈 Themen &amp; FX</a><a href="../../editor.html">🎨 Rätsel-Editor</a><a href="../../achievements.html">🏆 Erfolge</a><a href="../../support.html">💬 Support</a><a href="../../contact.html">✉️ Kontakt</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Herunterladen</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Brotkrumen"><div class="c"><ol><li><a href="../">Start</a></li><li><a href="./">Blog</a></li><li aria-current="page">Wie Dioden funktionieren</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-yellow">Leitfaden</span>
+        <h1>Wie Dioden funktionieren: Einbahn-Pfeile in Flow-Puzzles.</h1>
+        <p>📅 16. November 2026 · ⏱ 5 Min. Lesezeit · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Eine Diode ist die einfachste Zusatzregel in Circuit Trace und eine der stärksten. Es ist ein Feld mit einem Pfeil darauf. Sie wirkt wie eine Einschränkung, aber wenn du sie lesen kannst, ist ein Pfeil vor allem ein Geschenk: Er sagt dir, wohin eine Linie als Nächstes geht.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/mode-diodes.webp" alt="Ein Circuit-Trace-Level mit Einbahn-Dioden"><figcaption><strong>Dioden</strong>Pfeilfelder auf dem Spielfeld</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/game-quantum.webp" alt="Ein Level mit Dioden, Portalen, Sternen und Checkpoints zusammen"><figcaption><strong>Gemischt</strong>Dioden mit anderen Teilen</figcaption></figure></div>
+
+            <h2>Die Regel</h2>
+
+            <p>Eine Linie darf eine Diode von jeder Seite <strong>betreten</strong>, muss sie aber in Pfeilrichtung <strong>verlassen</strong>. Das ist alles. Der Pfeil sagt nichts darüber, woher die Linie kommt, nur wohin sie nach dem Diodenfeld geht.</p>
+
+            <p>Zwei Details solltest du kennen:</p>
+            <ul>
+                <li><strong>Neutrale Dioden</strong> (weiße Pfeile) lassen jede Farbe durch.</li>
+                <li><strong>Farbige Dioden</strong> nehmen nur die Linie ihrer eigenen Farbe an. Jede andere Farbe wird gestoppt, bevor sie hineinkommt.</li>
+            </ul>
+            <p>Eine Diode liegt nie auf einem Punkt, eine Linie läuft also immer <em>durch</em> eine Diode und beginnt oder endet nie darauf.</p>
+
+            <h2>Sechs Tipps zum Lesen von Pfeilen</h2>
+
+            <h3>1. Das Feld, auf das der Pfeil zeigt, steht fast fest</h3>
+            <p>Welche Linie die Diode auch nutzt, sie geht ins nächste Feld in Pfeilrichtung weiter. Weißt du, welche Farbe durch die Diode geht, kennst du schon zwei Felder ihrer Route.</p>
+
+            <h3>2. Nur der Ausgang steht fest</h3>
+            <p>Der häufigste Fehler ist, einen Pfeil wie einen Korridor zu behandeln. Eine Linie kann von hinten oder von einer der beiden Seiten kommen. Behalte alle drei Eingänge im Kopf.</p>
+
+            <h3>3. Ein Pfeil, der auf einen Punkt zeigt</h3>
+            <p>Zeigt ein Pfeil direkt auf einen Punkt, ist die Linie durch diese Diode sehr oft die Farbe dieses Punkts, am Ende ihrer Route. Probiere das zuerst.</p>
+
+            <h3>4. Pfeile am Rand</h3>
+            <p>Ein Pfeil, der am Spielfeldrand entlang zeigt, schiebt seine Linie den Rand entlang, wo wenig Platz zum Abbiegen ist. Folge ihm ein paar Felder und schau, wohin er gezwungen wird.</p>
+
+            <h3>5. Farbige Dioden sind Wegweiser</h3>
+            <p>Eine farbige Diode sagt dir, dass diese Farbe durch dieses Feld geht und in welche Richtung sie es verlässt. Das reicht oft, um den Großteil der Route zwischen ihren beiden Punkten zu skizzieren.</p>
+
+            <h3>6. In Füll-Leveln wird jeder Pfeil genutzt</h3>
+            <p>Wenn jedes Feld gefüllt werden muss, kann keine Diode übersprungen werden. Durch jede muss eine Linie, in ihre Richtung. Frag dich: „Wer kann diesen Pfeil von einer erlaubten Seite erreichen?“, und oft gibt es nur eine Antwort.</p>
+
+            <h2>Ein durchgerechnetes Beispiel</h2>
+
+            <p>Stell dir ein 6×6-Feld vor mit einem weißen Pfeil in der Mitte der obersten Reihe, der nach unten zeigt. Welche Linie nutzt ihn? Keine Linie, die am oberen Rand von links nach rechts läuft, denn die müsste am Pfeil nach unten abbiegen und den Rand verlassen. Die Linie durch den Pfeil kommt also von links oder rechts (darüber ist nichts) und läuft dann nach unten ins Feld. Schau jetzt auf das Feld unter dem Pfeil: Es gehört zur selben Linie. Zwei Felder stehen fest, bevor du etwas gezeichnet hast, und die oberste Reihe ist in eine linke und eine rechte Hälfte geteilt, mit denen andere Farben getrennt klarkommen müssen. So funktionieren Pfeile: eine kleine Regel, mehrere geschenkte Züge.</p>
+
+            <h2>Wo du Dioden begegnest</h2>
+
+            <p>Das Paket <a href="../../modes/diodes.html">Dioden</a> hat 100 Level auf Feldern von 6×6 bis 10×10. Es beginnt mit ein oder zwei Pfeilen pro Level und endet bei etwa sechs, und ab Sektor 5 muss jedes Feld gefüllt werden. Dioden gibt es auch in der <a href="../../modes/campaign.html">Kampagne</a> und in <a href="../../modes/arcade.html">Arcade</a>, gemischt mit Sternen und Checkpoints.</p>
+
+            <h2>Dioden im Editor platzieren</h2>
+
+            <p>Wähle im <a href="../../editor.html">Rätsel-Editor</a> das Werkzeug ▶ DIODE und tippe auf ein Feld. Tippe dieselbe Diode erneut, um sie zu drehen: rechts, unten, links, oben, und ein weiterer Tipp entfernt sie. Für eine farbige Diode wählst du zuerst eine Farbe und setzt dann die Diode. Auf einen Punkt kann man keine Diode setzen. Die komplette Anleitung steht unter <a href="eigenes-flow-puzzle-erstellen.html">eigenes Flow-Puzzle erstellen</a>.</p>
+
+            <p>Willst du sehen, was ein Pfeil ausmacht? Freunde können deinen Rätselcode im Browser auf der <a href="../../puzzle/">Code-spielen-Seite</a> spielen, Dioden inklusive.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Hol dir Circuit Trace kostenlos auf Google Play: 100 Dioden-Level und 600 weitere Rätsel in 6 anderen Paketen.</a></p>
+
+            <h2>Häufige Fragen</h2>
+
+            <h3>Was macht eine Diode in Circuit Trace?</h3>
+            <p>Sie ist ein Einbahnfeld. Eine Linie kann von jeder Seite hinein, muss es aber in Pfeilrichtung verlassen.</p>
+
+            <h3>Was ist der Unterschied zwischen einer farbigen und einer weißen Diode?</h3>
+            <p>Eine weiße (neutrale) Diode lässt jede Farbe durch. Eine farbige Diode lässt nur die Linie ihrer eigenen Farbe durch.</p>
+
+            <h3>Kann eine Linie auf einer Diode enden?</h3>
+            <p>Nein. Eine Diode liegt nie auf einem Punkt, eine Linie läuft also immer hindurch.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt="Circuit-Trace-Logo"><p class="foot-name">Circuit Trace</p><p>Minimalistisches Flow-Puzzle von Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Produkt</p><ul><li><a href="../../features.html">Funktionen</a></li><li><a href="../../modes.html">Spielmodi</a></li><li><a href="../../themes.html">Themen &amp; FX</a></li><li><a href="../../editor.html">Rätsel-Editor</a></li><li><a href="../../achievements.html">Erfolge</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Herunterladen</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Infos</p><ul><li><a href="../../support.html">Support &amp; FAQ</a></li><li><a href="../../press.html">Pressekit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Rechtliches</p><ul><li><a href="../../privacy.html">Datenschutz</a></li><li><a href="../../terms.html">Nutzungsbedingungen</a></li><li><a href="../../contact.html">Kontakt</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio · <a href="../../blog/how-diodes-work.html" class="lang-switch" hreflang="en" lang="en">English</a> · <a href="../../nl/blog/hoe-werken-diodes.html" class="lang-switch" hreflang="nl" lang="nl">Nederlands</a></div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

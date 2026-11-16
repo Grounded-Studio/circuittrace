@@ -14,7 +14,10 @@
           error: 'Could not load today’s puzzle. Please reload the page.', url: 'circuittrace.app/daily' },
     nl: { solved: 'Opgelost ✓', connected: ' verbonden', perfect: 'Perfect: elk vakje gevuld. ', tip: 'Tip: vul elk vakje voor een perfecte oplossing. ',
           moves: ' zetten.', streak: ' dagen op rij', copied: 'Gekopieerd!', waiting: 'De puzzel van vandaag wacht op je in de app.',
-          error: 'De puzzel van vandaag kon niet laden. Herlaad de pagina.', url: 'circuittrace.app/nl/daily' }
+          error: 'De puzzel van vandaag kon niet laden. Herlaad de pagina.', url: 'circuittrace.app/nl/daily'},
+    de: { solved: 'Gelöst ✓', connected: ' verbunden', perfect: 'Perfekt: jedes Feld gefüllt. ', tip: 'Tipp: Fülle jedes Feld für eine perfekte Lösung. ',
+          moves: ' Züge.', streak: ' Tage in Folge', copied: 'Kopiert!', waiting: 'Das heutige Rätsel wartet in der App auf dich.',
+          error: 'Das heutige Rätsel konnte nicht geladen werden. Bitte lade die Seite neu.', url: 'circuittrace.app/de/daily' }
   };
   var S = STR[LANG] || STR.en;
   function $(id) { return document.getElementById(id); }
