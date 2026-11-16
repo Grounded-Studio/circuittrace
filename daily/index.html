@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Flow Puzzle: Free Connect-the-Dots Game Online | Circuit Trace</title>
+    <meta name="description" content="Play a free daily flow puzzle in your browser: connect the colored dots without crossing lines. One new logic puzzle every day, the same as in the Circuit Trace app. No account needed.">
+    <link rel="canonical" href="https://circuittrace.app/daily/">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuittrace.app/daily/">
+    <meta property="og:title" content="Circuit Trace Daily: one free flow puzzle every day">
+    <meta property="og:description" content="Play a free daily flow puzzle in your browser: connect the colored dots without crossing lines. One new logic puzzle every day, the same as in the Circuit Trace app. No account needed.">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Circuit Trace Daily Puzzle", "url": "https://circuittrace.app/daily/", "applicationCategory": "GameApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "description": "Play a free daily flow puzzle in your browser: connect the colored dots without crossing lines. One new logic puzzle every day, the same as in the Circuit Trace app. No account needed.", "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When is there a new daily puzzle?", "acceptedAnswer": {"@type": "Answer", "text": "Every day at midnight, your local time. Everyone in the world gets the same puzzle on the same date."}}, {"@type": "Question", "name": "Is it the same puzzle as in the app?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The web puzzle is today's Daily Challenge from the Circuit Trace app, made by the same generator with the same daily seed."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. There is no sign-up and there are no tracking cookies. Your time and streak are only stored in this browser."}}, {"@type": "Question", "name": "How do I share my result?", "acceptedAnswer": {"@type": "Answer", "text": "After you solve the puzzle, tap Share. You get a short line with the puzzle number and your time, without any spoilers."}}, {"@type": "Question", "name": "Where can I play more puzzles?", "acceptedAnswer": {"@type": "Answer", "text": "Circuit Trace for Android has 700+ puzzles in 9 game modes, including portals, diodes, Labyrinth and the 3D Cube, plus a Puzzle Editor. It is free on Google Play."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Daily Puzzle", "item": "https://circuittrace.app/daily/"}]}</script>
+    <style>
+    [hidden] { display: none !important; }
+    .daily-wrap { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); gap: 48px; align-items: start; }
+    .daily-bar { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; font-weight: 700; }
+    .daily-bar .num { font-size: 1.15rem; }
+    .daily-bar .time { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; }
+    #dBoard { display: block; width: 100%; aspect-ratio: 1; border-radius: 18px; touch-action: none; cursor: pointer;
+              box-shadow: 0 18px 50px rgba(15, 23, 42, .25); background: #0B1022; }
+    .daily-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--ink-soft); }
+    .daily-result { margin-top: 20px; background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: center; }
+    .daily-result .big { font-size: 2.6rem; font-weight: 900; line-height: 1.1; font-family: 'JetBrains Mono', monospace; }
+    .daily-result p { margin: 8px 0; color: var(--ink-soft); }
+    .daily-result .streak { font-weight: 700; color: var(--ink); }
+    .daily-cta { margin-top: 20px; padding: 24px; border-radius: var(--radius-lg); background: #0F172A; color: #fff; }
+    .daily-cta h2 { color: #fff; font-size: 1.35rem; margin-bottom: 8px; }
+    .daily-cta p { color: rgba(255,255,255,.8); margin-bottom: 16px; }
+    .daily-rules ol { padding-left: 22px; display: grid; gap: 8px; }
+    @media (max-width: 860px) { .daily-wrap { grid-template-columns: 1fr; gap: 32px; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="./" class="active">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="./">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="../press.html">📰 Press</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li aria-current="page">Daily Puzzle</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-primary">Free · new every day</span>
+        <h1>Daily flow puzzle</h1>
+        <p>Connect the dots, don't cross the lines. One free logic puzzle a day, the same as today's Daily Challenge in the Circuit Trace app.</p>
+    </div>
+</header>
+
+<section class="section" style="padding-top:8px;">
+    <div class="c daily-wrap">
+        <div>
+            <div class="daily-bar"><span class="num">Daily <span id="dNum"></span></span><span class="time" id="dTime">0:00</span></div>
+            <canvas id="dBoard" width="460" height="460" role="img" aria-label="Today's 6 by 6 flow puzzle board. Drag from a dot to draw a line."></canvas>
+            <div class="daily-foot"><span id="dStatus">Loading today's puzzle…</span><button class="btn btn-ghost btn-sm" id="dReset" type="button">Clear board</button></div>
+            <p id="dMissing" hidden>Play today's puzzle in the app: <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Circuit Trace on Google Play</a>.</p>
+
+            <div class="daily-result" id="dResult" hidden>
+                <p>Solved in</p>
+                <div class="big" id="dResTime"></div>
+                <p id="dResExtra"></p>
+                <p class="streak" id="dStreak"></p>
+                <button class="btn btn-primary" id="dShare" type="button">Share result</button>
+                <p id="dShareMsg" aria-live="polite"></p>
+                <p>Next puzzle in <strong id="dNext"></strong></p>
+            </div>
+
+            <div class="daily-cta">
+                <h2>Want more than one puzzle a day?</h2>
+                <p>700+ puzzles, 3D Cube, portals &amp; diodes → Get Circuit Trace on Google Play. Free, works offline.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore" style="background:#fff;color:#0F172A;"><svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/><path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/><path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/><path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/></svg><div class="pstext"><small style="color:#0F172A;">Get it on</small><span style="color:#0F172A;">Google Play</span></div></a>
+            </div>
+        </div>
+
+        <div class="prose daily-rules">
+            <h2>How to play</h2>
+            <ol>
+                <li>Drag from a colored dot to the other dot of the same color.</li>
+                <li>Lines can't cross. Drawing over another line cuts it.</li>
+                <li>Connect every pair to solve the puzzle. Fill every cell for a perfect solve.</li>
+                <li>Drag back along a line to undo, or start again from a dot.</li>
+            </ol>
+            <p>The clock starts when you draw your first line. Your time and your streak stay in this browser only: no account, no cookies.</p>
+            <h2>About the daily puzzle</h2>
+                <h3>When is there a new daily puzzle?</h3>
+                <p>Every day at midnight, your local time. Everyone in the world gets the same puzzle on the same date.</p>
+                <h3>Is it the same puzzle as in the app?</h3>
+                <p>Yes. The web puzzle is today&#x27;s Daily Challenge from the Circuit Trace app, made by the same generator with the same daily seed.</p>
+                <h3>Do I need an account?</h3>
+                <p>No. There is no sign-up and there are no tracking cookies. Your time and streak are only stored in this browser.</p>
+                <h3>How do I share my result?</h3>
+                <p>After you solve the puzzle, tap Share. You get a short line with the puzzle number and your time, without any spoilers.</p>
+                <h3>Where can I play more puzzles?</h3>
+                <p>Circuit Trace for Android has 700+ puzzles in 9 game modes, including portals, diodes, Labyrinth and the 3D Cube, plus a Puzzle Editor. It is free on Google Play.</p>
+            <p>New to flow puzzles? Read <a href="../blog/how-to-solve-flow-puzzles.html">how to solve flow puzzles</a>, or see all <a href="../modes.html">9 game modes</a> in the app.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="../blog/">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="daily.js?v=1" defer></script>
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
