@@ -58,9 +58,9 @@
 
             <p>When you tap SHARE in the Circuit Trace editor, you get back something like this:</p>
 
-            <p><code>CT-NHH06-8CMY4-AG2DS-7FQ3B</code></p>
+            <p><code>CT-D04B5-2Y9G0-C2EGT-V0000-00000-0000B</code></p>
 
-            <p>Twenty characters. Enough to encode a full 8×8 puzzle with 7 colour pairs, 4 diodes, and a seed for the solver cache. Here's how we got there — and why we didn't just stuff a URL into the share sheet.</p>
+            <p>Thirty characters after the <code>CT-</code> prefix, in six blocks of five. That is a complete puzzle: grid size, every colour pair, every diode and a checksum. Here's how we got there — and why we didn't just stuff a URL into the share sheet.</p>
 
             <h2>The problem with URLs</h2>
 
@@ -79,18 +79,19 @@
             <p>A Circuit Trace puzzle is a surprisingly small amount of data:</p>
 
             <ul>
-                <li>Grid size (5-8) → 2 bits</li>
-                <li>Up to 7 colour pairs, each with two cell positions → 7 × 2 × 6 = 84 bits (6 bits is enough to address 64 cells on an 8×8)</li>
-                <li>Up to 6 diodes, each with position + direction → 6 × 8 = 48 bits</li>
-                <li>Version number so we can evolve the format → 3 bits</li>
-                <li>A tiny checksum so we can detect typos before we try to parse → 8 bits</li>
+                <li>Grid size (5×5 to 8×8) → 2 bits</li>
+                <li>Number of colour pairs → 3 bits</li>
+                <li>Up to 5 colour pairs, each a 3-bit colour plus two cell positions → 5 × (3 + 6 + 6) = 75 bits (6 bits is enough to address all 64 cells of an 8×8)</li>
+                <li>Number of diodes → 3 bits</li>
+                <li>Up to 5 diodes, each with colour, direction and position → 5 × (3 + 2 + 6) = 55 bits</li>
+                <li>8 reserved bits, and a 4-bit checksum to catch typos</li>
             </ul>
 
-            <p>Total: about 145 bits worst-case. In practice most puzzles use less, because most puzzles have 4-5 pairs and 0-2 diodes.</p>
+            <p>Total: exactly 150 bits.</p>
 
             <h2>Step 2: Crockford Base32</h2>
 
-            <p>145 bits ÷ 5 bits per character = 29 characters in standard Base32. Too long for a WhatsApp message. We needed to pack smarter and encode more efficiently — but the <em>alphabet</em> matters too.</p>
+            <p>150 bits ÷ 5 bits per character = exactly 30 characters. The <em>alphabet</em> matters as much as the length.</p>
 
             <p>Standard Base64 uses <code>A-Z a-z 0-9 + /</code>. Terrible for sharing by voice ("capital B? or lowercase?"), terrible for OCR ("is that a lowercase L or a 1?"), and the <code>+</code> and <code>/</code> characters break in URLs anyway.</p>
 
@@ -99,19 +100,17 @@
             <ul>
                 <li>Uses all uppercase only — no capitalisation confusion</li>
                 <li>Drops <code>I</code>, <code>L</code>, <code>O</code>, and <code>U</code> entirely — removes every character that looks like a digit</li>
-                <li>Decoder accepts <code>i</code> and <code>l</code> as <code>1</code>, and <code>o</code> as <code>0</code> — forgiving if someone mistypes</li>
+                <li>Decoder accepts <code>I</code> and <code>L</code> as <code>1</code>, and <code>O</code> as <code>0</code> — forgiving if someone mistypes</li>
                 <li>Also accepts lowercase in the decoder — forgiving if someone shout-types or auto-corrects</li>
             </ul>
 
-            <p>Net effect: the alphabet is still 32 characters wide (5 bits per char), but a human can read a code over the phone and the person on the other end types it correctly on the first try.</p>
+            <p>Net effect: a human can read a code over the phone and the person on the other end types it correctly on the first try.</p>
 
-            <h2>Step 3: variable-length packing</h2>
+            <h2>Step 3: one fixed length for everyday puzzles</h2>
 
-            <p>Fixed-width fields waste bits. A 5×5 grid only needs 5 bits per cell address, not 6. A puzzle with 3 pairs doesn't need to reserve space for 7.</p>
+            <p>Every normal puzzle code has the same length. Unused pair and diode slots are filled with zeros, which is why a code for a small puzzle ends in a run of <code>0</code>s, like the one above. A fixed length makes a code easy to check at a glance: if a block is missing, you can see it.</p>
 
-            <p>So we pack length-prefixed: 2 bits for grid size, 3 bits for pair count, then that many pair records, each sized for the grid. Same for diodes. The decoder walks the bitstream in order and knows exactly how much to read.</p>
-
-            <p>Average puzzle: 85-110 bits. Rounded up to a multiple of 5 bits, that's 17-22 Base32 characters. We then insert dashes every 5 characters for readability — turning <code>NHH068CMY4AG2DS7FQ3B</code> into <code>NHH06-8CMY4-AG2DS-7FQ3B</code>. Dashes are stripped during decode, they're purely for human eyes.</p>
+            <p>Bigger puzzles don't fit in 150 bits: more than five pairs, portals, stars or checkpoints. Those get a second format that only stores what the puzzle uses, so its length depends on the puzzle. The app tells the two apart by length: a normal code is always exactly 30 characters. Every puzzle that fits the original format keeps it, so older versions of the app can still play it. We then insert dashes every 5 characters for readability. Dashes are stripped during decoding; they're purely for human eyes.</p>
 
             <h2>Step 4: the CT- prefix</h2>
 
@@ -121,15 +120,15 @@
 
             <h2>Step 5: the checksum</h2>
 
-            <p>The last byte of every encoded puzzle is a checksum of everything before it. Tiny — just 8 bits — but enough to catch 99.6% of single-character typos. If the checksum fails, the decoder bails before it tries to render anything, and the player sees "This code looks damaged — ask for a fresh one" instead of a broken puzzle.</p>
+            <p>The last character of a normal code is a 4-bit checksum: the 5-bit groups before it, added up. If a character gets mangled during paste, the sum almost always stops matching, and the app shows an error instead of a broken puzzle. The longer format for big puzzles uses a stronger 8-bit checksum.</p>
 
-            <p>We don't need cryptographic integrity (nobody's attacking a puzzle code). We just need "did a character get mangled during paste." A simple XOR-based checksum does that for essentially zero cost.</p>
+            <p>We don't need cryptographic integrity (nobody's attacking a puzzle code). We just need "did a character get mangled during paste." A simple sum does that for essentially zero cost.</p>
 
             <h2>What this means for the player</h2>
 
-            <p>Zero of this is visible from the outside. The player taps SHARE, pastes a code to a friend, and the friend taps it to play. The 20-character string is the entire user experience.</p>
+            <p>Zero of this is visible from the outside. The player taps SHARE, pastes a code to a friend, and the friend taps it to play. That one code is the entire user experience.</p>
 
-            <p>But every one of those design decisions — Crockford Base32, variable-length packing, the <code>CT-</code> prefix, the checksum, the 5-char dash grouping — exists because someone, somewhere, is going to copy that code wrong, or auto-correct it, or dictate it over FaceTime, or screenshot it and OCR it. The point of the format is to <em>not break</em> in any of those cases.</p>
+            <p>But every one of those design decisions — Crockford Base32, the fixed length, the <code>CT-</code> prefix, the checksum, the 5-char dash grouping — exists because someone, somewhere, is going to copy that code wrong, or auto-correct it, or dictate it over FaceTime, or screenshot it and OCR it. The point of the format is to <em>not break</em> in any of those cases.</p>
 
             <p>Boring engineering. Visible as the absence of problems.</p>
 
@@ -144,7 +143,7 @@
 <footer>
     <div class="c">
         <div class="foot-grid">
-            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
             <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
             <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
             <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
