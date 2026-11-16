@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoe diodes werken: puzzels met pijlen in één richting | Circuit Trace</title>
+    <meta name="description" content="Wat diodes doen in Circuit Trace, het verschil tussen gekleurde en neutrale diodes, 6 tips voor flow puzzels met pijlen, en hoe je ze in de editor plaatst.">
+    <link rel="canonical" href="https://circuittrace.app/nl/blog/hoe-werken-diodes.html">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/blog/how-diodes-work.html">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/blog/hoe-werken-diodes.html">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/blog/how-diodes-work.html">
+    <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Hoe diodes werken: pijlen in één richting in flow puzzels">
+    <meta property="og:description" content="Wat diodes doen in Circuit Trace, het verschil tussen gekleurde en neutrale diodes, 6 tips voor flow puzzels met pijlen, en hoe je ze in de editor plaatst.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/nl/blog/hoe-werken-diodes.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Hoe diodes werken: pijlen in één richting in flow puzzels", "description": "Wat diodes doen in Circuit Trace, het verschil tussen gekleurde en neutrale diodes, 6 tips voor flow puzzels met pijlen, en hoe je ze in de editor plaatst.", "image": "https://circuittrace.app/assets/img/mode-diodes.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/nl/blog/hoe-werken-diodes.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Hoe diodes werken", "item": "https://circuittrace.app/nl/blog/hoe-werken-diodes.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wat doet een diode in Circuit Trace?", "acceptedAnswer": {"@type": "Answer", "text": "Het is een vakje in één richting. Een lijn kan er van elke kant in, maar moet het verlaten in de richting van de pijl."}}, {"@type": "Question", "name": "Wat is het verschil tussen een gekleurde en een witte diode?", "acceptedAnswer": {"@type": "Answer", "text": "Een witte (neutrale) diode laat elke kleur door. Een gekleurde diode laat alleen de lijn van zijn eigen kleur door."}}, {"@type": "Question", "name": "Kan een lijn op een diode eindigen?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Een diode ligt nooit op een stip, dus een lijn gaat er altijd doorheen."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../../features.html">Functies</a></li>
+            <li><a href="../../modes.html">Modi</a></li><li><a href="../daily/">Dagpuzzel</a></li>
+            <li><a href="../../themes.html">Thema's</a></li>
+            <li><a href="../../editor.html">Editor</a></li>
+            <li><a href="../../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Downloaden →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../../features.html">✨ Functies</a><a href="../../modes.html">🎮 Modi</a><a href="../daily/">🧩 Dagpuzzel</a><a href="../../themes.html">🌈 Thema's &amp; FX</a><a href="../../editor.html">🎨 Puzzel-editor</a><a href="../../achievements.html">🏆 Prestaties</a><a href="../../support.html">💬 Support</a><a href="../../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Downloaden</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Kruimelpad"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Hoe diodes werken</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-yellow">Gids</span>
+        <h1>Hoe diodes werken: pijlen in één richting in flow puzzels.</h1>
+        <p>📅 16 november 2026 · ⏱ 5 min lezen · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Een diode is de simpelste extra regel in Circuit Trace, en een van de sterkste. Het is een vakje met een pijl erop. Het lijkt een beperking, maar als je hem leert lezen, is een pijl vooral een cadeautje: hij vertelt waar een lijn daarna heen gaat.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/mode-diodes.webp" alt="Een Circuit Trace-level met diodepijlen in één richting"><figcaption><strong>Diodes</strong>Pijlvakjes op het bord</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/game-quantum.webp" alt="Een level met diodes, portals, sterren en checkpoints samen"><figcaption><strong>Gemengd</strong>Diodes met andere stukken</figcaption></figure></div>
+
+            <h2>De regel</h2>
+
+            <p>Een lijn mag een diode van elke kant <strong>binnenkomen</strong>, maar moet hem <strong>verlaten</strong> in de richting van de pijl. Dat is alles. De pijl zegt niets over waar de lijn vandaan komt, alleen waar hij na het diodevakje heen gaat.</p>
+
+            <p>Twee details zijn handig om te weten:</p>
+            <ul>
+                <li><strong>Neutrale diodes</strong> (witte pijlen) laten elke kleur door.</li>
+                <li><strong>Gekleurde diodes</strong> laten alleen de lijn van hun eigen kleur door. Elke andere kleur wordt tegengehouden voordat hij erin kan.</li>
+            </ul>
+            <p>Een diode ligt nooit op een stip, dus een lijn gaat altijd <em>door</em> een diode heen en begint of eindigt er nooit op.</p>
+
+            <h2>Zes tips om pijlen te lezen</h2>
+
+            <h3>1. Het vakje waar de pijl naar wijst ligt bijna vast</h3>
+            <p>Welke lijn de diode ook gebruikt, hij gaat verder naar het volgende vakje in de richting van de pijl. Weet je welke kleur door de diode gaat, dan ken je al twee vakjes van zijn route.</p>
+
+            <h3>2. Alleen de uitgang ligt vast</h3>
+            <p>De meest gemaakte fout is een pijl behandelen als een gang. Een lijn kan van achter de pijl of van een van beide zijkanten komen. Houd alle drie de ingangen in gedachten.</p>
+
+            <h3>3. Een pijl die naar een stip wijst</h3>
+            <p>Wijst een pijl recht naar een stip, dan is de lijn door die diode heel vaak de kleur van die stip, aan het eind van zijn route. Probeer dat eerst.</p>
+
+            <h3>4. Pijlen bij de rand</h3>
+            <p>Een pijl die langs de rand van het bord wijst, duwt zijn lijn langs de rand, waar weinig ruimte is om te draaien. Volg hem een paar vakjes en kijk waar hij heen moet.</p>
+
+            <h3>5. Gekleurde diodes zijn wegwijzers</h3>
+            <p>Een gekleurde diode vertelt dat deze kleur door dit vakje gaat, en in welke richting hij het verlaat. Dat is vaak genoeg om het grootste deel van de route tussen de twee stippen te schetsen.</p>
+
+            <h3>6. Op vul-levels wordt elke pijl gebruikt</h3>
+            <p>Als elk vakje gevuld moet worden, kun je geen diode overslaan. Door elke diode moet een lijn, in zijn richting. Vraag je af "wie kan deze pijl vanaf een toegestane kant bereiken?" en je krijgt vaak maar één antwoord.</p>
+
+            <h2>Een uitgewerkt voorbeeld</h2>
+
+            <p>Stel je een bord van 6×6 voor met een witte pijl midden in de bovenste rij, die naar beneden wijst. Welke lijn gebruikt hem? Niet een lijn die van links naar rechts langs de bovenrand loopt, want die moet bij de pijl naar beneden en de rand verlaten. De lijn door de pijl komt dus van links of rechts (erboven is niets) en gaat daarna naar beneden het bord in. Kijk nu naar het vakje onder de pijl: dat hoort bij dezelfde lijn. Twee vakjes liggen vast voordat je iets hebt getekend, en de bovenste rij is verdeeld in een linker- en een rechterhelft waar andere kleuren apart mee verder moeten. Zo werken pijlen: één kleine regel, meerdere gratis zetten.</p>
+
+            <h2>Waar je diodes tegenkomt</h2>
+
+            <p>Het pakket <a href="../../modes/diodes.html">Diodes</a> heeft 100 levels op borden van 6×6 tot 10×10. Het begint met één of twee pijlen per level en eindigt met ongeveer zes, en vanaf sector 5 moet elk vakje gevuld worden. Diodes zitten ook in de <a href="../../modes/campaign.html">campagne</a> en in <a href="../../modes/arcade.html">Arcade</a>, samen met sterren en checkpoints.</p>
+
+            <h2>Diodes plaatsen in de editor</h2>
+
+            <p>Kies in de <a href="../../editor.html">puzzel-editor</a> het gereedschap ▶ DIODE en tik op een vakje. Tik nog eens op dezelfde diode om hem te draaien: rechts, omlaag, links, omhoog, en met nog een tik haal je hem weg. Voor een gekleurde diode kies je eerst een kleur en plaats je daarna de diode. Op een stip kun je geen diode zetten. De volledige uitleg staat in <a href="zelf-flow-puzzel-maken.html">je eigen flow puzzel maken</a>.</p>
+
+            <p>Wil je zien wat één pijl uitmaakt? Een vriend kan je puzzelcode in de browser spelen op de <a href="../../puzzle/">speel-een-codepagina</a>, diodes inbegrepen.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Download Circuit Trace gratis op Google Play: 100 diode-levels plus 600 puzzels in 6 andere pakketten.</a></p>
+
+            <h2>Veelgestelde vragen</h2>
+
+            <h3>Wat doet een diode in Circuit Trace?</h3>
+            <p>Het is een vakje in één richting. Een lijn kan er van elke kant in, maar moet het verlaten in de richting van de pijl.</p>
+
+            <h3>Wat is het verschil tussen een gekleurde en een witte diode?</h3>
+            <p>Een witte (neutrale) diode laat elke kleur door. Een gekleurde diode laat alleen de lijn van zijn eigen kleur door.</p>
+
+            <h3>Kan een lijn op een diode eindigen?</h3>
+            <p>Nee. Een diode ligt nooit op een stip, dus een lijn gaat er altijd doorheen.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt="Circuit Trace-logo"><p class="foot-name">Circuit Trace</p><p>Minimalistisch flow-puzzelspel van Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../../features.html">Functies</a></li><li><a href="../../modes.html">Spelmodi</a></li><li><a href="../../themes.html">Thema's &amp; FX</a></li><li><a href="../../editor.html">Puzzel-editor</a></li><li><a href="../../achievements.html">Prestaties</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Downloaden</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Info</p><ul><li><a href="../../support.html">Support &amp; FAQ</a></li><li><a href="../../press.html">Perskit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Juridisch</p><ul><li><a href="../../privacy.html">Privacybeleid</a></li><li><a href="../../terms.html">Gebruiksvoorwaarden</a></li><li><a href="../../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio · <a href="../../blog/how-diodes-work.html" class="lang-switch" hreflang="en" lang="en">English</a></div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

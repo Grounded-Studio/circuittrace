@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zelf een flow puzzel maken in de editor | Circuit Trace</title>
+    <meta name="description" content="Stap voor stap je eigen flow puzzel maken in de editor van Circuit Trace: stippen, diodes, portals, sterren en checkpoints plaatsen, controleren, delen en publiceren.">
+    <link rel="canonical" href="https://circuittrace.app/nl/blog/zelf-flow-puzzel-maken.html">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/blog/make-your-own-flow-puzzle.html">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/blog/zelf-flow-puzzel-maken.html">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/blog/make-your-own-flow-puzzle.html">
+    <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Zo maak je je eigen flow puzzel in de editor">
+    <meta property="og:description" content="Stap voor stap je eigen flow puzzel maken in de editor van Circuit Trace: stippen, diodes, portals, sterren en checkpoints plaatsen, controleren, delen en publiceren.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/nl/blog/zelf-flow-puzzel-maken.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Zo maak je je eigen flow puzzel in de editor", "description": "Stap voor stap je eigen flow puzzel maken in de editor van Circuit Trace: stippen, diodes, portals, sterren en checkpoints plaatsen, controleren, delen en publiceren.", "image": "https://circuittrace.app/assets/img/editor.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-16", "dateModified": "2026-11-16", "mainEntityOfPage": "https://circuittrace.app/nl/blog/zelf-flow-puzzel-maken.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Zelf een flow puzzel maken", "item": "https://circuittrace.app/nl/blog/zelf-flow-puzzel-maken.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is de puzzel-editor van Circuit Trace gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Al het gereedschap is meteen beschikbaar, en delen en publiceren is gratis."}}, {"@type": "Question", "name": "Welke rasterformaten kan ik in de editor gebruiken?", "acceptedAnswer": {"@type": "Answer", "text": "Van 5×5 tot 8×8, met tot 8 kleurparen op het grootste bord."}}, {"@type": "Question", "name": "Hoe spelen vrienden mijn puzzel?", "acceptedAnswer": {"@type": "Answer", "text": "Stuur ze de code. In de app openen ze de Creator, tikken op SPEEL GEDEELDE CODE en plakken hem. Zonder de app spelen ze hem op circuittrace.app/puzzle/."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../../features.html">Functies</a></li>
+            <li><a href="../../modes.html">Modi</a></li><li><a href="../daily/">Dagpuzzel</a></li>
+            <li><a href="../../themes.html">Thema's</a></li>
+            <li><a href="../../editor.html">Editor</a></li>
+            <li><a href="../../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Downloaden →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../../features.html">✨ Functies</a><a href="../../modes.html">🎮 Modi</a><a href="../daily/">🧩 Dagpuzzel</a><a href="../../themes.html">🌈 Thema's &amp; FX</a><a href="../../editor.html">🎨 Puzzel-editor</a><a href="../../achievements.html">🏆 Prestaties</a><a href="../../support.html">💬 Support</a><a href="../../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Downloaden</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Kruimelpad"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Zelf een flow puzzel maken</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-primary">Gids</span>
+        <h1>Zo maak je je eigen flow puzzel in de editor.</h1>
+        <p>📅 16 november 2026 · ⏱ 6 min lezen · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Puzzels oplossen is leuk. Er een maken waar een vriend op vastloopt is nog leuker. Circuit Trace heeft een complete <a href="../../editor.html">puzzel-editor</a> ingebouwd, met al het gereedschap meteen beschikbaar. Zo ga je van een leeg raster naar een puzzelcode in je groepsapp.</p>
+
+            <div class="post-shots"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/creator-hub.webp" alt="Het Creator-menu in Circuit Trace"><figcaption><strong>Creator-menu</strong>Maken, spelen en bladeren</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/editor.webp" alt="De puzzel-editor met een puzzel in aanbouw"><figcaption><strong>Editor</strong>Stippen en stukken</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/editor-share.webp" alt="Het deelscherm met een puzzelcode"><figcaption><strong>Delen</strong>Je puzzelcode</figcaption></figure></div>
+
+            <h2>Stap 1: open de editor en kies een formaat</h2>
+            <p>Open in het hoofdmenu de <strong>Creator</strong> en tik op <strong>MAAK EEN PUZZEL</strong>. Kies een raster: 5×5 voor een snelle puzzel, 6×6 voor een gewone, 7×7 voor een uitdaging of 8×8 voor het serieuze werk.</p>
+
+            <h2>Stap 2: plaats de stippen</h2>
+            <p>Tik met het gereedschap <strong>● DOTS</strong> op een kleur en daarna op twee vakjes om een paar te maken. Op het grootste bord plaats je tot 8 paren. De statusregel laat zien hoeveel paren je hebt geplaatst en hoeveel er nog bij mogen.</p>
+
+            <h2>Stap 3: voeg stukken toe (optioneel)</h2>
+            <ul>
+                <li><strong>▶ DIODE</strong>: tik op een vakje voor een pijl in één richting. Tik nog eens om hem te draaien (rechts, omlaag, links, omhoog) en nog een keer om hem weg te halen. Kies eerst een kleur om de diode aan dat paar te koppelen. Meer in <a href="hoe-werken-diodes.html">hoe diodes werken</a>.</li>
+                <li><strong>◉ PORTAL</strong>: tik op een leeg vakje en daarna op een tweede. De twee zijn gekoppeld. Meer in <a href="hoe-werken-portals.html">hoe portals werken</a>.</li>
+                <li><strong>★ STAR</strong>: tik op een vakje voor een bonusster, tik nog eens om hem weg te halen.</li>
+                <li><strong>◆ CHECK</strong>: kies een kleur en tik op een vakje. De lijn van die kleur moet door het checkpoint gaan.</li>
+            </ul>
+            <p>Elk rasterformaat heeft een maximum aan diodes, portals, sterren en checkpoints, en de editor zegt het als je dat bereikt.</p>
+
+            <h2>Stap 4: controleer</h2>
+            <p>Tik op <strong>CONTROLEER</strong>. De editor laat een echte solver op je bord los. Zegt hij <em>Oplosbaar</em>, dan zit het goed. Zo niet, dan zegt hij waarom: een kleur die niet kan verbinden, paren die elkaar blokkeren, een checkpoint dat zijn kleur niet kan bereiken, of een bord dat gewoon te ingewikkeld is. Verplaats een stip en probeer opnieuw.</p>
+
+            <h2>Stap 5: speel hem zelf</h2>
+            <p>Tik op <strong>TEST</strong> en speel je eigen puzzel. Oplosbaar is niet hetzelfde als leuk. Heb jij hem in drie seconden opgelost, dan je vrienden ook.</p>
+
+            <h2>Stap 6: deel hem</h2>
+            <p>Tik op <strong>DELEN</strong>, geef je puzzel een naam, en je krijgt een code als <code class="mono">CT-D04B5-2Y9G0-C2EGT-V0000-00000-0000B</code>. Kopieer hem, stuur hem naar een vriend, daag iemand direct uit of publiceer hem in de <strong>Community</strong>, zodat elke speler hem kan proberen en liken. Je puzzels worden bewaard in <strong>MIJN PUZZELS</strong>, met plek voor vijf.</p>
+            <p>Vrienden die de game nog niet hebben, plakken de code op onze <a href="../../puzzle/">speel-een-codepagina</a> en lossen hem op in hun browser.</p>
+
+            <h2>Vijf tips voor puzzels waar mensen van houden</h2>
+
+            <h3>1. Teken eerst de oplossing</h3>
+            <p>Bedenk het afgemaakte bord in je hoofd of op papier: lange, kronkelende lijnen die het raster vullen. Zet daarna de twee uiteinden van elke lijn neer als stippen. Zo gebouwde puzzels zijn altijd oplosbaar en meestal interessant.</p>
+
+            <h3>2. Vermijd korte, rechte paren</h3>
+            <p>Twee stippen op dezelfde rij met niets ertussen verbinden zichzelf. Dat is opvulling. De puzzel zit in paren die om elkaar heen moeten buigen.</p>
+
+            <h3>3. Maak de lange lijn de sleutel</h3>
+            <p>Geef één paar een lange, verrassende route. De beste puzzels hebben één lijn die onmogelijk voelt tot het kwartje valt.</p>
+
+            <h3>4. Blokkeer kortere wegen met stukken</h3>
+            <p>Vinden testers een makkelijke route die je niet bedoelde, dan sluit één diode of checkpoint hem vaak af.</p>
+
+            <h3>5. Geef hem een naam</h3>
+            <p>Een naam als "Neon Spiraal" komt verder dan "Puzzel #3". Hij staat in het deelbericht en in de Community.</p>
+
+            <p>Benieuwd hoe een hele puzzel in één code past? Lees <a href="../../blog/short-codes-math.html">de wiskunde achter korte codes</a> (Engels).</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Download Circuit Trace gratis op Google Play en open de Creator: al het editorgereedschap is gratis.</a></p>
+
+            <h2>Veelgestelde vragen</h2>
+
+            <h3>Is de puzzel-editor van Circuit Trace gratis?</h3>
+            <p>Ja. Al het gereedschap is meteen beschikbaar, en delen en publiceren is gratis.</p>
+
+            <h3>Welke rasterformaten kan ik in de editor gebruiken?</h3>
+            <p>Van 5×5 tot 8×8, met tot 8 kleurparen op het grootste bord.</p>
+
+            <h3>Hoe spelen vrienden mijn puzzel?</h3>
+            <p>Stuur ze de code. In de app openen ze de Creator, tikken op SPEEL GEDEELDE CODE en plakken hem. Zonder de app spelen ze hem op circuittrace.app/puzzle/.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt="Circuit Trace-logo"><p class="foot-name">Circuit Trace</p><p>Minimalistisch flow-puzzelspel van Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../../features.html">Functies</a></li><li><a href="../../modes.html">Spelmodi</a></li><li><a href="../../themes.html">Thema's &amp; FX</a></li><li><a href="../../editor.html">Puzzel-editor</a></li><li><a href="../../achievements.html">Prestaties</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Downloaden</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Info</p><ul><li><a href="../../support.html">Support &amp; FAQ</a></li><li><a href="../../press.html">Perskit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Juridisch</p><ul><li><a href="../../privacy.html">Privacybeleid</a></li><li><a href="../../terms.html">Gebruiksvoorwaarden</a></li><li><a href="../../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio · <a href="../../blog/make-your-own-flow-puzzle.html" class="lang-switch" hreflang="en" lang="en">English</a></div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

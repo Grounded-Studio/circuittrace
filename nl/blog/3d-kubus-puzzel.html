@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-kubuspuzzel: flow puzzels op alle zes kanten | Circuit Trace</title>
+    <meta name="description" content="Speel flow puzzels op een 3D-kubus: 100 gratis levels waarin lijnen om alle zes kanten lopen. Hoe de 3D-kubusmodus werkt, hoe je de kubus draait en tips om hem op te lossen.">
+    <link rel="canonical" href="https://circuittrace.app/nl/blog/3d-kubus-puzzel.html">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/blog/cube-3d-puzzle.html">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/blog/3d-kubus-puzzel.html">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/blog/cube-3d-puzzle.html">
+    <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="3D-kubus: flow puzzels op alle zes kanten van een kubus">
+    <meta property="og:description" content="Speel flow puzzels op een 3D-kubus: 100 gratis levels waarin lijnen om alle zes kanten lopen. Hoe de 3D-kubusmodus werkt, hoe je de kubus draait en tips om hem op te lossen.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/nl/blog/3d-kubus-puzzel.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "3D-kubus: flow puzzels op alle zes kanten van een kubus", "description": "Speel flow puzzels op een 3D-kubus: 100 gratis levels waarin lijnen om alle zes kanten lopen. Hoe de 3D-kubusmodus werkt, hoe je de kubus draait en tips om hem op te lossen.", "image": "https://circuittrace.app/assets/img/cube.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-14", "dateModified": "2026-11-14", "mainEntityOfPage": "https://circuittrace.app/nl/blog/3d-kubus-puzzel.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "3D-kubus", "item": "https://circuittrace.app/nl/blog/3d-kubus-puzzel.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Bestaat er een 3D-kubuspuzzel voor Android?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Circuit Trace heeft een gratis 3D-kubusmodus met 100 flow puzzels op alle zes kanten van een kubus. Hij zit in de gratis Circuit Trace-game op Google Play."}}, {"@type": "Question", "name": "Hoe draai je de kubus?", "acceptedAnswer": {"@type": "Answer", "text": "Swipe over een lege plek om hem een kwartslag te draaien. Je kunt ook een lijn over de rand slepen naar een verborgen kant; de kubus rolt dan mee met je lijn."}}, {"@type": "Question", "name": "Lopen lijnen echt om de randen heen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Een lijn die de rand van een kant bereikt, loopt door op de kant ernaast, dus één kleur kan om meerdere kanten heen lopen."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../../features.html">Functies</a></li>
+            <li><a href="../../modes.html">Modi</a></li><li><a href="../daily/">Dagpuzzel</a></li>
+            <li><a href="../../themes.html">Thema's</a></li>
+            <li><a href="../../editor.html">Editor</a></li>
+            <li><a href="../../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Downloaden →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../../features.html">✨ Functies</a><a href="../../modes.html">🎮 Modi</a><a href="../daily/">🧩 Dagpuzzel</a><a href="../../themes.html">🌈 Thema's &amp; FX</a><a href="../../editor.html">🎨 Puzzel-editor</a><a href="../../achievements.html">🏆 Prestaties</a><a href="../../support.html">💬 Support</a><a href="../../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Downloaden</a>
+</div>
+
+<nav class="breadcrumbs" aria-label="Kruimelpad"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">3D-kubus</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-orange">Nieuwe modus</span>
+        <h1>3D-kubus: flow puzzels op alle zes kanten van een kubus.</h1>
+        <p>📅 14 november 2026 · ⏱ 6 min lezen · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>De meeste flow puzzels spelen zich af op een plat vierkant. Je ziet het hele bord, de randen zitten waar je ze verwacht en de hoeken zijn een makkelijk beginpunt. <strong>3D-kubus</strong> neemt dat bord en vouwt het om een kubus.</p>
+
+            <p>Het is een gratis pakket van 100 levels in Circuit Trace, en het speelt als geen andere modus in de game. Je vindt het onder <strong>GAME MODES → 3D CUBE</strong>.</p>
+
+            <div class="post-shots">
+                <figure><img decoding="async" loading="lazy" width="540" height="1136" src="../../assets/img/modes-cube.webp" alt="3D-kubus in de lijst met spelmodi van Circuit Trace"><figcaption><strong>7 levelpakketten</strong>3D-kubus onder Game Modes</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1170" src="../../assets/img/cube.webp" alt="3D-kubuspuzzel met lijnen over de randen van de kubus"><figcaption><strong>Zes kanten</strong>Eén puzzel</figcaption></figure>
+                <figure><img decoding="async" loading="lazy" width="540" height="1136" src="../../assets/img/cube-2.webp" alt="Een 3D-kubuslevel van 4×4, deels opgelost"><figcaption><strong>Tot 4×4</strong>Op elke kant</figcaption></figure>
+            </div>
+
+            <h2>Zo werkt een 3D-kubuspuzzel</h2>
+
+            <p>De regels zijn de klassieke: verbind elk paar gelijke stippen met een lijn, laat nooit twee lijnen kruisen en vul elk vakje. Wat verandert is het bord: elke kant van de kubus is een klein raster, en de zes kanten zitten aan hun randen aan elkaar vast.</p>
+
+            <p>Trek een lijn naar de rand van een kant en hij loopt gewoon door op de volgende. Een stip bovenop de kubus kan verbonden worden met zijn partner op de zijkant, of helemaal rondom op de achterkant. De uitweg van de ene kant ligt vaak op een andere.</p>
+
+            <h2>De kubus draaien</h2>
+
+            <p>Je ziet altijd maar drie kanten tegelijk, dus draaien hoort bij het oplossen:</p>
+
+            <ul>
+                <li><strong>Swipe over een lege plek</strong> om de kubus een kwartslag te draaien.</li>
+                <li><strong>Sleep een lijn over de rand</strong> naar een kant die je niet ziet. De kubus rolt die kant in beeld en je lijn gaat mee, in één beweging, zonder je vinger op te tillen.</li>
+            </ul>
+
+            <p>Het eerste level laat allebei zien met een handje dat het gebaar voordoet. Daarna sta je er alleen voor.</p>
+
+            <h2>Waarom het moeilijker voelt dan een plat bord</h2>
+
+            <p>Op een vierkant bord doen de randen veel van het werk. Een stip in een hoek kan maar twee kanten op, en lijnen langs de rand zijn bijna nooit fout. Dat zijn de eerste zetten die de meeste spelers doen.</p>
+
+            <p>Een kubus heeft <strong>geen randen en geen hoeken om op te leunen</strong>. Elk vakje heeft precies vier buren, waar het ook zit. Er is dus geen voor de hand liggend beginpunt. Je zoekt naar andere aanwijzingen: stippen die dicht bij elkaar zitten, kleuren met maar één logische route, en de krappe plekken waar drie kanten van de kubus samenkomen.</p>
+
+            <div class="post-tip">
+                <p><strong>💡 Draai voordat je tekent.</strong> Bekijk de kubus rondom voordat je je eerste lijn trekt. Een stip op de achterkant vergeet je makkelijk, en die bepaalt vaak welke kant de kleuren op de voorkant op moeten.</p>
+            </div>
+
+            <h2>Van 3×3 tot 4×4</h2>
+
+            <div class="post-levels">
+                <div><strong>CUBE I–V</strong><span>3×3 op elke kant, 54 vakjes, van 11 kleuren terug naar 6</span></div>
+                <div><strong>CUBE VI–VII</strong><span>4×4 op elke kant, 96 vakjes, 12 kleuren</span></div>
+                <div><strong>CUBE VIII–X</strong><span>Minder kleuren, langere lijnen die om meerdere kanten lopen</span></div>
+            </div>
+
+            <p>Minder kleuren klinkt makkelijker, maar het is andersom. Met minder lijnen moet elke lijn verder, en één kleur kan om drie of vier kanten van de kubus lopen. Elk level is gebouwd rond één bedoelde oplossing en beoordeeld door dezelfde solver die we voor elk pakket gebruiken, dus de moeilijkheid loopt geleidelijk op van CUBE I tot CUBE X.</p>
+
+            <h2>Vijf tips voor je eerste kubussen</h2>
+
+            <ul>
+                <li><strong>Zoek de hoeken van de kubus.</strong> Waar drie kanten samenkomen, raken drie vakjes elkaar. Daar is het druk, dus beslis vroeg welke lijnen erdoor gaan.</li>
+                <li><strong>Eerst paren op dezelfde kant.</strong> Een kleur met beide stippen op één kant heeft meestal de kortste, zekerste route. Teken hem en het bord wordt kleiner.</li>
+                <li><strong>Volg een lijn rondom.</strong> Gaat een kleur over een rand, draai de kubus dan mee. De hele route in één keer zien is makkelijker dan hem onthouden.</li>
+                <li><strong>Elk vakje telt.</strong> Een level is pas opgelost als de hele kubus gevuld is. Ontstaat er op de achterkant een groepje lege vakjes, dan moet een lijn in de buurt erdoorheen.</li>
+                <li><strong>Gebruik een hint als je vastzit.</strong> Valt de hint op een kant die je niet ziet, dan draait de kubus zodat je hem ziet.</li>
+            </ul>
+
+            <h2>Gratis, en het nieuwste van zeven pakketten</h2>
+
+            <p>3D-kubus komt bij de hoofdcampagne, Classic, Diodes, Portals, Arcade en <a href="../../blog/labyrinth.html">Labyrint</a>. Samen 700+ puzzels, allemaal gratis te spelen. De volledige regels en hoe elke sector oploopt staan op de <a href="../../modes/3d-cube.html">3D-kubuspagina</a> (Engels).</p>
+
+            <p>Meer strategie: de <a href="flow-puzzel-strategie-gevorderd.html">gids met gevorderde strategieën</a> gaat over gebieden lezen en zetten testen, op een kubus extra handig. Voor een snelle opwarmer speel je de <a href="../daily/">dagpuzzel</a> in je browser.</p>
+
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Download Circuit Trace op Google Play</a> en open GAME MODES → 3D CUBE.</p>
+
+            <h2>Veelgestelde vragen</h2>
+
+            <h3>Bestaat er een 3D-kubuspuzzel voor Android?</h3>
+            <p>Ja. Circuit Trace heeft een gratis 3D-kubusmodus met 100 flow puzzels op alle zes kanten van een kubus. Hij zit in de gratis Circuit Trace-game op Google Play.</p>
+
+            <h3>Hoe draai je de kubus?</h3>
+            <p>Swipe over een lege plek om hem een kwartslag te draaien. Je kunt ook een lijn over de rand slepen naar een verborgen kant; de kubus rolt dan mee met je lijn.</p>
+
+            <h3>Lopen lijnen echt om de randen heen?</h3>
+            <p>Ja. Een lijn die de rand van een kant bereikt, loopt door op de kant ernaast, dus één kleur kan om meerdere kanten heen lopen.</p>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../../assets/img/logo-96.webp" alt="Circuit Trace-logo"><p class="foot-name">Circuit Trace</p><p>Minimalistisch flow-puzzelspel van Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../../features.html">Functies</a></li><li><a href="../../modes.html">Spelmodi</a></li><li><a href="../../themes.html">Thema's &amp; FX</a></li><li><a href="../../editor.html">Puzzel-editor</a></li><li><a href="../../achievements.html">Prestaties</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Downloaden</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Info</p><ul><li><a href="../../support.html">Support &amp; FAQ</a></li><li><a href="../../press.html">Perskit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Juridisch</p><ul><li><a href="../../privacy.html">Privacybeleid</a></li><li><a href="../../terms.html">Gebruiksvoorwaarden</a></li><li><a href="../../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio · <a href="../../blog/cube-3d-puzzle.html" class="lang-switch" hreflang="en" lang="en">English</a></div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
