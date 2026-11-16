@@ -7,6 +7,16 @@
 
   var FIRST_DAY = Date.UTC(2026, 10, 16);   // Daily #1 = 16 Nov 2026
   var STORE = 'ctDaily';
+  var LANG = (document.documentElement.lang || 'en').slice(0, 2);
+  var STR = {
+    en: { solved: 'Solved ✓', connected: ' connected', perfect: 'Perfect: every cell filled. ', tip: 'Tip: fill every cell for a perfect solve. ',
+          moves: ' moves.', streak: '-day streak', copied: 'Copied to clipboard!', waiting: 'Today’s puzzle is waiting in the app.',
+          error: 'Could not load today’s puzzle. Please reload the page.', url: 'circuittrace.app/daily' },
+    nl: { solved: 'Opgelost ✓', connected: ' verbonden', perfect: 'Perfect: elk vakje gevuld. ', tip: 'Tip: vul elk vakje voor een perfecte oplossing. ',
+          moves: ' zetten.', streak: ' dagen op rij', copied: 'Gekopieerd!', waiting: 'De puzzel van vandaag wacht op je in de app.',
+          error: 'De puzzel van vandaag kon niet laden. Herlaad de pagina.', url: 'circuittrace.app/nl/daily' }
+  };
+  var S = STR[LANG] || STR.en;
   function $(id) { return document.getElementById(id); }
   var canvas = $('dBoard');
 
@@ -38,7 +48,7 @@
   }
 
   function status() {
-    $('dStatus').textContent = board.solved ? 'Solved ✓' : board.connected() + ' / ' + board.pairCount + ' connected';
+    $('dStatus').textContent = board.solved ? S.solved : board.connected() + ' / ' + board.pairCount + S.connected;
   }
   function tick() {
     var secs = solvedSecs !== null ? solvedSecs : (startedAt ? (Date.now() - startedAt) / 1000 : 0);
@@ -66,18 +76,18 @@
   function showResult(r) {
     solvedSecs = r.t;
     $('dResTime').textContent = fmt(r.t);
-    $('dResExtra').textContent = (r.full ? 'Perfect: every cell filled. ' : 'Tip: fill every cell for a perfect solve. ') + r.m + ' moves.';
+    $('dResExtra').textContent = (r.full ? S.perfect : S.tip) + r.m + S.moves;
     var st = streak();
-    $('dStreak').textContent = st > 1 ? '🔥 ' + st + '-day streak' : '';
+    $('dStreak').textContent = st > 1 ? '🔥 ' + st + S.streak : '';
     $('dResult').hidden = false;
     $('dReset').hidden = true;
     status(); tick();
     clearInterval(timer); timer = setInterval(tick, 1000);
   }
-  function shareText() { return 'Circuit Trace Daily #' + num + ' ⚡ ' + fmt(solvedSecs) + ' – circuittrace.app/daily'; }
+  function shareText() { return 'Circuit Trace Daily #' + num + ' ⚡ ' + fmt(solvedSecs) + ' – ' + S.url; }
   $('dShare').addEventListener('click', function () {
     var text = shareText();
-    function copied(ok) { $('dShareMsg').textContent = ok ? 'Copied to clipboard!' : text; }
+    function copied(ok) { $('dShareMsg').textContent = ok ? S.copied : text; }
     if (navigator.share && /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)) {
       navigator.share({ text: text }).catch(function () {});
     } else if (navigator.clipboard) {
@@ -91,7 +101,7 @@
     num = Math.round((keyToUTC(key) - FIRST_DAY) / 86400000) + 1;
     var raw = data.puzzles[key];
     if (!raw) {
-      $('dStatus').textContent = 'Today’s puzzle is waiting in the app.';
+      $('dStatus').textContent = S.waiting;
       $('dMissing').hidden = false;
       return;
     }
@@ -111,7 +121,7 @@
     if (d.solved && d.solved[key]) { showResult(d.solved[key]); return; }
     if (startedAt) { tick(); timer = setInterval(tick, 500); }
   }
-  fetch('puzzles.json?v=1').then(function (r) { return r.json(); }).then(init).catch(function () {
-    $('dStatus').textContent = 'Could not load today’s puzzle. Please reload the page.';
+  fetch('/daily/puzzles.json?v=1').then(function (r) { return r.json(); }).then(init).catch(function () {
+    $('dStatus').textContent = S.error;
   });
 })();

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Trace — Gratis flow puzzel &amp; logisch spel voor Android</title>
+    <meta name="description" content="Verbind de stippen en vul het raster in 700+ flow puzzels. 9 spelmodi, een dagpuzzel, een puzzel-editor en duels met vrienden. Gratis op Android.">
+    <meta name="author" content="Grounded Studio">
+    <link rel="preload" as="image" href="../assets/img/menu.webp" fetchpriority="high">
+    <link rel="canonical" href="https://circuittrace.app/nl/">
+    <link rel="alternate" hreflang="en" href="https://circuittrace.app/">
+    <link rel="alternate" hreflang="nl" href="https://circuittrace.app/nl/">
+    <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#FAFAF8">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuittrace.app/nl/">
+    <meta property="og:title" content="Circuit Trace — Flow puzzels voor je brein">
+    <meta property="og:description" content="Verbind de stippen en vul het raster in 700+ flow puzzels. 9 spelmodi, een dagpuzzel, een puzzel-editor en duels met vrienden. Gratis op Android.">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Circuit Trace — Flow puzzels voor je brein">
+    <meta name="twitter:description" content="Verbind de stippen en vul het raster in 700+ flow puzzels. 9 spelmodi, een dagpuzzel, een puzzel-editor en duels met vrienden. Gratis op Android.">
+    <meta name="twitter:image" content="https://circuittrace.app/assets/og-image.jpg">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["VideoGame", "MobileApplication"], "@id": "https://circuittrace.app/#game", "name": "Circuit Trace", "url": "https://circuittrace.app/", "image": "https://circuittrace.app/assets/og-image.jpg", "screenshot": ["https://circuittrace.app/assets/img/menu.webp", "https://circuittrace.app/assets/img/game-quantum.webp", "https://circuittrace.app/assets/img/editor.webp"], "description": "Gratis flow-puzzelspel voor Android. Verbind gelijke stippen, vul het raster en herstel het circuit in 700+ puzzels, 9 spelmodi, een puzzel-editor en duels met vrienden.", "applicationCategory": "GameApplication", "applicationSubCategory": "Puzzle", "genre": ["Puzzle", "Logic"], "gamePlatform": "Android", "operatingSystem": "Android 8.0+", "playMode": ["SinglePlayer", "MultiPlayer"], "inLanguage": ["en", "nl", "de", "fr", "es", "pt"], "installUrl": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "offers": [{"@type": "Offer", "name": "Circuit Trace (gratis download)", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "category": "free"}, {"@type": "Offer", "name": "Advertenties weg", "price": "3.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "description": "In-app aankoop: haalt alle advertenties voorgoed weg", "category": "in-app purchase"}, {"@type": "Offer", "name": "Themapakket", "price": "1.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "description": "In-app aankoop: 3 exclusieve kleurthema's", "category": "in-app purchase"}, {"@type": "Offer", "name": "FX-pakket: Neon Circuit", "price": "1.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "description": "In-app aankoop: cosmetische visuele effecten", "category": "in-app purchase"}, {"@type": "Offer", "name": "FX-pakket: Hyper Grid", "price": "1.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "description": "In-app aankoop: cosmetische visuele effecten", "category": "in-app purchase"}, {"@type": "Offer", "name": "FX-bundel (Neon Circuit + Hyper Grid)", "price": "2.99", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://play.google.com/store/apps/details?id=com.game.circuittrace", "description": "In-app aankoop: beide FX-pakketten", "category": "in-app purchase"}], "author": {"@id": "https://grounded-studio.app/#org"}, "publisher": {"@id": "https://grounded-studio.app/#org"}}, {"@type": "Organization", "@id": "https://grounded-studio.app/#org", "name": "Grounded Studio", "url": "https://grounded-studio.app", "logo": "https://circuittrace.app/assets/icons/icon512.png", "sameAs": ["https://www.youtube.com/@CircuitTraceGame", "https://tiktok.com/@circuit_trace", "https://instagram.com/circuittracegame", "https://facebook.com/profile.php?id=61594812523243"]}, {"@type": "WebSite", "@id": "https://circuittrace.app/#website", "url": "https://circuittrace.app/", "name": "Circuit Trace", "publisher": {"@id": "https://grounded-studio.app/#org"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wat is Circuit Trace?", "acceptedAnswer": {"@type": "Answer", "text": "Circuit Trace is een gratis flow-puzzelspel voor Android. Verbind elk paar stippen met dezelfde kleur met een lijn, laat geen lijnen kruisen en vul het hele raster om het circuit te herstellen. Er zijn 700+ puzzels in 9 spelmodi."}}, {"@type": "Question", "name": "Is Circuit Trace gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Alle puzzels, modi en de puzzel-editor zijn gratis. Advertenties verschijnen alleen tussen levels, nooit tijdens het puzzelen. Optionele aankopen halen advertenties weg of voegen thema's en visuele effecten toe; niets geeft een voordeel."}}, {"@type": "Question", "name": "Wat is het verschil met andere \"verbind de stippen\"-spellen?", "acceptedAnswer": {"@type": "Answer", "text": "Naast klassieke flow puzzels komen er in latere levels nieuwe mechanieken bij: diodes in één richting, portals die je lijn laten springen, sterren om te verzamelen en checkpoints om langs te gaan. Elke puzzel heeft precies één bedoelde oplossing die je met pure logica vindt."}}, {"@type": "Question", "name": "Kan ik Circuit Trace offline spelen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Alle puzzels en de puzzel-editor werken zonder internet. Alleen voor duels met vrienden, optionele cloudopslag via Google Play Games en advertenties heb je verbinding nodig."}}, {"@type": "Question", "name": "Kan ik zelf puzzels maken?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. In de ingebouwde puzzel-editor plaats je gekleurde stippen, diodes, portals, sterren en checkpoints op een raster van 5×5 tot 8×8. De editor controleert of je puzzel oplosbaar is, en je deelt hem als korte code of publiceert hem in de Community."}}, {"@type": "Question", "name": "Kan ik tegen vrienden spelen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Voeg vrienden toe met een korte code en daag ze uit voor een duel op de dagpuzzel, een Time Trial-duel van 60 seconden of een puzzel die je zelf hebt gemaakt."}}]}]}</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "Circuit Trace — Handcrafted Puzzles, Diodes, Portals, Stars & Checkpoints", "description": "Circuit Trace is a calm neon flow puzzle game: connect matching dots, never let paths cross and fill every cell. See diodes, portals, stars and checkpoints in action.", "thumbnailUrl": "https://circuittrace.app/assets/img/video-thumb-640.webp", "uploadDate": "2026-10-30T12:47:58-07:00", "duration": "PT52S", "embedUrl": "https://www.youtube-nocookie.com/embed/99n2Rg7I__A", "contentUrl": "https://www.youtube.com/watch?v=99n2Rg7I__A", "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"}}</script>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────────── -->
+<nav>
+    <div class="c nav-inner">
+        <a href="./" class="nav-logo">
+            <img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="">
+            <span>Circuit Trace</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="./" class="active">Home</a></li>
+            <li><a href="../features.html">Functies</a></li>
+            <li><a href="../modes.html">Modi</a></li><li><a href="daily/">Dagpuzzel</a></li>
+            <li><a href="../themes.html">Thema's</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="nav-cta">
+            Downloaden →
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="./">🏠 Home</a>
+    <a href="../features.html">✨ Functies</a>
+    <a href="../modes.html">🎮 Modi</a><a href="daily/">🧩 Dagpuzzel</a><a href="../themes.html">🌈 Thema's &amp; FX</a>
+    <a href="../editor.html">🎨 Puzzel-editor</a>
+    <a href="../achievements.html">🏆 Prestaties</a>
+    <a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a>
+    <a href="../press.html">📰 Pers</a>
+    <a href="../blog/">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Downloaden</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section class="hero">
+    <div class="deco-dots">
+        <div class="deco-dot cyan" style="top: 15%; left: 8%;"></div>
+        <div class="deco-dot magenta" style="top: 65%; left: 12%; animation-delay: 1s;"></div>
+        <div class="deco-dot yellow" style="top: 25%; right: 10%; animation-delay: 2s;"></div>
+        <div class="deco-dot green" style="top: 75%; right: 15%; animation-delay: 1.5s;"></div>
+        <div class="deco-dot purple" style="top: 45%; left: 50%; animation-delay: 0.5s;"></div>
+    </div>
+    <div class="c">
+        <div class="hero-grid">
+            <div class="fade-in">
+                <span class="badge badge-dot">Nu op Google Play</span>
+                <h1 class="mt-4">Circuit Trace <span class="h1-sub">Gratis <span class="highlight">flow puzzel</span> &amp; logisch spel</span></h1>
+                <p class="hero-slogan">Flow puzzels voor je brein.</p>
+                <p class="hero-sub">
+                    Verbind elk paar. Herstel het netwerk. 700+ puzzels,
+                    9 spelmodi en een ingebouwde puzzel-editor om je eigen puzzels te maken en te delen.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/>
+                            <path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/>
+                            <path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/>
+                            <path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/>
+                        </svg>
+                        <div class="pstext">
+                            <small>Ontdek het op</small>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                    <a href="../features.html" class="btn btn-secondary">
+                        Zo speel je het →
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <span>Gratis te spelen</span>
+                    <span>Geen account nodig</span>
+                    <span>Geen pay-to-win</span>
+                    <span>Speelt offline</span>
+                    <span>6 talen</span>
+                </div>
+            </div>
+            <div class="hero-visual fade-in fade-in-delay-2">
+                <div class="hero-triptych" aria-label="Circuit Trace op Android">
+                    <div class="phone phone-left">
+                        <img decoding="async" width="540" height="1170" src="../assets/img/editor.webp" srcset="../assets/img/editor-270.webp 270w, ../assets/img/editor.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="De puzzel-editor van Circuit Trace met een puzzel in aanbouw">
+                    </div>
+                    <div class="phone phone-center">
+                        <img decoding="async" fetchpriority="high" width="540" height="1170" src="../assets/img/menu.webp" srcset="../assets/img/menu-270.webp 270w, ../assets/img/menu.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Hoofdmenu van Circuit Trace">
+                    </div>
+                    <div class="phone phone-right">
+                        <img decoding="async" width="540" height="1170" src="../assets/img/game-sync.webp" srcset="../assets/img/game-sync-270.webp 270w, ../assets/img/game-sync.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Campagnelevel uit de SYNC-sector met acht circuits op één bord">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── STATS ─────────────────────────────────────────── -->
+<section class="section-sm">
+    <div class="c">
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-num">700+</div>
+                <div class="stat-label">Puzzels</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">9</div>
+                <div class="stat-label">Spelmodi</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">27</div>
+                <div class="stat-label">Prestaties</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">6</div>
+                <div class="stat-label">Talen</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── VIDEO ─────────────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-primary">Zie het in actie</span>
+            <h2>De flow puzzel in actie: 50 seconden neon.</h2>
+            <p>Diodes, portals, sterren en checkpoints. Verbind gelijke stippen, kruis nooit een lijn en vul elk vakje.</p>
+        </div>
+    <div class="yt-video">
+      <a href="https://www.youtube.com/watch?v=99n2Rg7I__A" data-yt="99n2Rg7I__A" aria-label="Video afspelen: Circuit Trace in 50 seconden">
+        <img src="../assets/img/video-thumb-640.webp" width="640" height="360" alt="Circuit Trace-video: verbinden, vullen, herstellen" loading="lazy" decoding="async">
+        <span class="yt-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>
+        <span class="yt-badge">0:52 · Bekijk op YouTube</span>
+      </a>
+    </div>
+    <p class="yt-note">De video laadt pas van YouTube (privacyvriendelijke modus) als je op afspelen drukt. <a href="../video.html">Bekijk de volledige trailer van 2:37 met alle modi →</a></p>
+    </div>
+</section>
+
+<!-- ─── CORE FEATURES ─────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-primary">Wat het anders maakt</span>
+            <h2>Een logische puzzel &amp; breinbreker die je tijd respecteert.</h2>
+            <p>Geen energiesysteem. Geen pay-to-win. Geen advertenties tijdens het puzzelen. Alleen jij, het raster en je brein.</p>
+        </div>
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon cyan">🧩</div>
+                <h3>700+ levels die je laten nadenken</h3>
+                <p>Elk level is gecontroleerd door een solver die speelt als een mens. Borden die je in één oogopslag doorziet, halen het niet, en de moeilijkheid loopt per sector op.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon magenta">🎨</div>
+                <h3>Puzzel-editor</h3>
+                <p>Ontwerp je eigen puzzels van 5×5 tot 8×8 met diodes, portals, sterren en checkpoints. Deel een code of publiceer in de Community.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon yellow">📤</div>
+                <h3>Deelcodes</h3>
+                <p>Deel puzzels met vrienden via korte codes zoals <code class="mono">CT-D04B5-2Y9G0-C2EGT-V0000-00000-0000B</code>. Daag ze uit om je tijd te verbeteren. <a href="../puzzle/">Speel een code in je browser →</a></p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon green">📅</div>
+                <h3>Dagpuzzel &amp; weekuitdagingen</h3>
+                <p>Elke dag één nieuwe puzzel, voor iedereen wereldwijd dezelfde, plus zes nieuwe weekpuzzels van maandag tot zaterdag. <a href="daily/">Speel de puzzel van vandaag in je browser →</a></p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon purple">♾️</div>
+                <h3>Eindeloze modus</h3>
+                <p>Onbeperkt gegenereerde puzzels van 5×5 tot 8×8 in zeven moeilijkheden. Los ze achter elkaar op.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon orange">⚡</div>
+                <h3>Time Trial</h3>
+                <p>Sprint van 60 seconden. Los zoveel mogelijk puzzels op en jaag op je beste score van vandaag en aller tijden.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon blue">🏆</div>
+                <h3>Google Play Games</h3>
+                <p>27 prestaties om vrij te spelen. Wereldwijde ranglijsten voor de dagpuzzel, Time Trial en Eindeloos. Opslag in de cloud op al je apparaten.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon cyan">💡</div>
+                <h3>Slimme hints</h3>
+                <p>Vast? Een hint toont de hele volgende lijn van de kleur die je het laatst aanraakte, niet maar één stap. Hulp zonder alles te verklappen.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon green">🌐</div>
+                <h3>Offline + 6 talen</h3>
+                <p>Volledig speelbaar zonder internet. Beschikbaar in het Nederlands, English, Deutsch, Français, Español en Português.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── GAME MODES ────────────────────────────────────── -->
+<section class="section" style="background: var(--bg-soft);">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-cyan">9 manieren om te spelen</span>
+            <h2>9 spelmodi: klassiek, portals, diodes, 3D-kubus &amp; meer.</h2>
+            <p>Elke modus bouwt op dezelfde basis (verbind elk paar), maar draait de regels op een verrassende manier om.</p>
+        </div>
+
+        <div class="modes-grid">
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--blue-soft); color: var(--blue);">CT</div>
+                <div>
+                    <h3>Circuit Trace</h3>
+                    <p>De hoofdcampagne. 100 levels in 10 sectoren, elk met een nieuwe mechaniek: sterren, checkpoints, diodes, portals en elk vakje vullen.</p>
+                    <div class="mode-meta">100 levels · steeds nieuwe mechanieken</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--cyan-soft); color: var(--cyan);">●</div>
+                <div>
+                    <h3>Classic</h3>
+                    <p>Pure flow puzzels. Geen extra regels, alleen gekleurde paren die verbonden willen worden. De rustgevende versie.</p>
+                    <div class="mode-meta">100 levels · puur en simpel</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--yellow-soft); color: #A16207;">▶</div>
+                <div>
+                    <h3>Diodes</h3>
+                    <p>Puzzels met pijlen in één richting. Elke diode dwingt de lijn een kant op. Eerst denken, dan tekenen.</p>
+                    <div class="mode-meta">100 levels · lijnen met een richting</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--magenta-soft); color: var(--magenta);">◉</div>
+                <div>
+                    <h3>Portals</h3>
+                    <p>Gekoppelde portals laten je lijn over het raster springen. Denk aan twee plekken tegelijk.</p>
+                    <div class="mode-meta">100 levels · teleportpuzzels</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--green-soft); color: #4D7C0F;">★</div>
+                <div>
+                    <h3>Arcade</h3>
+                    <p>De meestermodus. Alle mechanieken samen (sterren, diodes, checkpoints) in 100 puzzels die steeds pittiger worden.</p>
+                    <div class="mode-meta">100 levels · meestermodus</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--orange-soft, rgba(249,115,22,.12)); color: var(--orange, #EA580C);">▦</div>
+                <div>
+                    <h3>Labyrint</h3>
+                    <p>100 levels op borden in vormen (ringen, torens, kastelen) met gaten om omheen te gaan en muren waar je lijnen niet door kunnen.</p>
+                    <div class="mode-meta">100 levels · muren &amp; borden in vormen</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: rgba(255,97,115,.12); color: #E11D48;">◧</div>
+                <div>
+                    <h3>3D-kubus <span class="badge badge-orange" style="font-size:.7rem;vertical-align:middle;">Nieuw</span></h3>
+                    <p>100 levels op alle zes kanten van een kubus. Swipe om hem te draaien en trek je lijnen om de randen heen, naar kanten die je nog niet ziet.</p>
+                    <div class="mode-meta">100 levels · zes kanten, één puzzel</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--purple-soft); color: var(--purple);">∞</div>
+                <div>
+                    <h3>Eindeloos</h3>
+                    <p>Onbeperkt gegenereerde puzzels in zeven moeilijkheden, van 5×5 tot 8×8. Kies er een en ga door zolang je wilt.</p>
+                    <div class="mode-meta">onbeperkt · kies je formaat</div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-icon" style="background: var(--yellow-soft); color: #A16207;">⚡</div>
+                <div>
+                    <h3>Expert</h3>
+                    <p>Spring direct naar een willekeurig moeilijk level uit het einde van de campagne. Elk vakje moet gevuld, en je voortgang blijft gewoon staan.</p>
+                    <div class="mode-meta">willekeurig moeilijk level · voortgang blijft</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="../modes.html" class="btn btn-secondary">
+                Bekijk alle modi →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── SCREENSHOTS ───────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-magenta">Zie het in actie</span>
+            <h2>Minimalistische puzzels: verbind de stippen. Strak en voldoening gevend.</h2>
+            <p>Standaard een donker thema. Subtiele animaties. Bediening met één vinger. Gemaakt voor rustige focus.</p>
+        </div>
+        <div class="screens-row">
+            <div class="screen-card">
+                <img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/modes.webp" srcset="../assets/img/modes-270.webp 270w, ../assets/img/modes.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Spelmodi om uit te kiezen, met het nieuwe 3D-kubuspakket">
+                <div class="screen-label">Spelmodi</div>
+            </div>
+            <div class="screen-card">
+                <img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/cube.webp" srcset="../assets/img/cube-270.webp 270w, ../assets/img/cube.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Level op de 3D-kubus met lijnen over de randen van de kubus">
+                <div class="screen-label">Nieuw: 3D-kubus</div>
+            </div>
+            <div class="screen-card">
+                <img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/game-quantum.webp" srcset="../assets/img/game-quantum-270.webp 270w, ../assets/img/game-quantum.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Portals, sterren, diodes en checkpoints in één puzzel">
+                <div class="screen-label">Mechanieken komen erbij</div>
+            </div>
+            <div class="screen-card">
+                <img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/editor.webp" srcset="../assets/img/editor-270.webp 270w, ../assets/img/editor.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Puzzel-editor: maak en deel je eigen puzzels">
+                <div class="screen-label">Puzzel-editor</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── PUZZLE EDITOR SPOTLIGHT ───────────────────────── -->
+<section class="section" style="background: var(--bg-soft);">
+    <div class="c">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;" class="hero-grid">
+            <div>
+                <span class="badge badge-magenta">Nieuw</span>
+                <h2 class="mt-4 mb-4">Puzzel-editor: maak je eigen puzzels.<br>Deel ze met vrienden.</h2>
+                <p class="lead mb-6">
+                    Met de ingebouwde puzzel-editor ontwerp je puzzels van 5×5 tot 8×8 met maximaal 8
+                    kleuren, diodes, portals, sterren en checkpoints, allemaal meteen beschikbaar.
+                    De controle kijkt direct of je puzzel oplosbaar is. Deel een korte code of publiceer
+                    hem in de Community zodat iedereen hem kan spelen.
+                </p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px;">
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Bibliotheek met 5 plekken</strong> · bewaar je puzzels, pas ze later aan</span>
+                    </li>
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Korte codes</strong> · formaat <code class="mono">CT-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</code>, makkelijk te delen</span>
+                    </li>
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Directe controle</strong> · de editor zegt of je puzzel een oplossing heeft voordat je hem deelt</span>
+                    </li>
+                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="color: var(--magenta); font-weight: 700; font-size: 1.2rem;">→</span>
+                        <span><strong>Community</strong> · publiceer je puzzels, blader door NIEUW en TOP en verzamel likes</span>
+                    </li>
+                </ul>
+                <a href="../editor.html" class="btn btn-primary">
+                    Bekijk de editor →
+                </a>
+            </div>
+            <div style="text-align: center;">
+                <img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/creator-hub.webp" srcset="../assets/img/creator-hub-270.webp 270w, ../assets/img/creator-hub.webp 540w" sizes="(max-width: 640px) 45vw, 300px" alt="Creator-menu: maak een puzzel, speel een gedeelde code of bekijk de Community" style="max-width: 320px; width: 100%; border-radius: 24px; box-shadow: var(--shadow-lg);" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FREE vs OPTIONAL ──────────────────────────────── -->
+<section class="section" id="pricing" style="background: var(--bg-soft);">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-green">Gratis te spelen</span>
+            <h2>Wat gratis is, en wat optioneel.</h2>
+            <p>Elke puzzel en elke modus is gratis. De winkel verkoopt alleen het weghalen van advertenties en uiterlijk, dus niets wat je koopt maakt een puzzel makkelijker.</p>
+        </div>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Gratis, voor altijd</h3>
+                <ul class="price-list">
+                    <li>Alle 700+ puzzels en alle 9 spelmodi</li>
+                    <li>Dagpuzzel, weekuitdagingen, Time Trial en Eindeloos</li>
+                    <li>Puzzel-editor, Community-puzzels en duels met vrienden</li>
+                    <li>10 kleurthema's, de meeste speel je vrij met sterren</li>
+                    <li>Hints en ongedaan maken: een paar gratis per level, met een optionele korte video krijg je er meer</li>
+                    <li>Advertenties: geen in je eerste sessie en je eerste 10 campagnelevels. Daarna korte advertenties tussen levels, nooit tijdens het puzzelen.</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Optionele eenmalige aankopen</h3>
+                <table class="price-table">
+                    <tbody>
+                        <tr><th scope="row">Advertenties weg<small>Geen advertenties meer tussen levels, voor altijd</small></th><td>€3.99</td></tr>
+                        <tr><th scope="row">Themapakket<small>Golden Hour, Midnight Sakura, Cosmic Nebula</small></th><td>€1.99</td></tr>
+                        <tr><th scope="row">Neon Circuit FX<small>Pulserende stippen en felle gloeidraadlijnen</small></th><td>€1.99</td></tr>
+                        <tr><th scope="row">Hyper Grid FX<small>Kruisvormige rasterpunten en bliksemvonken</small></th><td>€1.99</td></tr>
+                        <tr><th scope="row">FX-bundel<small>Beide FX-pakketten samen</small></th><td>€2.99</td></tr>
+                    </tbody>
+                </table>
+                <p class="price-note">Prijzen in euro. Google Play toont de prijs in je eigen valuta. Geen abonnementen, geen energiesysteem, geen pay-to-win. <a href="../themes.html">Bekijk de thema's en FX →</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── REVIEWS (hidden until real player reviews are supplied) ──────────
+     To publish: paste real reviews (with permission) into the cards, remove
+     the "hidden" attribute. Never invent reviews.
+<section class="section" id="reviews">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-yellow">Players say</span>
+            <h2>What players say about Circuit Trace</h2>
+        </div>
+        <div class="review-grid">
+            <figure class="review-card">
+                <blockquote>REVIEW TEXT</blockquote>
+                <figcaption>NAME · Google Play review, MONTH YEAR</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+─────────────────────────────────────────────────────────────────────── -->
+
+<!-- ─── FAQ ───────────────────────────────────────────── -->
+<section class="section" id="faq">
+    <div class="c">
+        <div class="section-head">
+            <span class="badge badge-cyan">FAQ</span>
+            <h2>Veelgestelde vragen over de flow puzzel Circuit Trace</h2>
+            <p>Korte antwoorden over het puzzelspel. Meer op de <a href="../support.html">supportpagina (Engels)</a>.</p>
+        </div>
+        <div class="faq">
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">Wat is Circuit Trace? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Circuit Trace is een gratis flow-puzzelspel voor Android. Verbind elk paar stippen met dezelfde kleur met een lijn, laat geen lijnen kruisen en vul het hele raster om het circuit te herstellen. Er zijn 700+ puzzels in 9 spelmodi.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">Is Circuit Trace gratis? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja. Alle puzzels, modi en de puzzel-editor zijn gratis. Advertenties verschijnen alleen tussen levels, nooit tijdens het puzzelen. Optionele aankopen halen advertenties weg of voegen thema's en visuele effecten toe; niets geeft een voordeel.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">Wat is het verschil met andere "verbind de stippen"-spellen? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Naast klassieke flow puzzels komen er in latere levels nieuwe mechanieken bij: diodes in één richting, portals die je lijn laten springen, sterren om te verzamelen en checkpoints om langs te gaan. Elke puzzel heeft precies één bedoelde oplossing die je met pure logica vindt.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">Kan ik Circuit Trace offline spelen? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja. Alle puzzels en de puzzel-editor werken zonder internet. Alleen voor duels met vrienden, optionele cloudopslag via Google Play Games en advertenties heb je verbinding nodig.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">Kan ik zelf puzzels maken? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja. In de ingebouwde puzzel-editor plaats je gekleurde stippen, diodes, portals, sterren en checkpoints op een raster van 5×5 tot 8×8. De editor controleert of je puzzel oplosbaar is, en je deelt hem als korte code of publiceert hem in de Community.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">Kan ik tegen vrienden spelen? <span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Ja. Voeg vrienden toe met een korte code en daag ze uit voor een duel op de dagpuzzel, een Time Trial-duel van 60 seconden of een puzzel die je zelf hebt gemaakt.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────── -->
+<section class="section">
+    <div class="c">
+        <div class="cta-section">
+            <h2>Klaar om de gratis flow puzzel te spelen?</h2>
+            <p>Gratis op Google Play. 700+ puzzels wachten op je. Maak je eigen puzzels. Daag je vrienden uit.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/>
+                    <path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/>
+                    <path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/>
+                    <path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/>
+                </svg>
+                <div class="pstext">
+                    <small>Ontdek het op</small>
+                    <span>Google Play</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand">
+                <img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace-logo">
+                <p class="foot-name">Circuit Trace</p>
+                <p>Minimalistisch flow-puzzelspel van Grounded Studio. Met zorg gemaakt in Nederland.</p>
+            </div>
+            <div class="foot-col">
+                <p class="foot-h">Product</p>
+                <ul>
+                    <li><a href="../features.html">Functies</a></li>
+                    <li><a href="../modes.html">Spelmodi</a></li><li><a href="../themes.html">Thema's &amp; FX</a></li>
+                    <li><a href="../editor.html">Puzzel-editor</a></li><li><a href="../achievements.html">Prestaties</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Downloaden</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <p class="foot-h">Info</p>
+                <ul>
+                    <li><a href="../support.html">Support &amp; FAQ</a></li>
+                    <li><a href="../press.html">Perskit</a></li>
+                    <li><a href="../blog/">Blog</a></li>
+                    <li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <p class="foot-h">Juridisch</p>
+                <ul>
+                    <li><a href="../privacy.html">Privacybeleid</a></li>
+                    <li><a href="../terms.html">Gebruiksvoorwaarden</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <div>© 2026 Grounded Studio · Met zorg gemaakt in Nederland 🇳🇱 · <a href="../" class="lang-switch" hreflang="en" lang="en">English</a></div>
+            <div class="foot-socials">
+                <a href="https://tiktok.com/@circuit_trace" target="_blank" aria-label="TikTok" title="TikTok">🎵</a>
+                <a href="https://instagram.com/circuittracegame" target="_blank" aria-label="Instagram" title="Instagram">📸</a>
+                <a href="https://facebook.com/profile.php?id=61594812523243" target="_blank" aria-label="Facebook" title="Facebook">📘</a>
+                <a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<script>
+document.querySelectorAll('.yt-video a[data-yt]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.yt + '?autoplay=1&rel=0';
+    f.title = a.getAttribute('aria-label');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullScreen = true;
+    a.replaceWith(f);
+  });
+});
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
