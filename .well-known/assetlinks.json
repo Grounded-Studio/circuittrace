@@ -1,11 +1,15 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.game.circuittrace",
       "sha256_cert_fingerprints": [
-        "C8:F3:45:4E:DD:73:44:CA:B8:63:B9:4D:FA:AC:F7:AD:63:E1:D2:6A:47:AE:BA:9E:BD:BA:35:4D:82:D1:F6:46"
+        "C8:F3:45:4E:DD:73:44:CA:B8:63:B9:4D:FA:AC:F7:AD:63:E1:D2:6A:47:AE:BA:9E:BD:BA:35:4D:82:D1:F6:46",
+        "23:4E:51:F7:D7:C8:AA:67:5B:B1:61:47:EA:B6:3D:B8:CA:EF:95:31:64:2E:50:6A:2D:02:16:A0:72:0D:97:2D",
+        "44:A3:C0:E3:3E:9B:10:72:AD:98:20:CE:74:F3:1B:A5:92:13:19:42:97:0C:69:3F:3D:76:2E:40:17:BB:69:9D"
       ]
     }
   }
