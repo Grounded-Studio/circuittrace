@@ -1,0 +1,2 @@
+# GitHub Pages skips dot-folders by default; Android App Links need this one.
+include: [".well-known"]
