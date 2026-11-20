@@ -128,6 +128,12 @@
 
     var paths = {}, locked = {}, active = -1, activePath = [], moved = false, snap = null;
     self.moves = 0; self.solved = false; self.size = N; self.pairCount = pairs.length;
+    // Neon look (opt-in, used by the daily page): game-style bead chains,
+    // energy-core dots, a drag head that follows the finger and short pulses.
+    var NEON = opts.theme === 'neon';
+    var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var history = [], fx = [], ptr = null, kc = -1, kbHold = false, focusVis = false, raf = 0;
+    self.celebrationMs = NEON && !RM ? 1100 : 0;
 
     function adjacent(a, b) { return Math.abs(a % N - b % N) + Math.abs(Math.floor(a / N) - Math.floor(b / N)) === 1; }
     function owner(cell) {
@@ -220,7 +226,7 @@
     }
     function end() {
       if (active < 0) return;
-      var c = active, path = activePath;
+      var c = active, path = activePath, wasLocked = !!locked[c];
       active = -1; activePath = [];
       if (!moved) { restore(snap); return; }
       if (path.length && !connects(c, path)) {
@@ -230,8 +236,26 @@
       }
       if (path.length < 2) { delete paths[c]; delete locked[c]; }
       else { paths[c] = path; if (connects(c, path)) locked[c] = true; else delete locked[c]; }
-      if (snapshot() !== snap) self.moves++;
+      if (snapshot() !== snap) {
+        self.moves++;
+        history.push(snap);
+        if (history.length > 200) history.shift();
+      }
       checkSolved();
+      if (self.solved) addFx({ type: 'solve', dur: 1300 });
+      else if (locked[c] && !wasLocked) addFx({ type: 'pulse', c: c, dur: 650 });
+    }
+    function addFx(e) {
+      if (!NEON || RM) return;
+      e.t0 = performance.now();
+      fx.push(e);
+      if (!raf) raf = requestAnimationFrame(loop);
+    }
+    function loop() {
+      var now = performance.now();
+      fx = fx.filter(function (e) { return now - e.t0 < e.dur; });
+      draw();
+      raf = fx.length ? requestAnimationFrame(loop) : 0;
     }
     function checkSolved() {
       for (var i = 0; i < pairs.length; i++) if (!locked[pairs[i].c]) return;
@@ -250,9 +274,18 @@
     };
     self.clear = function () {
       if (self.solved) return;
-      if (Object.keys(paths).length) self.moves++;
+      if (Object.keys(paths).length) { self.moves++; history.push(snapshot()); }
       paths = {}; locked = {}; draw(); if (opts.onChange) opts.onChange(self);
     };
+    self.canUndo = function () { return !self.solved && history.length > 0; };
+    self.undo = function () {
+      if (self.solved || active >= 0 || !history.length) return;
+      restore(history.pop());
+      draw(); if (opts.onChange) opts.onChange(self);
+    };
+    // Shows a finished line set without input (used by the teaser demo).
+    self.show = function (p, l) { paths = p; locked = l || {}; draw(); };
+    self.pulse = function (c) { addFx({ type: 'pulse', c: c, dur: 650 }); };
 
     // ---- input
     function cellAt(e) {
@@ -260,30 +293,70 @@
       var x = Math.floor((e.clientX - r.left) / r.width * N), y = Math.floor((e.clientY - r.top) / r.height * N);
       return (x < 0 || y < 0 || x >= N || y >= N) ? -1 : y * N + x;
     }
-    canvas.addEventListener('pointerdown', function (e) {
-      var cell = cellAt(e);
-      if (cell < 0) return;
-      start(cell);
-      if (active < 0) return;
-      e.preventDefault();
-      try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
-      if (opts.onStart) opts.onStart(self);
-      draw();
-    });
-    canvas.addEventListener('pointermove', function (e) {
-      if (active < 0) return;
-      e.preventDefault();
-      var cell = cellAt(e);
-      if (cell >= 0) { moveTo(cell); draw(); }
-    });
+    function setPtr(e) {
+      var r = canvas.getBoundingClientRect();
+      ptr = [(e.clientX - r.left) / r.width * canvas.width, (e.clientY - r.top) / r.height * canvas.height];
+    }
     function up() {
+      ptr = null;
       if (active < 0) return;
-      end(); draw();
+      end(); kbHold = false; draw();
       if (opts.onChange) opts.onChange(self);
       if (self.solved && opts.onSolved) opts.onSolved(self);
     }
-    canvas.addEventListener('pointerup', up);
-    canvas.addEventListener('pointercancel', up);
+    if (!opts.readonly) {
+      canvas.addEventListener('pointerdown', function (e) {
+        focusVis = false;
+        var cell = cellAt(e);
+        if (cell < 0) return;
+        start(cell);
+        if (active < 0) { draw(); return; }
+        e.preventDefault();
+        setPtr(e);
+        try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
+        if (opts.onStart) opts.onStart(self);
+        draw();
+      });
+      canvas.addEventListener('pointermove', function (e) {
+        if (active < 0 || kbHold) return;
+        e.preventDefault();
+        setPtr(e);
+        var cell = cellAt(e);
+        if (cell >= 0) moveTo(cell);
+        draw();
+      });
+      canvas.addEventListener('pointerup', up);
+      canvas.addEventListener('pointercancel', up);
+    }
+    // Keyboard: arrows move a cursor, Enter/Space picks up or drops a line,
+    // arrows then draw it, Esc drops it, U / Ctrl+Z undoes.
+    if (opts.keyboard && !opts.readonly) {
+      canvas.addEventListener('keydown', function (e) {
+        var k = e.key, d = { ArrowRight: [1, 0], ArrowLeft: [-1, 0], ArrowDown: [0, 1], ArrowUp: [0, -1] }[k];
+        if (kc < 0) kc = Math.floor(N / 2) * N + Math.floor(N / 2);
+        focusVis = true;
+        if (d) {
+          e.preventDefault();
+          var x = kc % N + d[0], y = Math.floor(kc / N) + d[1];
+          if (x < 0 || y < 0 || x >= N || y >= N) { draw(); return; }
+          var next = y * N + x;
+          if (kbHold && active >= 0) { moveTo(next); kc = activePath[activePath.length - 1]; }
+          else kc = next;
+          draw();
+        } else if (k === 'Enter' || k === ' ') {
+          e.preventDefault();
+          if (kbHold) { up(); return; }
+          start(kc);
+          if (active >= 0) { kbHold = true; if (opts.onStart) opts.onStart(self); }
+          draw();
+        } else if (k === 'Escape') {
+          if (kbHold) { e.preventDefault(); up(); }
+        } else if (k === 'u' || k === 'U' || (k === 'z' && (e.ctrlKey || e.metaKey))) {
+          e.preventDefault(); self.undo();
+        }
+      });
+      canvas.addEventListener('blur', function () { focusVis = false; if (kbHold) up(); else draw(); });
+    }
 
     // ---- drawing
     function rgba(hex, a) {
@@ -303,7 +376,183 @@
       }
       ctx.stroke(); ctx.shadowBlur = 0;
     }
-    function draw() {
+    function draw() { if (NEON) drawNeon(); else drawClassic(); }
+
+    // ---- neon drawing (mirrors grid_board.gd: channel + tube + beads,
+    // energy cores with halo / outer ring / dark separator / body / hot spot)
+    function mix(hex, t) {
+      var n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+      return 'rgb(' + Math.round(r + (255 - r) * t) + ',' + Math.round(g + (255 - g) * t) + ',' + Math.round(b + (255 - b) * t) + ')';
+    }
+    function polyline(p, s) {
+      ctx.beginPath();
+      for (var k = 0; k < p.length; k++) {
+        var q = center(p[k], s);
+        if (k && adjacent(p[k - 1], p[k])) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]);
+      }
+    }
+    function beads(c, p, s, isActive, boost) {
+      var base = col(c), pastel = mix(base, 0.36 + boost * 0.35 + (isActive ? 0.08 : 0));
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (p.length > 1) {
+        ctx.save();
+        ctx.shadowColor = base; ctx.shadowBlur = s * (isActive ? 0.55 : 0.38) * (1 + boost);
+        ctx.strokeStyle = rgba(base, 0.5 + boost * 0.3); ctx.lineWidth = s * 0.5;
+        polyline(p, s); ctx.stroke();
+        ctx.restore();
+        ctx.strokeStyle = '#03050B'; ctx.lineWidth = s * 0.55; polyline(p, s); ctx.stroke();
+        ctx.strokeStyle = pastel; ctx.lineWidth = s * 0.4; polyline(p, s); ctx.stroke();
+      }
+      for (var k = 0; k < p.length; k++) {
+        if (ends[p[k]] !== undefined) continue;
+        var q = center(p[k], s);
+        ctx.fillStyle = pastel; ctx.strokeStyle = '#03050B'; ctx.lineWidth = s * 0.065;
+        ctx.beginPath(); ctx.arc(q[0], q[1], s * 0.29, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      }
+      // drag head: the line reaches out to the finger between cells
+      if (isActive && ptr && p.length) {
+        var L = center(p[p.length - 1], s), dx = ptr[0] - L[0], dy = ptr[1] - L[1], len = Math.sqrt(dx * dx + dy * dy);
+        if (len > s * 0.12) {
+          var m = Math.min(len, s * 0.55) / len, hx = L[0] + dx * m, hy = L[1] + dy * m;
+          ctx.strokeStyle = '#03050B'; ctx.lineWidth = s * 0.55;
+          ctx.beginPath(); ctx.moveTo(L[0], L[1]); ctx.lineTo(hx, hy); ctx.stroke();
+          ctx.strokeStyle = pastel; ctx.lineWidth = s * 0.4;
+          ctx.beginPath(); ctx.moveTo(L[0], L[1]); ctx.lineTo(hx, hy); ctx.stroke();
+          ctx.save(); ctx.shadowColor = base; ctx.shadowBlur = s * 0.5;
+          ctx.fillStyle = 'rgba(255,255,255,0.9)';
+          ctx.beginPath(); ctx.arc(hx, hy, s * 0.13, 0, Math.PI * 2); ctx.fill();
+          ctx.restore();
+        }
+      }
+    }
+    function core(cell, c, s, boost, selected) {
+      var q = center(cell, s), cr = s / 2 * (1 + boost * 0.12), base = col(c);
+      ctx.fillStyle = rgba(base, 0.06); ctx.beginPath(); ctx.arc(q[0], q[1], cr * 0.98, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = rgba(base, 0.14 + boost * 0.15); ctx.beginPath(); ctx.arc(q[0], q[1], cr * 0.78, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = rgba(base, 0.75); ctx.lineWidth = Math.max(1.5, cr * 0.56 * 0.16);
+      ctx.beginPath(); ctx.arc(q[0], q[1], cr * 0.56, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.beginPath(); ctx.arc(q[0], q[1], cr * 0.44, 0, Math.PI * 2); ctx.fill();
+      ctx.save(); ctx.shadowColor = base; ctx.shadowBlur = s * 0.3;
+      ctx.fillStyle = base; ctx.beginPath(); ctx.arc(q[0], q[1], cr * 0.36, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      ctx.fillStyle = 'rgba(255,255,255,0.82)';
+      ctx.beginPath(); ctx.arc(q[0] - cr * 0.36 * 0.28, q[1] - cr * 0.36 * 0.32, cr * 0.14, 0, Math.PI * 2); ctx.fill();
+      if (selected) {
+        ctx.strokeStyle = rgba(base, 0.6); ctx.lineWidth = Math.max(1.5, s * 0.03);
+        ctx.beginPath(); ctx.arc(q[0], q[1], cr * 0.7, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
+    function drawNeon() {
+      var W = canvas.width, s = W / N, now = performance.now(), i, k, q, e, u;
+      var boost = {}, solveU = -1;
+      fx.forEach(function (f) {
+        var v = Math.min(1, (now - f.t0) / f.dur);
+        if (f.type === 'pulse') boost[f.c] = Math.max(boost[f.c] || 0, (1 - v) * 0.7);
+        if (f.type === 'solve') solveU = v;
+      });
+      var gb = solveU >= 0 ? Math.sin(solveU * Math.PI) * 0.7 : 0;
+      ctx.clearRect(0, 0, W, W);
+      var bg = ctx.createLinearGradient(0, 0, 0, W);
+      bg.addColorStop(0, '#0C1531'); bg.addColorStop(1, '#070C1E');
+      ctx.fillStyle = bg; ctx.fillRect(0, 0, W, W);
+      var all = {}; for (var c in paths) all[c] = paths[c];
+      if (active >= 0) all[active] = activePath;
+      var owned = {};
+      for (c in all) all[c].forEach(function (cell) { owned[cell] = +c; });
+      for (c in all) {
+        ctx.fillStyle = rgba(col(+c), locked[c] ? 0.10 : 0.06);
+        all[c].forEach(function (cell) { ctx.fillRect(cell % N * s, Math.floor(cell / N) * s, s, s); });
+      }
+      ctx.strokeStyle = 'rgba(90,140,255,0.20)'; ctx.lineWidth = Math.max(1, s * 0.016);
+      for (i = 0; i <= N; i++) {
+        ctx.beginPath(); ctx.moveTo(i * s, 0); ctx.lineTo(i * s, W); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, i * s); ctx.lineTo(W, i * s); ctx.stroke();
+      }
+      ctx.fillStyle = 'rgba(150,190,255,0.38)';
+      for (i = 0; i <= N; i++) for (k = 0; k <= N; k++) {
+        ctx.beginPath(); ctx.arc(i * s, k * s, Math.max(1, s * 0.03), 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.strokeStyle = 'rgba(150,180,255,0.22)'; ctx.lineWidth = Math.max(1, s * 0.02);
+      for (i = 0; i < N * N; i++) {
+        if (owned[i] !== undefined || ends[i] !== undefined || portals[i] !== undefined || diodes[i] || stars[i]) continue;
+        q = center(i, s); ctx.beginPath(); ctx.arc(q[0], q[1], s * 0.07, 0, Math.PI * 2); ctx.stroke();
+      }
+      for (k in portals) {
+        q = center(+k, s);
+        ctx.save(); ctx.shadowColor = '#9FD0FF'; ctx.shadowBlur = s * 0.3;
+        ctx.strokeStyle = 'rgba(200,225,255,0.9)'; ctx.lineWidth = s * 0.05;
+        ctx.beginPath(); ctx.arc(q[0], q[1], s * 0.36, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(q[0], q[1], s * 0.22, 0, Math.PI * 2); ctx.stroke();
+        ctx.restore();
+      }
+      for (c in all) beads(+c, all[c], s, +c === active, (boost[c] || 0) + gb);
+      for (k in cpColor) cpMark(+k, s, col(cpColor[k]));
+      cpAny.forEach(function (cell) { cpMark(cell, s, '#D9EBFF'); });
+      for (k in diodes) {
+        var d = diodes[k]; q = center(+k, s);
+        var dcol = d.color >= 0 ? col(d.color) : '#FFFFFF';
+        ctx.save(); ctx.translate(q[0], q[1]); ctx.rotate(Math.atan2(d.v[1], d.v[0]));
+        ctx.fillStyle = 'rgba(7,12,30,0.9)'; ctx.beginPath(); ctx.arc(0, 0, s * 0.27, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowColor = dcol; ctx.shadowBlur = s * 0.25;
+        ctx.strokeStyle = dcol; ctx.lineWidth = s * 0.08; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        ctx.beginPath(); ctx.moveTo(-s * 0.08, -s * 0.15); ctx.lineTo(s * 0.1, 0); ctx.lineTo(-s * 0.08, s * 0.15); ctx.stroke();
+        ctx.restore();
+      }
+      for (k in stars) {
+        q = center(+k, s);
+        ctx.save(); ctx.shadowColor = '#FFE680'; ctx.shadowBlur = s * 0.3;
+        ctx.fillStyle = 'rgba(255,236,150,0.95)'; ctx.beginPath();
+        for (i = 0; i < 10; i++) {
+          var sa = -Math.PI / 2 + i * Math.PI / 5, sr = (i % 2 ? 0.12 : 0.28) * s;
+          ctx.lineTo(q[0] + Math.cos(sa) * sr, q[1] + Math.sin(sa) * sr);
+        }
+        ctx.closePath(); ctx.fill(); ctx.restore();
+      }
+      pairs.forEach(function (p) {
+        var b = (boost[p.c] || 0) + gb;
+        core(p.a, p.c, s, b, active === p.c && activePath[0] === p.a);
+        core(p.b, p.c, s, b, active === p.c && activePath[0] === p.b);
+      });
+      fx.forEach(function (f) {
+        u = Math.min(1, (now - f.t0) / f.dur);
+        if (f.type === 'pulse') {
+          pairs.forEach(function (p) {
+            if (p.c !== f.c) return;
+            [p.a, p.b].forEach(function (cell) {
+              var qq = center(cell, s);
+              ctx.strokeStyle = rgba(col(p.c), (1 - u) * 0.8); ctx.lineWidth = s * 0.05;
+              ctx.beginPath(); ctx.arc(qq[0], qq[1], s * 0.28 * (1 + u * 1.6), 0, Math.PI * 2); ctx.stroke();
+            });
+          });
+        }
+        if (f.type === 'solve') {
+          pairs.forEach(function (p) {
+            [p.a, p.b].forEach(function (cell) {
+              var qq = center(cell, s), len = s * (0.35 + u * 0.8);
+              for (var j = 0; j < 8; j++) {
+                var ang = j * Math.PI / 4 + u * 0.6, cx = Math.cos(ang), cy = Math.sin(ang);
+                ctx.strokeStyle = rgba(col(p.c), (1 - u) * 0.95); ctx.lineWidth = Math.max(1.5, s * 0.035);
+                ctx.beginPath(); ctx.moveTo(qq[0] + cx * s * 0.3, qq[1] + cy * s * 0.3); ctx.lineTo(qq[0] + cx * len, qq[1] + cy * len); ctx.stroke();
+                ctx.fillStyle = 'rgba(255,255,255,' + ((1 - u) * 0.95) + ')';
+                ctx.beginPath(); ctx.arc(qq[0] + cx * len, qq[1] + cy * len, Math.max(1.5, s * 0.03), 0, Math.PI * 2); ctx.fill();
+              }
+            });
+          });
+          ctx.strokeStyle = 'rgba(255,255,255,' + ((1 - u) * 0.35) + ')'; ctx.lineWidth = s * 0.06;
+          ctx.beginPath(); ctx.arc(W / 2, W / 2, u * W * 0.75, 0, Math.PI * 2); ctx.stroke();
+        }
+      });
+      if (focusVis && kc >= 0) {
+        q = center(kc, s);
+        ctx.save(); ctx.shadowColor = '#FFFFFF'; ctx.shadowBlur = s * 0.2;
+        ctx.strokeStyle = kbHold ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.7)'; ctx.lineWidth = s * 0.045;
+        ctx.setLineDash(kbHold ? [] : [s * 0.12, s * 0.08]);
+        ctx.strokeRect(q[0] - s * 0.46, q[1] - s * 0.46, s * 0.92, s * 0.92);
+        ctx.restore();
+      }
+    }
+
+    function drawClassic() {
       var W = canvas.width, s = W / N;
       ctx.clearRect(0, 0, W, W);
       ctx.fillStyle = '#0B1022'; ctx.fillRect(0, 0, W, W);
@@ -374,6 +623,7 @@
       draw();
     }
     window.addEventListener('resize', resize);
+    self.destroy = function () { window.removeEventListener('resize', resize); if (raf) cancelAnimationFrame(raf); raf = 0; fx = []; };
     self.draw = draw;
     resize();
   }

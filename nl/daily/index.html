@@ -12,7 +12,7 @@
     <link rel="alternate" hreflang="x-default" href="https://circuittrace.app/daily/">
     <link rel="icon" type="image/png" href="../../assets/icons/icon64.png">
     <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-    <meta name="theme-color" content="#FAFAF8">
+    <meta name="theme-color" content="#060A18">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://circuittrace.app/nl/daily/">
     <meta property="og:title" content="Circuit Trace Daily: elke dag een gratis flow puzzel">
@@ -27,25 +27,125 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Dagpuzzel", "item": "https://circuittrace.app/nl/daily/"}]}</script>
     <style>
     [hidden] { display: none !important; }
-    .daily-wrap { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); gap: 48px; align-items: start; }
-    .daily-bar { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; font-weight: 700; }
-    .daily-bar .num { font-size: 1.15rem; }
-    .daily-bar .time { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; }
-    #dBoard { display: block; width: 100%; aspect-ratio: 1; border-radius: 18px; touch-action: none; cursor: pointer;
-              box-shadow: 0 18px 50px rgba(15, 23, 42, .25); background: #0B1022; }
-    .daily-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--ink-soft); }
-    .daily-result { margin-top: 20px; background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: center; }
-    .daily-result .big { font-size: 2.6rem; font-weight: 900; line-height: 1.1; font-family: 'JetBrains Mono', monospace; }
-    .daily-result p { margin: 8px 0; color: var(--ink-soft); }
-    .daily-result .streak { font-weight: 700; color: var(--ink); }
-    .daily-cta { margin-top: 20px; padding: 24px; border-radius: var(--radius-lg); background: #0F172A; color: #fff; }
-    .daily-cta h2 { color: #fff; font-size: 1.35rem; margin-bottom: 8px; }
-    .daily-cta p { color: rgba(255,255,255,.8); margin-bottom: 16px; }
+    /* Neon look for the daily page only: the site's colour tokens flip to dark,
+       so nav, footer and the text below the puzzle follow automatically. */
+    body.dn {
+        --bg: #060A18; --bg-soft: #0E1530; --bg-card: #0B1226; --bg-elevated: #0E1530;
+        --ink: #EEF3FF; --ink-soft: #C3CDE6; --ink-mute: #93A1C2; --ink-faint: #64739A;
+        --border: rgba(120, 150, 255, .18); --border-strong: rgba(120, 150, 255, .32);
+        --accent: #5AB4FF; --accent-soft: rgba(90, 180, 255, .14); --accent-text: #8CCBFF;
+        --neon: #5AB4FF; --neon2: #E85BD0;
+        background: #060A18; color: var(--ink);
+    }
+    body.dn nav { background: rgba(6, 10, 24, .78); }
+    body.dn .nav-cta { background: var(--neon); color: #050814 !important; }
+    body.dn .mob-menu { background: #0A1128; }
+    body.dn footer { background: #050814; border-top: 1px solid var(--border); }
+    .dn-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+             background: radial-gradient(60% 45% at 0% 62%, rgba(64, 140, 255, .30), transparent 70%),
+                         radial-gradient(55% 45% at 100% 40%, rgba(232, 80, 200, .24), transparent 70%),
+                         radial-gradient(70% 40% at 50% 0%, rgba(40, 70, 160, .30), transparent 70%), #060A18; }
+    .dn-bg::before { content: ""; position: absolute; inset: -40px; background: url(/assets/img/circuit-bg.svg) center / cover no-repeat;
+                     opacity: .8; animation: dnDrift 46s ease-in-out infinite alternate; }
+    @keyframes dnDrift { from { transform: translate3d(-16px, -10px, 0) scale(1.03); } to { transform: translate3d(16px, 12px, 0) scale(1.06); } }
+
+    .dn-stage { padding: 14px 16px 28px; }
+    .dn-wrap { width: min(560px, 100%); margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .dn-logo { display: block; width: min(300px, 72vw); height: auto; margin: 4px auto 6px; filter: drop-shadow(0 0 18px rgba(80, 160, 255, .45)); }
+    .dn-size { width: min(520px, 100%, max(280px, calc(100svh - 330px))); }
+    .dn-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 6px 0 12px; }
+    .dn-title { margin: 0; font-size: .95rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #DCE8FF;
+                padding: 7px 16px; border: 2px solid rgba(140, 200, 255, .75); border-radius: 999px; background: rgba(8, 12, 30, .6);
+                box-shadow: 0 0 14px rgba(90, 180, 255, .35), inset 0 0 10px rgba(90, 180, 255, .12); line-height: 1.2; }
+    .dn-title span { color: #fff; }
+    .dn-title, .dn-btn { white-space: nowrap; }
+    @media (max-width: 440px) {
+        .dn-title { font-size: .78rem; letter-spacing: .06em; padding: 6px 12px; }
+        .dn-btn { font-size: .9rem; letter-spacing: .03em; padding: 0 10px; }
+        .dn-time { font-size: 1.2rem; }
+    }
+    .dn-time { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 1.35rem; color: #fff;
+               text-shadow: 0 0 12px rgba(90, 180, 255, .8); min-width: 4.2ch; text-align: right; }
+    .dn-board { position: relative; border-radius: 22px; padding: 10px; background: linear-gradient(180deg, #0E1838, #070C1E);
+                border: 2px solid rgba(110, 190, 255, .85);
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, .05), 0 0 26px rgba(70, 160, 255, .45), 0 0 70px rgba(70, 160, 255, .18), 0 24px 60px rgba(0, 0, 0, .5); }
+    .dn-board.won { animation: dnWon 1.2s ease-out; }
+    @keyframes dnWon { 0% { box-shadow: 0 0 0 1px rgba(255,255,255,.05), 0 0 26px rgba(70,160,255,.45), 0 0 70px rgba(70,160,255,.18); }
+                       35% { box-shadow: 0 0 0 2px rgba(255,255,255,.5), 0 0 50px rgba(120,200,255,.9), 0 0 120px rgba(232,91,208,.45); }
+                       100% { box-shadow: 0 0 0 1px rgba(255,255,255,.05), 0 0 26px rgba(70,160,255,.45), 0 0 70px rgba(70,160,255,.18); } }
+    #dBoard { display: block; width: 100%; aspect-ratio: 1; border-radius: 14px; touch-action: none; cursor: pointer; background: #0B1430; outline: none; }
+    #dBoard:focus-visible { box-shadow: 0 0 0 3px rgba(255, 255, 255, .85); }
+    .dn-status { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 12px; font-weight: 600; color: var(--ink-soft); font-size: .95rem; }
+    .dn-bonus { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: .85rem; font-weight: 700;
+                border: 1.5px solid rgba(255, 214, 90, .45); color: #FFE7A0; background: rgba(255, 200, 60, .06); white-space: nowrap; }
+    .dn-bonus.on { border-color: #FFD65A; color: #1A1203; background: #FFD65A; box-shadow: 0 0 18px rgba(255, 214, 90, .7); }
+    .dn-controls { display: flex; gap: 12px; margin-top: 14px; }
+    .dn-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 18px;
+              font: 700 1rem 'Outfit', system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #E6EEFF; cursor: pointer;
+              background: rgba(10, 16, 40, .75); border: 2px solid rgba(120, 170, 255, .55); border-radius: 14px; transition: box-shadow .2s, border-color .2s, transform .1s; }
+    .dn-btn:hover:not(:disabled) { border-color: #8CCBFF; box-shadow: 0 0 16px rgba(90, 180, 255, .45); }
+    .dn-btn:active:not(:disabled) { transform: scale(.97); }
+    .dn-btn:disabled { opacity: .4; cursor: default; }
+    .dn-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+    .dn-btn svg { width: 20px; height: 20px; }
+    .dn-kbd { margin-top: 10px; font-size: .8rem; color: var(--ink-mute); text-align: center; }
+    @media (hover: none) { .dn-kbd { display: none; } }
+    #dMissing { margin-top: 14px; text-align: center; }
+
+    .dn-result { width: 100%; margin-top: 18px; padding: 24px 20px 22px; text-align: center; border-radius: 22px;
+                 background: linear-gradient(180deg, rgba(16, 24, 56, .92), rgba(8, 12, 30, .92));
+                 border: 2px solid rgba(232, 91, 208, .75); box-shadow: 0 0 24px rgba(232, 91, 208, .35), 0 0 60px rgba(90, 180, 255, .15);
+                 animation: dnIn .55s cubic-bezier(.2, .9, .3, 1.2) both; }
+    @keyframes dnIn { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+    .dn-result .lbl { margin: 0; text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; font-weight: 700; color: var(--ink-mute); }
+    .dn-result .big { font: 600 3.2rem/1.1 'JetBrains Mono', monospace; color: #fff; margin: 4px 0 10px;
+                      text-shadow: 0 0 18px rgba(90, 180, 255, .9), 0 0 40px rgba(232, 91, 208, .5); }
+    .dn-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 14px; }
+    .dn-chip { padding: 5px 13px; border-radius: 999px; font-weight: 700; font-size: .9rem; border: 1.5px solid rgba(140, 190, 255, .45); color: #DDE8FF; }
+    .dn-chip.gold { border-color: #FFD65A; color: #FFE7A0; box-shadow: 0 0 12px rgba(255, 214, 90, .35); }
+    .dn-chip.fire { border-color: #FF8A4C; color: #FFC6A6; }
+    .dn-share { width: 100%; min-height: 54px; border: 0; border-radius: 14px; cursor: pointer; font: 800 1.05rem 'Outfit', system-ui, sans-serif;
+                letter-spacing: .05em; text-transform: uppercase; color: #050814; background: linear-gradient(90deg, #5AB4FF, #B07CFF 55%, #E85BD0);
+                box-shadow: 0 0 22px rgba(176, 124, 255, .55); }
+    .dn-share:focus-visible, .dn-play:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+    #dShareMsg { min-height: 1.4em; margin: 8px 0 4px; font-size: .9rem; color: var(--ink-soft); word-break: break-word; }
+    .dn-play { display: flex; align-items: center; gap: 14px; margin-top: 6px; padding: 14px 16px; text-align: left; border-radius: 16px; text-decoration: none;
+               background: rgba(8, 14, 34, .9); border: 2px solid rgba(110, 230, 170, .7); box-shadow: 0 0 18px rgba(80, 230, 160, .25); color: #EFFFF6; font-weight: 700; line-height: 1.3; }
+    .dn-play:hover { box-shadow: 0 0 26px rgba(80, 230, 160, .45); }
+    .dn-play svg { flex: none; width: 30px; height: 30px; }
+    .dn-next { margin: 16px 0 0; color: var(--ink-soft); }
+    .dn-next strong { font-family: 'JetBrains Mono', monospace; color: #fff; }
+
+    .dn-teaser { padding: 10px 16px 40px; }
+    .dn-teaser .card { width: min(560px, 100%); margin: 0 auto; display: grid; grid-template-columns: 170px 1fr; gap: 20px; align-items: center;
+                       padding: 20px; border-radius: 22px; background: rgba(10, 16, 40, .75); border: 2px solid rgba(255, 184, 60, .6);
+                       box-shadow: 0 0 22px rgba(255, 184, 60, .2); }
+    .dn-teaser canvas { width: 100%; aspect-ratio: 1; border-radius: 12px; display: block; }
+    .dn-teaser .tag { display: inline-block; margin-bottom: 6px; padding: 3px 12px; border-radius: 999px; border: 1.5px solid rgba(255, 200, 90, .7);
+                      color: #FFE2A0; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .dn-teaser h2 { font-size: 1.35rem; margin: 0 0 6px; color: #fff; }
+    .dn-teaser p { margin: 0 0 12px; font-size: .95rem; }
+    .dn-teaser .go { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; font-weight: 800; text-decoration: none;
+                     color: #1A1203; background: #FFC14D; box-shadow: 0 0 16px rgba(255, 193, 77, .45); }
+    @media (max-width: 520px) { .dn-teaser .card { grid-template-columns: 1fr; text-align: center; } .dn-teaser .tz { width: 210px; margin: 0 auto; } }
+
+    .dn-info .page-header, .dn-info .breadcrumbs, .dn-info .daily-cta { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .dn-info .page-header { padding: 0 0 20px; margin-bottom: 28px; background: none; text-align: left; }
+    .dn-info .page-header p { margin: 0; max-width: none; }
+    .dn-info .daily-cta { margin: 28px 0; padding: 24px; border-radius: var(--radius-lg); background: rgba(10, 16, 40, .8); border: 1.5px solid var(--border); }
+    .dn-info .daily-cta h2 { font-size: 1.35rem; margin-bottom: 8px; }
+    .dn-info .daily-cta p { margin-bottom: 16px; }
     .daily-rules ol { padding-left: 22px; display: grid; gap: 8px; }
-    @media (max-width: 860px) { .daily-wrap { grid-template-columns: 1fr; gap: 32px; } }
+    .dn-info .breadcrumbs { position: static; background: none; border: 0; padding: 0 0 12px; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .dn-bg::before, .dn-board.won, .dn-result { animation: none !important; }
+        .dn-btn, .dn-play { transition: none; }
+    }
     </style>
 </head>
-<body>
+<body class="dn">
+<div class="dn-bg" aria-hidden="true"></div>
 
 <nav>
     <div class="c nav-inner">
@@ -67,43 +167,56 @@
     <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Downloaden</a>
 </div>
 
-
-
-<nav class="breadcrumbs" aria-label="Kruimelpad"><div class="c"><ol><li><a href="../">Home</a></li><li aria-current="page">Dagpuzzel</li></ol></div></nav>
-
-<header class="page-header">
-    <div class="c">
-        <span class="badge badge-primary">Gratis · elke dag nieuw</span>
-        <h1>Dagelijkse flow puzzel</h1>
-        <p>Verbind de stippen, kruis de lijnen niet. Elke dag één gratis logische puzzel, dezelfde als de dagelijkse uitdaging van vandaag in de Circuit Trace-app.</p>
-    </div>
-</header>
-
-<section class="section" style="padding-top:8px;">
-    <div class="c daily-wrap">
-        <div>
-            <div class="daily-bar"><span class="num">Dagpuzzel <span id="dNum"></span></span><span class="time" id="dTime">0:00</span></div>
-            <canvas id="dBoard" width="460" height="460" role="img" aria-label="Het bord van vandaag, 6 bij 6. Sleep vanaf een stip om een lijn te trekken."></canvas>
-            <div class="daily-foot"><span id="dStatus">Puzzel van vandaag laden…</span><button class="btn btn-ghost btn-sm" id="dReset" type="button">Bord leegmaken</button></div>
-            <p id="dMissing" hidden>Speel de puzzel van vandaag in de app: <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Circuit Trace op Google Play</a>.</p>
-
-            <div class="daily-result" id="dResult" hidden>
-                <p>Opgelost in</p>
-                <div class="big" id="dResTime"></div>
-                <p id="dResExtra"></p>
-                <p class="streak" id="dStreak"></p>
-                <button class="btn btn-primary" id="dShare" type="button">Deel resultaat</button>
-                <p id="dShareMsg" aria-live="polite"></p>
-                <p>Volgende puzzel over <strong id="dNext"></strong></p>
-            </div>
-
-            <div class="daily-cta">
-                <h2>Meer dan één puzzel per dag?</h2>
-                <p>700+ puzzels, 3D-kubus, portals &amp; diodes → Download Circuit Trace op Google Play. Gratis en werkt offline.</p>
-                <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore" style="background:#fff;color:#0F172A;"><svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/><path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/><path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/><path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/></svg><div class="pstext"><small style="color:#0F172A;">Ontdek het op</small><span style="color:#0F172A;">Google Play</span></div></a>
-            </div>
+<main>
+<section class="dn-stage">
+    <div class="dn-wrap">
+        <img class="dn-logo" src="../../assets/img/ct-title-neon.webp" width="720" height="241" alt="Circuit Trace" fetchpriority="high">
+        <div class="dn-bar dn-size">
+            <h1 class="dn-title">Dagelijkse flow puzzel <span id="dNum"></span></h1>
+            <span class="dn-time" id="dTime" role="timer" aria-label="Tijd">0:00</span>
         </div>
+        <div class="dn-board dn-size" id="dFrame">
+            <canvas id="dBoard" width="460" height="460" tabindex="0" role="img" aria-label="Het bord van vandaag, 6 bij 6. Sleep vanaf een stip om een lijn te trekken."></canvas>
+        </div>
+        <div class="dn-status dn-size"><span id="dStatus" aria-live="polite">Puzzel van vandaag laden…</span><span class="dn-bonus" id="dBonus">★ Bonus: vul elk vakje</span></div>
+        <div class="dn-controls dn-size" id="dControls">
+            <button class="dn-btn" id="dUndo" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Terug</button>
+            <button class="dn-btn" id="dReset" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Opnieuw</button>
+        </div>
+        <p class="dn-kbd dn-size">Toetsenbord: pijltjestoetsen bewegen, Enter pakt een lijn op of laat hem los, U zet een stap terug.</p>
+        <p id="dMissing" hidden>Speel de puzzel van vandaag in de app: <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Circuit Trace op Google Play</a>.</p>
 
+        <div class="dn-result" id="dResult" hidden>
+            <p class="lbl">Opgelost in</p>
+            <div class="big" id="dResTime"></div>
+            <div class="dn-chips" id="dChips"></div>
+            <button class="dn-share" id="dShare" type="button">Deel resultaat</button>
+            <p id="dShareMsg" aria-live="polite"></p>
+            <a class="dn-play" href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/><path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/><path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/><path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/></svg><span>700+ puzzels, 3D-kubus, portals &amp; diodes → Download Circuit Trace</span></a>
+            <p class="dn-next">Volgende puzzel over <strong id="dNext"></strong></p>
+        </div>
+    </div>
+</section>
+
+<section class="dn-teaser">
+    <div class="card">
+        <div class="tz"><canvas id="dTeaser" width="340" height="340" role="img" aria-label="Bewegende preview van een diode- en een portalpuzzel uit de app"></canvas></div>
+        <div>
+            <span class="tag" id="dTeaserTag">Diodes</span>
+            <h2>Meer in de app</h2>
+            <p>Diodes die maar één kant op gaan en portals die teleporteren, rechtstreeks uit Circuit Trace. Een klein voorproefje:</p>
+            <a class="go" href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Speel ze in de app →</a>
+        </div>
+    </div>
+</section>
+
+<section class="section dn-info" style="padding-top:8px;">
+    <div class="c">
+        <nav class="breadcrumbs" aria-label="Kruimelpad"><ol><li><a href="../">Home</a></li><li aria-current="page">Dagpuzzel</li></ol></nav>
+        <header class="page-header">
+            <span class="badge badge-primary">Gratis · elke dag nieuw</span>
+            <p>Verbind de stippen, kruis de lijnen niet. Elke dag één gratis logische puzzel, dezelfde als de dagelijkse uitdaging van vandaag in de Circuit Trace-app.</p>
+        </header>
         <div class="prose daily-rules">
             <h2>Zo speel je</h2>
             <ol>
@@ -126,8 +239,14 @@
                 <p>Circuit Trace voor Android heeft 700+ puzzels in 9 spelmodi, met portals, diodes, Labyrint en de 3D-kubus, plus een puzzel-editor. Gratis op Google Play.</p>
             <p>Nieuw met flow puzzels? Lees <a href="../blog/flow-puzzels-oplossen.html">hoe je flow puzzels oplost</a>, of bekijk alle <a href="../../modes.html">9 spelmodi</a> in de app.</p>
         </div>
+        <div class="daily-cta">
+            <h2>Meer dan één puzzel per dag?</h2>
+            <p>700+ puzzels, 3D-kubus, portals &amp; diodes → Download Circuit Trace op Google Play. Gratis en werkt offline.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener" class="btn-playstore" style="background:#fff;color:#0F172A;"><svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/><path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/><path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/><path d="M3.18.25C2.49.64 2 1.38 2 2.25v19.5c0 .87.49 1.61 1.18 2l10.49-12L3.18.25Z" fill="#34A853"/></svg><div class="pstext"><small style="color:#0F172A;">Ontdek het op</small><span style="color:#0F172A;">Google Play</span></div></a>
+        </div>
     </div>
 </section>
+</main>
 
 <footer>
     <div class="c">
@@ -141,8 +260,8 @@
     </div>
 </footer>
 
-<script src="../../assets/js/ctboard.js?v=2" defer></script>
-<script src="../../daily/daily.js?v=4" defer></script>
+<script src="../../assets/js/ctboard.js?v=3" defer></script>
+<script src="../../daily/daily.js?v=5" defer></script>
 <script src="../../assets/js/main.js?v=20261026b" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
