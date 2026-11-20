@@ -6,7 +6,8 @@
   var EXAMPLE = 'CT-D04B5-2Y9G0-C2EGT-V0000-00000-0000B';
   var PLAY = 'https://play.google.com/store/apps/details?id=com.game.circuittrace';
   function $(id) { return document.getElementById(id); }
-  var board = null, code = '', startedAt = 0, solvedSecs = null, timer = null;
+  var board = null, code = '', startedAt = 0, solvedSecs = null, timer = null, bonusLabel = null;
+  var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmt(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + pad(s % 60); }
@@ -19,7 +20,21 @@
   }
   function link() { return 'https://circuittrace.app/puzzle/?c=' + code; }
   function tick() { $('pTime').textContent = fmt(solvedSecs !== null ? solvedSecs : (startedAt ? (Date.now() - startedAt) / 1000 : 0)); }
-  function status() { $('pStatus').textContent = board.solved ? 'Solved ✓' : board.connected() + ' / ' + board.pairCount + ' connected'; }
+  function status() {
+    $('pStatus').textContent = board.solved ? 'Solved ✓' : board.connected() + ' / ' + board.pairCount + ' connected';
+    var full = board.full(), bonus = $('pBonus'), cov = board.covered();
+    if (bonusLabel === null) bonusLabel = bonus.textContent;
+    bonus.classList.toggle('on', full);
+    bonus.textContent = full ? '★ Bonus done!' : cov ? '★ ' + cov + ' / ' + board.size * board.size + ' cells' : bonusLabel;
+    $('pUndo').disabled = !board.canUndo();
+    $('pReset').disabled = board.solved;
+  }
+  function chip(text, cls) {
+    var e = document.createElement('span');
+    e.className = 'dn-chip' + (cls ? ' ' + cls : '');
+    e.textContent = text;
+    return e;
+  }
 
   function describe(p) {
     var bits = [p.size + '×' + p.size, p.pairs.length + ' pairs'];
@@ -38,7 +53,7 @@
     $('pCode').value = code;
     if (push) { try { history.replaceState(null, '', '?c=' + code); } catch (e) {} }
     clearInterval(timer); startedAt = 0; solvedSecs = null;
-    $('pResult').hidden = true; $('pReset').hidden = false;
+    $('pResult').hidden = true; $('pControls').hidden = false;
     $('pGame').hidden = false;
     $('pInfo').textContent = describe(p);
     $('pAppCode').textContent = code;
@@ -47,16 +62,35 @@
     // fresh canvas so old listeners go away
     var old = $('pBoard'), c = old.cloneNode(false);
     old.parentNode.replaceChild(c, old);
+    if (board) board.destroy();
     board = new CTBoard.Board(c, p, {
+      theme: 'neon', keyboard: true,
       onStart: function () { if (!startedAt) { startedAt = Date.now(); timer = setInterval(tick, 500); } },
       onChange: status,
       onSolved: function () {
         clearInterval(timer);
         solvedSecs = Math.max(1, Math.round((Date.now() - startedAt) / 1000));
         tick(); status();
-        $('pResTime').textContent = fmt(solvedSecs);
-        $('pResExtra').textContent = (board.full() ? 'Perfect: every cell filled. ' : '') + board.moves + ' moves.';
-        $('pResult').hidden = false; $('pReset').hidden = true;
+        var frame = $('pFrame');
+        if (!RM) { frame.classList.remove('won'); void frame.offsetWidth; frame.classList.add('won'); }
+        setTimeout(function () {
+          var chips = $('pChips');
+          chips.textContent = '';
+          chips.appendChild(board.full() ? chip('★ Perfect: every cell filled', 'gold') : chip('Tip: fill every cell for ★ Perfect'));
+          chips.appendChild(chip(board.moves + ' moves'));
+          $('pControls').hidden = true;
+          $('pResult').hidden = false;
+          var big = $('pResTime');
+          if (!RM) {
+            var t0 = performance.now();
+            (function step() {
+              var u = Math.min(1, (performance.now() - t0) / 700);
+              big.textContent = fmt(solvedSecs * (1 - Math.pow(1 - u, 3)));
+              if (u < 1) requestAnimationFrame(step);
+            })();
+            $('pResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else big.textContent = fmt(solvedSecs);
+        }, board.celebrationMs);
       }
     });
     status();
@@ -73,8 +107,9 @@
 
   $('pForm').addEventListener('submit', function (e) { e.preventDefault(); open($('pCode').value, true); });
   $('pReset').addEventListener('click', function () { if (board) board.clear(); });
+  $('pUndo').addEventListener('click', function () { if (board) board.undo(); });
   $('pShare').addEventListener('click', function () {
-    share('I solved this Circuit Trace puzzle in ' + fmt(solvedSecs) + ' ⚡ Can you beat it? ' + link(), $('pShareMsg'));
+    share('I solved this Circuit Trace puzzle in ' + fmt(solvedSecs) + (board && board.full() ? ' · Perfect' : '') + ' ⚡ Can you beat it? ' + link(), $('pShareMsg'));
   });
   $('pCopyLink').addEventListener('click', function () { share('Try this Circuit Trace puzzle: ' + link(), $('pLinkMsg')); });
 
