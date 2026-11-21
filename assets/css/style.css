@@ -297,7 +297,7 @@ nav {
     background:
         radial-gradient(ellipse 80% 60% at 20% 0%, rgba(236, 72, 153, 0.08), transparent 60%),
         radial-gradient(ellipse 80% 60% at 80% 0%, rgba(6, 182, 212, 0.08), transparent 60%),
-        var(--bg);
+        transparent;
 }
 .hero-grid {
     display: grid;
@@ -837,7 +837,7 @@ footer {
     text-align: center;
     background:
         radial-gradient(ellipse 70% 50% at 50% 0%, rgba(59, 130, 246, 0.06), transparent 60%),
-        var(--bg);
+        transparent;
     border-bottom: 1px solid var(--border);
 }
 .page-header .badge { margin-bottom: 16px; }
@@ -880,7 +880,7 @@ footer {
 }
 
 /* ─── BREADCRUMBS ──────────────────────────────────────────── */
-.breadcrumbs { border-bottom: 1px solid var(--border); background: var(--bg); }
+.breadcrumbs { border-bottom: 1px solid var(--border); background: rgba(250, 250, 248, .7); }
 .breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
     padding: 12px 0; font-size: 0.85rem; color: var(--ink-mute); }
 .breadcrumbs li { display: flex; align-items: center; gap: 6px; min-width: 0; }
@@ -953,3 +953,13 @@ code.mono, .mono { overflow-wrap: anywhere; }
 .review-card blockquote { margin: 0 0 14px; font-size: 1.05rem; line-height: 1.55; color: var(--ink); }
 .review-card figcaption { font-size: .9rem; color: var(--ink-soft); }
 @media (max-width: 800px) { .price-grid { grid-template-columns: 1fr; } }
+
+/* ─── SITE BACKGROUND: light circuit lines (same art as the daily, light) ─── */
+body:not(.dn)::before {
+    content: ""; position: fixed; inset: -40px; z-index: -1; pointer-events: none;
+    background:
+        url(/assets/img/circuit-bg-light.svg) center / cover no-repeat,
+        radial-gradient(60% 45% at 0% 62%, rgba(59, 130, 246, .07), transparent 70%),
+        radial-gradient(55% 45% at 100% 40%, rgba(236, 72, 153, .06), transparent 70%);
+    opacity: .45;
+}
