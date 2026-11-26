@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undo, Reset, Hints and Redo: How Help Works in Circuit Trace | Circuit Trace</title>
+    <meta name="description" content="Undo, reset, hint and redo in Circuit Trace: what each button does, when the number on it starts to count, and how to get more when you run out.">
+    <link rel="canonical" href="https://circuittrace.app/blog/undo-reset-hints.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="Undo, reset, hints and redo: how help works in Circuit Trace">
+    <meta property="og:description" content="Undo, reset, hint and redo in Circuit Trace: what each button does, when the number on it starts to count, and how to get more when you run out.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/undo-reset-hints.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Undo, reset, hints and redo: how help works in Circuit Trace", "description": "Undo, reset, hint and redo in Circuit Trace: what each button does, when the number on it starts to count, and how to get more when you run out.", "image": "https://circuittrace.app/assets/img/blog-help-bar.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-26", "dateModified": "2026-11-26", "mainEntityOfPage": "https://circuittrace.app/blog/undo-reset-hints.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Undo, reset and hints", "item": "https://circuittrace.app/blog/undo-reset-hints.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does the undo button show a number?", "acceptedAnswer": {"@type": "Answer", "text": "From sector 4 of a level pack, each level gives you a set number of undos, resets and hints. The number on the button shows how many you have left on this level."}}, {"@type": "Question", "name": "What happens when I run out of undos?", "acceptedAnswer": {"@type": "Answer", "text": "You can watch a short video to get one more. If you bought Remove Ads, you get it straight away without a video."}}, {"@type": "Question", "name": "Are undos limited in the Daily puzzle?", "acceptedAnswer": {"@type": "Answer", "text": "No. Daily and Weekly puzzles have unlimited undo and reset, plus one free hint."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+<!-- xp-css:start --><style>.xp{padding:40px 20px;border-top:1px solid rgba(127,127,127,.2);color:inherit;font-family:inherit}
+.xp-in{max-width:1080px;margin:0 auto}
+.xp-h{margin:0 0 16px;text-align:center;font-size:1.05rem;font-weight:700;line-height:1.3}
+.xp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+a.xp-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:rgba(127,127,127,.08);border:1px solid rgba(127,127,127,.2);color:inherit;text-decoration:none;transition:transform .15s,border-color .15s}
+a.xp-card:hover{transform:translateY(-2px);border-color:rgba(127,127,127,.45)}
+.xp-card img{width:48px;height:48px;border-radius:12px;flex:0 0 48px;margin:0}
+.xp-t{display:block;font-weight:700;font-size:.98rem;line-height:1.25}
+.xp-d{display:block;margin-top:3px;font-size:.84rem;line-height:1.4;opacity:.75}
+.xp-note{margin:14px 0 0;text-align:center;font-size:.78rem;opacity:.65}
+.xp-note a{color:inherit}
+.xp [data-xp-lang]{display:none}
+html[lang^="nl"] .xp [data-xp-lang="nl"],html:not([lang^="nl"]) .xp [data-xp-lang="en"]{display:block}</style><!-- xp-css:end -->
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="../daily/">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../daily/">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Undo, reset and hints</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-cyan">Guide</span>
+        <h1>Undo, reset, hints and redo: how help works in Circuit Trace.</h1>
+        <p>📅 26 November 2026 · ⏱ 5 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>At the bottom of every level sit three buttons: undo, reset and hint. Early on you can tap them as often as you like. Later, small numbers appear on them. Here's what each one does, how the limits work, and the fourth kind of help that doesn't need a button at all.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/blog-help-bar.webp" alt="A level in sector 4 with numbers on the undo, reset and hint buttons"><figcaption><strong>The help buttons</strong>With their numbers in sector 4</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/blog-redo-flat.webp" alt="Redrawing one line from its dot"><figcaption><strong>Redo a line</strong>No button needed</figcaption></figure></div>
+
+            <h2>What each button does</h2>
+
+            <ul>
+                <li><strong>Undo</strong> steps back one move. Press it again to go back further.</li>
+                <li><strong>Reset</strong> clears the whole board so you can start the level over.</li>
+                <li><strong>Hint</strong> shows the full route of one pair. It's hidden in the first two sectors, where the puzzles are small enough not to need it.</li>
+                <li><strong>Redo a line</strong> isn't a button: drag from a dot of a finished line to draw just that line again (on the 3D cube, hold the dot). See <a href="redo-a-line.html">how to redo one line</a>.</li>
+            </ul>
+
+            <h2>When the numbers start to count</h2>
+
+            <p>In the level packs, sectors 1 to 3 have unlimited undo and reset. From <strong>sector 4</strong>, each level gives you a set number of each, shown as a small badge on the button. Sector 4, for example, gives 6 undos per level, and later sectors give fewer. The count starts fresh on every level.</p>
+
+            <p>Why limit them at all? Without a limit, a hard board turns into trying every route until one fits. A small budget nudges you to read the board first, which is where the satisfying part of a flow puzzle is.</p>
+
+            <h2>Other modes</h2>
+
+            <ul>
+                <li><strong>Daily and Weekly:</strong> unlimited undo and reset, and one free hint.</li>
+                <li><strong>Endless:</strong> unlimited on Casual, Relaxed and Challenging. Expert, Master, Grandmaster and Legend have a limit, so the name means something.</li>
+                <li><strong>Time Trial:</strong> no undo and no hints. Speed is the whole point. <a href="time-trial-tips.html">Time Trial tips</a> explains how to fix lines there.</li>
+            </ul>
+
+            <h2>Ran out? Two options</h2>
+
+            <p>When a counter hits zero, the game offers a short video for one more. That's always optional: you can also just think a little longer. If you bought <strong>Remove Ads</strong> in the shop, you get the extra charge straight away, no video.</p>
+
+            <div class="post-tip"><p><strong>Save your undos:</strong> one wrong line? Redo it from its dot instead of pressing undo a few times. A redo doesn't use up an undo.</p></div>
+
+            <h2>Help and perfect scores</h2>
+
+            <p>Some goals ask for more than solving the level, for example finishing without undo. On those goals, an undo and a redone line both count as help. The same goes for the perfect mark on Weekly puzzles. Want to go for them? Read the board first: <a href="advanced-flow-puzzle-strategy.html">advanced flow puzzle strategy</a> has techniques to find the right route before you draw.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Play Circuit Trace free on Google Play: 700+ flow puzzles.</a></p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>Why does the undo button show a number?</h3>
+            <p>From sector 4 of a level pack, each level gives you a set number of undos, resets and hints. The number on the button shows how many you have left on this level.</p>
+
+            <h3>What happens when I run out of undos?</h3>
+            <p>You can watch a short video to get one more. If you bought Remove Ads, you get it straight away without a video.</p>
+
+            <h3>Are undos limited in the Daily puzzle?</h3>
+            <p>No. Daily and Weekly puzzles have unlimited undo and reset, plus one free hint.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- xp:start --><section class="xp" aria-label="Try our other apps"><div class="xp-in"><p class="xp-h">Try our other apps</p><div class="xp-grid"><a class="xp-card" href="https://buildexact.app/"><img src="https://grounded-studio.app/assets/icon-bx.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><span class="xp-t">BuildExact</span><span class="xp-d">Building calculators, quotes and invoices. Works offline.</span></span></a><a class="xp-card" href="https://freshgarant.app/"><img src="https://grounded-studio.app/assets/icon-vg.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><span class="xp-t">FreshGarant</span><span class="xp-d">Track food expiry dates and get a reminder in time.</span></span></a><a class="xp-card" href="https://wagbook.app/"><img src="https://grounded-studio.app/assets/icon-kb.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><span class="xp-t">Wagbook</span><span class="xp-d">Vaccinations, medication and vet visits for your pets in one place.</span></span></a></div><p class="xp-note">Free for Android · <a href="https://grounded-studio.app/">by Grounded Studio</a></p></div></section><!-- xp:end -->
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

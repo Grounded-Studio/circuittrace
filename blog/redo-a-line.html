@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Redo One Line in a Flow Puzzle (Without Undoing Everything) | Circuit Trace</title>
+    <meta name="description" content="Made a mistake in one line? In Circuit Trace you can redo just that line: drag from one of its dots, or hold the dot on the 3D cube. How it works and when to use it.">
+    <link rel="canonical" href="https://circuittrace.app/blog/redo-a-line.html">
+    <link rel="icon" type="image/png" href="../assets/icons/icon64.png">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta property="og:title" content="How to redo one line without undoing everything">
+    <meta property="og:description" content="Made a mistake in one line? In Circuit Trace you can redo just that line: drag from one of its dots, or hold the dot on the 3D cube. How it works and when to use it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuittrace.app/blog/redo-a-line.html">
+    <meta property="og:image" content="https://circuittrace.app/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to redo one line without undoing everything", "description": "Made a mistake in one line? In Circuit Trace you can redo just that line: drag from one of its dots, or hold the dot on the 3D cube. How it works and when to use it.", "image": "https://circuittrace.app/assets/img/blog-redo-flat.webp", "author": {"@type": "Organization", "name": "Grounded Studio"}, "publisher": {"@type": "Organization", "name": "Grounded Studio", "logo": {"@type": "ImageObject", "url": "https://circuittrace.app/assets/icons/icon512.png"}}, "datePublished": "2026-11-26", "dateModified": "2026-11-26", "mainEntityOfPage": "https://circuittrace.app/blog/redo-a-line.html"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://circuittrace.app/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://circuittrace.app/blog/"}, {"@type": "ListItem", "position": 3, "name": "Redo one line", "item": "https://circuittrace.app/blog/redo-a-line.html"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I redo one line in Circuit Trace?", "acceptedAnswer": {"@type": "Answer", "text": "Drag from one of the dots of the finished line. The old line disappears as soon as your finger leaves the dot, and you draw the new route. Your other lines stay where they are."}}, {"@type": "Question", "name": "How do I redo a line on the 3D cube?", "acceptedAnswer": {"@type": "Answer", "text": "Hold a dot of the finished line still until the ring around it is full, then tap REDO. A quick tap or a swipe turns the cube instead."}}, {"@type": "Question", "name": "Does redoing a line use up an undo?", "acceptedAnswer": {"@type": "Answer", "text": "No. It counts as one move and doesn't use an undo charge. On goals that ask you to solve without undo, it does count as help."}}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261116b">
+    <style>
+        .post-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px auto 12px; max-width: 720px; }
+        .post-shots.two { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+        .post-shots figure { margin: 0; }
+        .post-shots img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(0,0,0,.35); }
+        .post-shots figcaption { margin-top: 10px; text-align: center; font-size: .88rem; color: var(--ink-mute); }
+        .post-shots figcaption strong { display: block; color: var(--ink); font-size: .95rem; }
+        @media (max-width: 600px) { .post-shots { grid-template-columns: repeat(2, 1fr); } }
+        .post-tip { background: var(--bg-soft); border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 14px; padding: 18px 22px; margin: 28px 0; }
+        .post-tip p:last-child { margin-bottom: 0; }
+        .post-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+        .post-levels div { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+        .post-levels strong { display: block; font-size: 1.05rem; }
+        .post-levels span { color: var(--ink-mute); font-size: .88rem; }
+        @media (max-width: 600px) { .post-levels { grid-template-columns: 1fr; } }
+    </style>
+<!-- xp-css:start --><style>.xp{padding:40px 20px;border-top:1px solid rgba(127,127,127,.2);color:inherit;font-family:inherit}
+.xp-in{max-width:1080px;margin:0 auto}
+.xp-h{margin:0 0 16px;text-align:center;font-size:1.05rem;font-weight:700;line-height:1.3}
+.xp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+a.xp-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:rgba(127,127,127,.08);border:1px solid rgba(127,127,127,.2);color:inherit;text-decoration:none;transition:transform .15s,border-color .15s}
+a.xp-card:hover{transform:translateY(-2px);border-color:rgba(127,127,127,.45)}
+.xp-card img{width:48px;height:48px;border-radius:12px;flex:0 0 48px;margin:0}
+.xp-t{display:block;font-weight:700;font-size:.98rem;line-height:1.25}
+.xp-d{display:block;margin-top:3px;font-size:.84rem;line-height:1.4;opacity:.75}
+.xp-note{margin:14px 0 0;text-align:center;font-size:.78rem;opacity:.65}
+.xp-note a{color:inherit}
+.xp [data-xp-lang]{display:none}
+html[lang^="nl"] .xp [data-xp-lang="nl"],html:not([lang^="nl"]) .xp [data-xp-lang="en"]{display:block}</style><!-- xp-css:end -->
+</head>
+<body>
+
+<nav>
+    <div class="c nav-inner">
+        <a href="../" class="nav-logo"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt=""><span>Circuit Trace</span></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../modes.html">Modes</a></li><li><a href="../daily/">Daily</a></li>
+            <li><a href="../themes.html">Themes</a></li>
+            <li><a href="../editor.html">Editor</a></li>
+            <li><a href="../support.html">Support</a></li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" class="nav-cta">Download →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+    <a href="../">🏠 Home</a><a href="../features.html">✨ Features</a><a href="../modes.html">🎮 Modes</a><a href="../daily/">🧩 Daily Puzzle</a><a href="../themes.html">🌈 Themes &amp; FX</a><a href="../editor.html">🎨 Puzzle Editor</a><a href="../achievements.html">🏆 Achievements</a><a href="../support.html">💬 Support</a><a href="../contact.html">✉️ Contact</a><a href="./">📝 Blog</a>
+    <a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">⬇️ Download</a>
+</div>
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="c"><ol><li><a href="../">Home</a></li><li><a href="./">Blog</a></li><li aria-current="page">Redo one line</li></ol></div></nav>
+
+<header class="page-header">
+    <div class="c">
+        <span class="badge badge-orange">New</span>
+        <h1>How to redo one line without undoing everything.</h1>
+        <p>📅 26 November 2026 · ⏱ 4 min read · ✍️ Grounded Studio</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="c">
+        <div class="prose">
+
+            <p>Every flow puzzle player knows this moment. Five lines are down, the board is nearly full, and then you see it: line two takes the wrong route. Until now that meant pressing undo three, four, five times, and losing the good lines on the way. From version 2.0.1, Circuit Trace lets you redo just the line that's wrong.</p>
+
+            <div class="post-shots two"><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/blog-redo-flat.webp" alt="Redrawing the red line from one of its dots on a flat board"><figcaption><strong>Flat boards</strong>Drag from a dot</figcaption></figure><figure><img decoding="async" loading="lazy" width="540" height="1170" src="../assets/img/blog-redo-cube.webp" alt="A ring filling around a held dot on the 3D cube"><figcaption><strong>3D cube</strong>Hold the dot</figcaption></figure></div>
+
+            <h2>On a flat board: drag from a dot</h2>
+
+            <p>Put your finger on one of the two dots of the finished line and start dragging. As soon as your finger leaves the dot, the old line disappears and you're drawing the new one. Your other lines stay exactly where they are.</p>
+
+            <ul>
+                <li><strong>A tap does nothing.</strong> Touching a dot without moving leaves the line as it was and doesn't count as a move.</li>
+                <li><strong>It's one move.</strong> The redo counts as a single move on the move counter.</li>
+                <li><strong>Undo brings it back.</strong> Changed your mind? Undo restores the old line.</li>
+            </ul>
+
+            <h2>On the 3D cube: hold the dot</h2>
+
+            <p>On the cube, swiping is how you turn it, so dragging from a dot would fight with turning. That's why the cube works differently:</p>
+
+            <ul>
+                <li>A <strong>tap or swipe</strong> on a dot turns the cube, like anywhere else.</li>
+                <li><strong>Hold the dot still</strong> and a ring in the line's colour fills around it. When the ring is full, the game asks <em>Redo this line?</em></li>
+                <li>Tap <strong>REDO</strong> and only that line is removed. Draw it again whenever you're ready.</li>
+            </ul>
+
+            <p>New to the cube? <a href="cube-3d-puzzle.html">How the 3D cube works</a> covers turning it and crossing edges.</p>
+
+            <div class="post-tip"><p><strong>Tip:</strong> the game reminds you once. Press undo three times in a row and a short tip points you to the dot, so you don't have to remember any of this.</p></div>
+
+            <h2>Redo or undo: which one when?</h2>
+
+            <p><strong>Use redo</strong> when one line is wrong and everything else is fine. That's the common case on bigger boards: you drew a colour early, and three lines later it turns out to block a corner.</p>
+
+            <p><strong>Use undo</strong> when your last few moves were a sequence that only made sense together, or when you want to step back to a moment you remember. Undo walks back in time; redo fixes one colour.</p>
+
+            <p><strong>Use reset</strong> when the whole plan was wrong. Sometimes a fresh look at an empty board is faster than repairing it. More about how the help buttons work in <a href="undo-reset-hints.html">undo, reset and hints explained</a>.</p>
+
+            <h2>Does it cost anything?</h2>
+
+            <p>Redoing a line doesn't use up an undo. In later sectors, where undos are limited, that makes it the cheaper way to fix a single colour. One thing to know: on goals that ask you to solve <em>without undo</em>, a redo counts as help too. Fair is fair.</p>
+
+            <h2>In Time Trial</h2>
+
+            <p>In <a href="time-trial-tips.html">Time Trial</a> you could already redraw a finished line straight away, and that stays the same. There's no undo there, so redrawing is the only way to fix a line, and it's instant.</p>
+
+            <hr>
+
+            <p><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank" rel="noopener">Play Circuit Trace free on Google Play: 700+ flow puzzles, now with one-line redo.</a></p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>How do I redo one line in Circuit Trace?</h3>
+            <p>Drag from one of the dots of the finished line. The old line disappears as soon as your finger leaves the dot, and you draw the new route. Your other lines stay where they are.</p>
+
+            <h3>How do I redo a line on the 3D cube?</h3>
+            <p>Hold a dot of the finished line still until the ring around it is full, then tap REDO. A quick tap or a swipe turns the cube instead.</p>
+
+            <h3>Does redoing a line use up an undo?</h3>
+            <p>No. It counts as one move and doesn't use an undo charge. On goals that ask you to solve without undo, it does count as help.</p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- xp:start --><section class="xp" aria-label="Try our other apps"><div class="xp-in"><p class="xp-h">Try our other apps</p><div class="xp-grid"><a class="xp-card" href="https://buildexact.app/"><img src="https://grounded-studio.app/assets/icon-bx.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><span class="xp-t">BuildExact</span><span class="xp-d">Building calculators, quotes and invoices. Works offline.</span></span></a><a class="xp-card" href="https://freshgarant.app/"><img src="https://grounded-studio.app/assets/icon-vg.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><span class="xp-t">FreshGarant</span><span class="xp-d">Track food expiry dates and get a reminder in time.</span></span></a><a class="xp-card" href="https://wagbook.app/"><img src="https://grounded-studio.app/assets/icon-kb.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><span class="xp-t">Wagbook</span><span class="xp-d">Vaccinations, medication and vet visits for your pets in one place.</span></span></a></div><p class="xp-note">Free for Android · <a href="https://grounded-studio.app/">by Grounded Studio</a></p></div></section><!-- xp:end -->
+<footer>
+    <div class="c">
+        <div class="foot-grid">
+            <div class="foot-brand"><img decoding="async" width="96" height="96" src="../assets/img/logo-96.webp" alt="Circuit Trace logo"><p class="foot-name">Circuit Trace</p><p>Minimalist flow puzzle game by Grounded Studio.</p></div>
+            <div class="foot-col"><p class="foot-h">Product</p><ul><li><a href="../features.html">Features</a></li><li><a href="../modes.html">Game Modes</a></li><li><a href="../themes.html">Themes &amp; FX</a></li><li><a href="../editor.html">Puzzle Editor</a></li><li><a href="../achievements.html">Achievements</a></li><li><a href="https://play.google.com/store/apps/details?id=com.game.circuittrace" target="_blank">Download</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Resources</p><ul><li><a href="../support.html">Support & FAQ</a></li><li><a href="../press.html">Press Kit</a></li><li><a href="./">Blog</a></li><li><a href="https://grounded-studio.app" target="_blank">Grounded Studio</a></li></ul></div>
+            <div class="foot-col"><p class="foot-h">Legal</p><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="foot-bottom"><div>© 2026 Grounded Studio</div><div class="foot-socials"><a href="https://tiktok.com/@circuit_trace" target="_blank">🎵</a><a href="https://instagram.com/circuittracegame" target="_blank">📸</a><a href="https://facebook.com/profile.php?id=61594812523243" target="_blank">📘</a><a href="https://www.youtube.com/@CircuitTraceGame" target="_blank" aria-label="YouTube">▶️</a></div></div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20261026b" defer></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dda600516274b5c81183e09a94936a2"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
